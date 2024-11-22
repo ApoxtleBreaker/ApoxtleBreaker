@@ -1,0 +1,32 @@
+.HyperCharacter{
+    display: block;
+    position: fixed;
+}
+.HyperCharacter[YanjerTS]{
+    bottom: 20;
+    right: 0;
+    margin-right: -60px;
+    width: 200px;
+    height: 200px;
+    transform: rotate(-45deg);
+    z-index: 9999;
+}
+.HyperCharacter[Qijiguang]{
+    bottom: 20;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    transform: rotate(-10deg);
+    transform:rotate3d(90,90,360,-20deg);
+    z-index: 9999;
+}
+.HyperCharacter[Qijiguang]:active{
+    transform:rotate3d(90,90,360,-60deg);
+    z-index: 9;
+}
+
+
+.HyperCharacter img{
+    width: 100%;
+    height: 100%;
+}

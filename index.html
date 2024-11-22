@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApoxtleBreaker_HomePage Welcome to my website</title>
+    <link rel="stylesheet" href="./files/css/embellish.css">
+    <link rel="stylesheet" href="./files/css/main.css">
+    <link rel="stylesheet" href="./files/css/user.css">
+    <link rel="stylesheet" href="./files/css/document.css">
+    <link rel="stylesheet" href="./files/css/HyperCharacter.css">
+</head>
+<style>
+:root{
+    margin: 0,0;
+    padding: 0,0;
+}
+
+
+
+</style>
+<body>
+    <div id="bg"></div>
+    <div id="top" class="hidden">
+        <div id="musicSettigInputBox">
+            <!-- <input type="text" id="musicSettigInput"> -->
+        </div>
+        <div id="musicSettingDisplayBox">
+            <!-- <p>音乐序号(1开始) ${musicIndex+1}</p>
+            <p>开始/暂停播放 ${MusicPlayKey}</p>
+            <p>上一首 ${MusicLastKey}</p>
+            <p>下一首 ${MusicNextKey}</p>
+            <p>后退'n' s ${MusicBackKey}</p>
+            <p>后退时间n s ${MusicBackTime}</p>
+            <p>前进'm' s ${MusicAdvanceKey}</p>
+            <p>前进时间m s ${MusicAdvanceTime}</p> -->
+        </div>
+        <button id="musicModeSwitch" onclick="musicModeSwitch()">切换模式</button>
+    </div>
+
+
+    <div id="header"></div>
+    <div id="mianBox">
+        <div id="leftBox">
+            <div id="box1-character">
+                <div id="head"><div id="head_img"></div></div>
+                <div id="info">
+                    <div id="BasicInfo_info_name"></div>
+                    <div id="BasicInfo_info_signature"></div>
+                </div>
+                <div class="BasicInfo_exehibition"><img src="./files/setting/宵崎奏大联合.png" alt=""></div>
+                <div class="BasicInfo_exehibition"><img src="./files/setting/腱鞘炎.png" alt=""></div>
+                <div class="BasicInfo_exehibition  "><img src="./files/setting/after_training.png" alt=""></div>
+            </div>
+            <div id="Linkgooo_box1-links">
+                <!-- 链接 -->
+                 <!-- <a href="#9">这是一个正常的链接 会被bowser自动识别并更改样式</a> -->
+            </div>
+        </div>
+        <div id="D_content">
+            <!-- 这里开始更改内容 -->
+            <!-- <div id="contentBox">
+                <div class="wave_contentBox_title">鄢桀蚀荼个人主页锐意制作中...</div>
+                <div class="contentBox_page">
+                    <div class="contentBox_page_title">关于我</div>
+                    <div class="contentBox_page_content">
+                        <p>鄢桀蚀荼-YanjerTS</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                        <p>生成测试内容</p>
+                </div>
+            </div> -->
+            <!--  -->
+              
+        </div>
+        <div class="colorDirection"></div>
+
+        <div id="musicplayer">
+            <div id="audioAnalyser-box2"><canvas id="Musicplayer_audioAnalyser2"></canvas></div>
+            <div id="audioAnalyser-box"><canvas id="Musicplayer_audioAnalyser"></canvas></div>
+            <div id="audioAnalyser-pogressBar-box">
+                <div id="audioAnalyser-pogressAll"></div>
+                <div id="audioAnalyser-pogressNow"></div>
+                <div id="audioAnalyser-pogressTimeText">00:00</div>
+            </div>
+            <div id="audioAnalyser-message">
+                <span id="audioAnalyser-message-img-box"><img id="audioAnalyser-message-img" src="" alt=""></span>
+                <span id="audioAnalyser-message-name"></span>
+                <span id="audioAnalyser-message-artist"></span>
+            </div>
+            <div id="musicplayerControl">
+                <button id="musicLastbutton" class="musicplayerButton" onclick="lastMusic()">上一个</button>
+                <button id="musicStatrbutton" class="musicplayerButton" onclick="playMusic()">播放</button>
+                <!-- <button id="musicStopbutton" onclick="stopMusic()">暂停</button> -->
+                <button id="musicNextbutton" class="musicplayerButton" onclick="nextMusic()">下一个</button>
+                <!-- <button id="AnalyserStyleLine">块状</button>
+                <button id="AnalyserStyleString">线性</button> -->
+            </div>
+        </div>
+        <div id="rainbowegg">其实你要是不乱点就看不见我的</div>
+        <div class="HyperCharacter" YanjerTS><img src="./files/setting/YanjerTS.png" alt=""></div>
+        <!-- <div class="HyperCharacter" Qijiguang><img src="./files/setting/A1.png" alt=""></div> -->
+        <!-- <div class="HyperCharacter"><img src="./files/setting/A2.png" alt=""></div> -->
+        <!-- <div class="HyperCharacter"><img src="./files/setting/A3.png" alt=""></div> -->
+        <!-- <div class="HyperCharacter"><img src="./files/setting/A4.png" alt=""></div> -->
+
+    </div>
+    <audio id="Musicplayer_analyzedMusic" src="./files/audio/music/"></audio>
+    <!-- <audio id='Audio_audio'>
+        <source src='../musicplayer/audio/KING(Yuuma).mp3' type="audio/mpeg">
+    </audio> -->
+    
+</body>
+<script src="./files/js/basicInfo.js"></script>
+<script src="./files/js/linkgooo.js"></script>
+<script src="./files/js/scroll.js"></script>
+<script src="./files/js/Musicplayer.js"></script>
+<script src="./files/js/Musicplayer_ADD.js"></script>
+<script src="./files/js/MusicSetting.js"></script>
+<script src="./files/js/audio.js"></script>
+<script src="./files/js/YanjerAIOS.js"></script>
+<script src="./files/js/HyperCharacter.js"></script>
+<script src="./files/js/IFmobile.js"></script>
+<script>
+
+</script>
+</html>
+<script>
+
+</script>

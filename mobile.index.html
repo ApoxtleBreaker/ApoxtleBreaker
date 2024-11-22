@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApoxtleBreaker_HomePage Welcome to my website</title>
+    <!-- <link rel="stylesheet" href="./files/css/embellish-mobile.css">
+    <link rel="stylesheet" href="./files/css/main-mobile.css">
+    <link rel="stylesheet" href="./files/css/user.css">
+    <link rel="stylesheet" href="./files/css/document.css">
+    <link rel="stylesheet" href="./files/css/HyperCharacter.css"> -->
+    <link rel="stylesheet" href="./files/css/--mobile-mobile-all.css">
+    <link rel="stylesheet" href="./files/css/user.css">
+</head>
+<style>
+:root{
+    margin: 0,0;
+    padding: 0,0;
+}
+</style>
+<body> 
+    <div id="bg"></div>
+    <div id="top" class="hidden">
+        <!-- <button id="tapTactics">（开发者模式）点击策略:click</button> -->
+        <div id="musicSettingDisplayBox">
+            <!-- <p>音乐序号(1开始) ${musicIndex+1}</p>
+            <p>开始/暂停播放 ${MusicPlayKey}</p>
+            <p>上一首 ${MusicLastKey}</p>
+            <p>下一首 ${MusicNextKey}</p>
+            <p>后退'n' s ${MusicBackKey}</p>
+            <p>后退时间n s ${MusicBackTime}</p>
+            <p>前进'm' s ${MusicAdvanceKey}</p>
+            <p>前进时间m s ${MusicAdvanceTime}</p> -->
+        </div>
+        <button id="musicModeSwitch" onclick="musicModeSwitch()">切换模式</button>
+    </div>
+    <div id="header"></div>
+    <div id="mianBox">
+        <div id="box1-character">
+            <div id="head"><div id="head_img"></div></div>
+            <!-- --mobile-tap.js -->
+            <!-- <div id="info">
+                <div id="BasicInfo_info_name"></div>
+                <div id="BasicInfo_info_signature"></div>
+            </div>
+            <div class="BasicInfo_exehibition"><img src="./files/setting/宵崎奏大联合.png" alt=""></div>
+            <div class="BasicInfo_exehibition"><img src="./files/setting/腱鞘炎.png" alt=""></div>
+            <div class="BasicInfo_exehibition  "><img src="./files/setting/after_training.png" alt=""></div> 
+            <div id="cancleCharacterBox"></div>
+            -->
+        </div>
+        <div id="content">
+            <div id="D_content"></div>
+            <!-- <div A1 Sort="article">
+                <div class="A_title"></div>
+                <div class="A_subTitle"></div>
+                <div class="A_time"></div>
+                <div content>
+                    测试内容
+                </div>
+                <div image></div>
+            </div> -->
+        </div>
+    </div>
+    <div id="musicBox">
+        <div id="M_content">
+            <div id="musicplayer">
+                <div id="audioAnalyser-box"><canvas id="Musicplayer_audioAnalyser"></canvas></div>
+                <div id="audioAnalyser-pogressBar-box">
+                    <div id="audioAnalyser-pogressAll"></div>
+                    <div id="audioAnalyser-pogressNow"></div>
+                    <div id="audioAnalyser-pogressTimeText">00:00</div>
+                </div>
+                <div id="audioAnalyser-message">
+                    <span id="audioAnalyser-message-img-box"><img id="audioAnalyser-message-img" src="./files/audio/music/cover/UNSET.png" alt=""></span>
+                    <span id="audioAnalyser-message-name"><span id="audioAnalyser-message-name-text">title</span></span>
+                    <span id="audioAnalyser-message-artist"><span id="audioAnalyser-message-artist-text">title</span></span>
+                </div>
+                <div id="musicplayerControl">
+                    <button id="musicLastbutton" class="musicplayerButton" onclick="alertTest()">上一个</button>
+                    <button id="musicStatrbutton" class="musicplayerButton" onclick="alertTest()">播放</button>
+                    <button id="musicNextbutton" class="musicplayerButton" onclick="alertTest()">下一个</button>
+                </div>
+                <div id="musicplayerControl_sub">
+                    <button class="musicplayerButton_sub" onclick="alertTest()">播放模式</button>
+                    <button class="musicplayerButton_sub">列表</button>
+                    <button class="musicplayerButton_sub">音量</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="Musicplayer_analyzedMusic" src="./files/audio/music/"></audio>  
+       
+
+</body>
+<!-- <script src="./files/js/linkgooo.js"></script> -->
+<script src="./files/js/basicInfo.js"></script>
+<script src="./files/js/--mobile-tap.js"></script>
+<script src="./files/js/--mobile-scroll.js"></script>
+<script src="./files/js/--mobile-Musicplayer.js"></script>
+<script src="./files/js/Musicplayer_ADD.js"></script>
+<!-- <script src="./files/js/--mobile-MusicTheme.js"></script> -->
+
+<!-- click和touch事件不同 要分开写 -->
+<script src="./files/js/--mobile-audio.js"></script>
+<!-- <script src="./files/js/--mobile-IFmobile.js"></script> -->
+<!-- <script src="./files/js/articleManager.js"></script> -->
+<!-- <script src="./files/js/--mobile-MusicSetting.js"></script> -->
+</html>

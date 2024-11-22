@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicEditTool</title>
+</head>
+<style>
+    #editor{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    #section{
+        font-size: 40px;
+        margin: 2px;
+    }
+    #section input{
+        border: none;
+        box-shadow: inset 2px 2px 10px 2px black;
+         /* overflow: auto; */
+        height: 1cap;
+        width: 300px;
+        font-size: 40px;
+    }
+    #add{
+        width: 100%;
+        height: 60px;
+        /* background-color: rgb(97, 97, 97); */
+        box-shadow: inset 2px 2px 10px 2px black;
+        font-size: 60px;
+    }
+    #output{
+        min-width: 300px;
+        min-height: 400px;
+        width: fit-content;
+        height: fit-content;
+        color: greenyellow;
+        background-color: black;
+        border: 20px solid rgb(249, 249, 249);
+        user-select: all;
+    }
+</style>
+<body>
+    <div id="editor">
+        <div id="section">
+            文件名<input class="fileName">
+            封面名<input class="fileCoverName">
+            曲标题<input class="MusicTitle">
+            参与者<input class="MusicArtist">
+        </div>
+    </div>
+    <button id="add" onclick="add()">+</button>
+    <div id="output"></div>
+</body>
+</html>
+<script>
+
+let inputValue = []
+let inputElement
+    function add(){
+        inputElement = document.querySelectorAll('input');
+            inputElement.forEach(function(e){
+            inputValue.push(e.value)
+        })
+        document.getElementById('editor').innerHTML +=`
+    <div id="section">
+        文件名<input class="fileName">
+        封面名<input class="fileCoverName">
+        曲标题<input class="MusicTitle">
+        参与者<input class="MusicArtist">
+    </div>
+    `
+    data()
+    output()
+    }
+    function data(){
+        inputElement = document.querySelectorAll('input')
+        inputElement.forEach(function(e){
+            if(inputValue[0]== undefined){
+                return
+            }else{
+            e.value = inputValue.shift()
+            }
+        })
+    }
+
+    document.addEventListener('keydown', function(event) {
+    if (event.key === '=') {
+        event.preventDefault()
+        add()
+    }})
+
+let fileName,fileCoverName,MusicTitle,MusicArtist
+function output(){
+    EfileName = document.getElementsByClassName('fileName')
+    EfileCoverName = document.getElementsByClassName('fileCoverName')
+    EmusicTitle = document.getElementsByClassName('MusicTitle')
+    EmusicArtist = document.getElementsByClassName('MusicArtist')
+    document.getElementById('output').innerHTML =`
+    `
+    i = 0
+    while(i<10){
+        // console.log(i)
+        fileName = EfileName[i].value
+        fileCoverName = EfileCoverName[i].value
+        MusicTitle = EmusicTitle[i].value
+        MusicArtist = EmusicArtist[i].value
+        // console.log(fileName,fileCoverName,MusicTitle,MusicArtist)
+        console.log(
+            `
+        addMusic('${fileName}','${fileCoverName}','${MusicTitle}','${MusicArtist}')
+            `
+        )
+        document.getElementById('output').innerHTML +=`
+        addMusic('${fileName}','${fileCoverName}','${MusicTitle}','${MusicArtist}')<br/>
+        `
+        i++
+    }
+}
+</script>
+<!-- <script src="./files/js/Musicplayer.js"></script> -->
+<!-- <script src="./files/js/Musicplayer_ADD.js"></script> -->

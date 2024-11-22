@@ -1,0 +1,25 @@
+{
+    "Sum":2,
+    "D1":{
+        "Setting": {
+          "title": "default_title",
+          "subTitle": "default_subTitle",
+          "sort": "article",
+          "time": "yyyy/mm/dd hh:mm:ss"
+        },
+        "content": "default_content",
+        "image": "default_image_URL"
+      },
+
+    "D2":{
+        "Setting": {
+          "title": "default_title",
+          "subTitle": "default_subTitle",
+          "sort": "article",
+          "time": "yyyy/mm/dd hh:mm:ss"
+        },
+        "content": "default_content",
+        "image": "default_image_URL"
+      }
+    
+}

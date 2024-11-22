@@ -1,0 +1,294 @@
+#bg{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-image: url(../setting/bg/bg.png);
+    background-repeat: round;
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(66, 62, 70);
+    z-index: -1;
+}
+
+body{
+    margin: 0;
+}
+.fullCover{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+body #audioAnalyser-pogressBar-box .hidden{
+    animation: LeftOut 1s ease-in-out 1;
+}
+body .hidden{
+    display: none;
+    animation: fadeOut 1s ease-in-out 1 forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes LeftIn {
+    from {
+        transform: translate(-500%,0);
+
+    }
+    to {
+        transform: translate(0,0);
+    }
+}
+@keyframes LeftOut {
+    from {
+        transform: translate(0,0);
+
+    }
+    to {
+        transform: translate(-500%,0);
+    }
+}
+#top{
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    left: 0;
+    top: 0;
+    background-color: rgb(57, 57, 84);
+    background-image: url(../setting/topbg.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size:contain;
+} 
+#musicModeSwitch{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+#header{
+    width: 100%;
+    /* height: 8vh; */
+    height: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgb(21, 17, 80);
+}
+#leftBox{
+    z-index: 1;
+}
+#mianBox{
+    z-index: 0;
+    position: relative;
+    margin: 0 20px 0 20px;
+    display: flex;
+    /* width: 100%; */
+    height: 200vh;
+    /* height: 100%; */
+    max-height: auto;
+    /* background-color: rgb(96, 96, 96); */
+}
+#box1-character{
+    z-index: 7;
+    display: flex;
+    transition: 0.6s;    
+    position: relative;
+    margin: 20px;
+    min-height: 200px;
+    height: 300px;
+    overflow: hidden;    /* height: fit-content; */
+    width: 180px;
+    /* background-color: black; */
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+
+    animation: LeftIn 1s ease-in-out 1;
+}
+#box1-character:hover{
+
+    transition: 0.6s;    
+    width: 300px;
+    min-height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* height: fit-content; */
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    
+}
+bingo{
+    z-index: 8;
+}
+#box1-character #head{
+    position: relative;
+    display: block;
+    flex-direction: column;
+    margin: 20px;
+    height: 100px;
+    min-height:100px ;
+    width: 100px;
+    background-color: rgb(94, 94, 94);
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+#box1-character #head:hover{
+    border-radius: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+#box1-character #info{
+    position: relative;
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    min-height: fit-content;
+    min-width: 100px;
+    background-color: rgb(255, 255, 255);
+
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    border-radius: 10px;
+    /* backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
+}
+#box1-character #info:hover{
+    background-color: rgba(255, 255, 255, 0.415);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    /* color: white; */
+}
+#box1-character #info:hover #BasicInfo_info_signature{
+color: white;
+font-size: 20px;
+}
+
+#info #BasicInfo_info_name{
+    position: relative;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;    
+    margin: 10px;
+    text-align: center;
+}
+#info #BasicInfo_info_signature{
+    position: relative;
+    display: block;
+    /* display: inline; */
+    font-size: 16px;
+    margin: 10px;
+    color: gray;
+}
+#Linkgooo_box1-links{
+    z-index: 5;
+    position: relative;
+    display: block;
+    width: 180px;
+    max-width: 300px;
+    margin: 20px;
+
+    transition: 0.6s;     
+    animation: LeftIn 1s ease-in-out 1;
+    
+
+}
+#Linkgooo_box1-links .Linkgooo_links{
+    z-index: 6;
+    background-color: rgb(0, 0, 0);
+    border-left: double 2px white;
+    border-top:2px solid white;
+    color: whitesmoke;
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 180px;
+    height: 40px;
+    font-size: 20px;
+    overflow: hidden;
+
+    transition: 0.6s;    
+
+}
+#Linkgooo_box1-links .Linkgooo_links:hover{
+    text-align: center;
+    align-content: center;
+    border-radius: 0 10px 10px 0;
+    border: 2px dotted white;
+    color: rgb(255, 0, 0);
+    width: 300px;
+    height: 45px;
+    transition: 0.6s;    
+    
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);
+}
+#D_content{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 90%;
+    min-width: auto;
+    min-height: 800px;
+    height: fit-content;
+    margin-top: 30px;
+    z-index: 3;
+}
+#contentBox{
+    /* overflow: scroll; */
+    z-index: 4;
+    position: relative;
+    width: 100%;
+    min-width: auto;
+    min-height: 800px;
+    height: fit-content;
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);
+}
+/* #box1-links .links a:hover{
+    background-color: rgb(41, 43, 35);
+    color: rgb(226, 39, 255);
+    width: 300px;
+}  */
+
+.colorDirection{
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    background-color: aqua;
+    animation: fadeIn 3s ease-in-out 1;
+}

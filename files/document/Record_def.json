@@ -1,0 +1,17 @@
+{
+    "Setting": {
+      "title": "default_title",
+      "subTitle": "default_subTitle",
+      "sort": "default_theme",
+    //   预设分种类  文章/动态/公告/图集/视频/音乐
+      "time": "yyyy/mm/dd hh:mm:ss"
+    },
+    "content": "default_content",
+    "image": "default_image_URL",
+    "tags": [
+      "[+]INTP",
+      "[+]实验服",
+      "[+]理科女",
+      "[-]巨乳"
+    ]
+  }

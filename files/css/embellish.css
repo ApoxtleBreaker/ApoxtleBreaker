@@ -1,0 +1,219 @@
+#audioAnalyser-box,#audioAnalyser-box2 {
+    background-color: rgba(142, 142, 142, 0.482);
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+#audioAnalyser-box canvas,#audioAnalyser-box2 canvas {
+    /* z-index: 998; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#musicplayer{
+    z-index: 22;
+    position: fixed;
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    animation: fadeIn 1s ease-in-out 1;
+
+}
+#musicplayer #musicplayerControl{
+    background-color: rgb(0, 63, 119);
+    position: fixed;
+    width: fit-content;
+    height: 10%;
+    right: 0;
+    bottom: 0;
+    
+}
+#musicplayer #control #musicStatrbutton{
+    position: relative;
+}
+.musicplayerButton{
+    margin: 10px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40%;
+    /* transform: rotate(45deg); */
+    background-color: rgb(73, 0, 121);
+}
+.musicplayerButton svg{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+#audioAnalyser-message{
+    position: relative;
+    z-index: 11;
+}
+#audioAnalyser-message-img-box{
+    /* position: absolute; */
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    z-index: 999;
+}
+#audioAnalyser-message--musicmode-img-box{
+    /* position: relative; */
+    position: absolute;
+    left: calc(50% - 375px);
+    top: 10vh;
+    display: block ;
+    width: 500px;
+    height: 500px;
+    z-index: 999;
+    padding: 6%;
+
+    animation: fadeIn 1s ease-in-out 1;
+}
+#audioAnalyser-message-img{
+    z-index: 11;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#audioAnalyser-message--musicmode-img{
+    z-index: 11;
+    position: relative;
+    /* position: absolute; */
+    /* left: -20vw;
+    top: 40vh; */
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    animation: fadeIn 1s ease-in-out 1;
+}
+#audioAnalyser-message-name{
+    /* position: absolute; */
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-shadow: 2px 2px 2px black;
+    text-shadow: -2px -2px 2px black;
+    text-shadow: 2px -2px 2px black;
+    text-shadow: -2px 2px 2px black;
+}
+#audioAnalyser-message--musicmode-name{
+    /* position: absolute; */
+    position: relative;
+    display: block    ;
+    height: max-content;
+    width: fit-content  ;
+    font-size: 90px;
+    color: white;
+    font-weight: bold;
+    z-index: 999;
+    text-shadow: 8px 8px 10px rgb(255, 255, 255);
+
+    animation: fadeIn 1s ease-in-out 1;
+}
+#audioAnalyser-message-artist{
+    /* position: absolute; */
+    position: fixed;
+    bottom: 10px;
+    left: 30px;
+    font-size: 30px;
+    color: white;
+    z-index: 999;
+    text-shadow: -2px 2px 2px black;    
+}
+#audioAnalyser-message--musicmode-artist{
+    /* position: absolute; */
+    /* position: fixed; */
+    position: relative;
+    /* bottom: 10px; */
+    /* left: 30px; */
+    margin: 20px;
+    font-size: 70px;
+    /* text-indent: 2cap; */
+    color: white;
+    z-index: 999;
+    text-shadow: 7px 7px 5px rgb(79, 0, 122);
+    font-style: oblique;
+
+    animation: fadeIn 1s ease-in-out 1;
+}
+#audioAnalyser-message{
+    font-family: Georgia, 'Times New Roman', Times, serif;   
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+#audioAnalyser-message--musicmode{
+    font-family: Georgia, 'Times New Roman', Times, serif;   
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+}
+#audioAnalyser-pogressBar-box{
+    z-index: 20;
+    position: fixed;
+    width: 80%;
+    height: 1vh;
+    bottom: 15vh;
+    left: 16vw;
+    /* background-color: blueviolet; */
+    background-color: rgba(44, 47, 50, 0.444);
+    border: 30px solid rgba(194, 196, 199, 0.444);
+    border-left: 10px solid rgba(67, 109, 147, 0.444);
+    border-right: 10px solid   rgba(126, 50, 50, 0.444);
+    border-radius:20px ;
+}
+#audioAnalyser-pogressAll{
+    z-index: 999;
+    position: fixed;
+    background-color: rgba(224, 49, 212, 0);
+    height: 10px;
+    width: 100%;
+}
+#audioAnalyser-pogressNow{
+    position: relative;
+    background-color: rgb(42, 0, 193);
+    align-items: self-start;
+    
+    height: 8px;
+    /* width: 100%; */
+    width: 20%;
+}
+#audioAnalyser-pogressTimeText{
+    position: relative;
+    /* background-color: blue; */
+    background-color: rgb(104, 114, 122);
+    /* border-radius: 20px 20px 0 0; */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-shadow: 2px 2px 2px black;
+    top: -7vh;
+    width: fit-content;
+    font-size: 45px;
+}
+
+#musicSettingDisplayBox{
+    z-index: 2;
+    background-color: aliceblue;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+#musicSettingDisplayBox p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    margin: 10px;
+    padding: 1px;
+}

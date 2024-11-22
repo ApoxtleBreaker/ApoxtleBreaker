@@ -1,0 +1,46 @@
+.wave_contentBox_title{
+    text-align: center;
+    color: #fff;
+    font-size: 80px;
+    font-weight: bold;
+    margin-top: 100px;
+
+
+    animation: move 1s ease-in-out infinite alternate; 
+}
+.contentBox_page{
+    margin-left:100px ;
+    margin-right:100px ;
+}
+.contentBox_page_content{
+    margin-bottom: 100px;
+    text-align: justify;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.5;
+}
+.contentBox_page_title{
+    text-align: left;
+    color: #fff;
+    /* border: 2px solid #fff; */
+    text-decoration: underline;
+    font-size: 50px;
+    font-weight: bold;
+
+}
+@keyframes move{
+    form{
+        transform: translate(0,0%);
+    }
+    to{
+        transform: translate(0,100%);
+    }
+}
+
+#rainbowegg{
+    left: 500px;
+    position: absolute;
+    bottom: 0;
+    font-size: 90px;
+    color: red;
+}

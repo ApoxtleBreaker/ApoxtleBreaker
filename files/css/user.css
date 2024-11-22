@@ -1,0 +1,19 @@
+
+#head_img{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+    background-image: url(../setting/avatar/avatar.png);
+    background-position: center;
+    background-size: cover;
+}
+.BasicInfo_exehibition{
+    width: fit-content;
+    height: fit-content;
+}
+.BasicInfo_exehibition img{
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+}

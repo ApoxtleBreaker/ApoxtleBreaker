@@ -1,0 +1,578 @@
+/*  */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes LeftIn {
+    from {
+        transform: translate(-500%,0);
+
+    }
+    to {
+        transform: translate(0,0);
+    }
+}
+@keyframes LeftOut {
+    from {
+        transform: translate(0,0);
+
+    }
+    to {
+        transform: translate(-500%,0);
+    }
+}
+@keyframes titleMove {
+    from{
+        transform:translateX(50%)
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+/* theme */
+/*  */
+#bg{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-image: url(../setting/bg/mobile-bg-0.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* background-color: rgb(66, 62, 70); */
+    z-index: -1;
+}
+
+body{
+    margin: 0;
+    /* 移动版不设置这个没法自动全屏 */
+    /* width: min-content; */
+    width: 100%;
+    height: 200vh;
+    /* width: 100vw; */
+    background-color: rgb(225, 65, 65);
+}
+/* ::-webkit-scrollbar{
+    display: none;
+} */
+.fullCover{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+body .hidden{
+    display: none;
+    position: fixed;
+    top: -9999px;
+    /* animation: fadeOut 1s ease-in-out 1 forwards; */
+}
+#top{
+    position: relative;
+    width: 100%;
+    width: 100vw;
+    height: 60vh;
+    left: 0;
+    top: 0;
+    background-color: rgb(57, 57, 84);
+    /* background-color: rgb(0, 0, 255); */
+    background-image: url(../setting/topbg.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size:contain;
+    z-index: 21;
+
+} 
+#header{
+    width: 100%;
+    /* height: 8vh; */
+    height: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgb(21, 17, 80);
+    z-index: 22;
+}
+#leftBox{
+    z-index: 1;
+}
+#mianBox{
+    z-index: 0;
+    position: relative;
+    margin: 0 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    /* width: 100%; */
+    height: 200vh;
+    height: 800px;
+    /* height: 100%; */
+    max-height: auto;
+    /* background-color: rgb(96, 96, 96); */
+}
+#box1-character{
+    height: fit-content;
+    width: fit-content;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 7;
+    overflow: hidden;
+    /* background-color: rgb(255, 0, 0); */
+    transition: 0.6s;    
+}
+#box1-character--display{
+    border: none;
+    z-index: 7;
+    display: flex;
+    transition: 0.6s;    
+    position: relative;
+    /* margin: 10px; */
+    margin-top: 20px;
+    min-height: 200px;
+    height: 300px;
+    overflow: hidden;    /* height: fit-content; */
+    width: 90vw;
+    /* background-color: black; */
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+
+    animation: LeftIn 1s ease-in-out 1;
+    transition: 0.6s;    
+    /* width: 300px; */
+    min-height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* height: fit-content; */
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
+    
+}
+bingo{
+    z-index: 8;
+}
+#head{
+    position: relative;
+    display: block;
+    flex-direction: column;
+    margin: 20px;
+    height: 100px;
+    min-height:100px ;
+    width: 100px;
+    background-color: rgb(94, 94, 94);
+    border-radius: 50%;
+    overflow: hidden;
+}
+#head:hover{
+    border-radius: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+#box1-character--display #info{
+    position: relative;
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    min-height: fit-content;
+    min-width: 100px;
+    background-color: rgb(255, 255, 255);
+
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    border-radius: 10px;
+    /* backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
+}
+#box1-character--display #info:hover{
+    background-color: rgba(255, 255, 255, 0.415);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    /* color: white; */
+}
+#box1-character--display #info:hover #BasicInfo_info_signature{
+color: white;
+font-size: 20px;
+}
+
+#info #BasicInfo_info_name{
+    position: relative;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;    
+    margin: 10px;
+    text-align: center;
+}
+#info #BasicInfo_info_signature{
+    position: relative;
+    display: block;
+    /* display: inline; */
+    font-size: 16px;
+    margin: 10px;
+    color: gray;
+}
+#Linkgooo_box1-links{
+    z-index: 5;
+    position: relative;
+    display: block;
+    width: 180px;
+    max-width: 300px;
+    margin: 20px;
+
+    transition: 0.6s;     
+    animation: LeftIn 1s ease-in-out 1;
+    
+
+}
+#Linkgooo_box1-links .Linkgooo_links{
+    z-index: 6;
+    background-color: rgb(0, 0, 0);
+    border-left: double 2px white;
+    border-top:2px solid white;
+    color: whitesmoke;
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 180px;
+    height: 40px;
+    font-size: 20px;
+    overflow: hidden;
+
+    transition: 0.6s;    
+
+}
+#Linkgooo_box1-links .Linkgooo_links:hover{
+    text-align: center;
+    align-content: center;
+    border-radius: 0 10px 10px 0;
+    border: 2px dotted white;
+    color: rgb(255, 0, 0);
+    width: 300px;
+    height: 45px;
+    transition: 0.6s;    
+    
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+#musicBox{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    /* background-color: rgba(255, 255, 255, 0.415); */
+}
+#musicBox #M_content{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.371);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+/*  */
+#audioAnalyser-box {
+    background-color: rgba(123, 123, 123, 0);
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    bottom: 30%;
+    right: 0;
+}
+#audioAnalyser-box canvas {
+    /* z-index: 998; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#musicplayer{
+    z-index: 22;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    animation: fadeIn 1s ease-in-out 1;
+    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+
+}
+#musicplayer #musicplayerControl{
+    background-color: rgba(255, 255, 255, 0.327);
+    position: fixed;
+    width: 100%;
+    height: calc(20vh*0.7);
+    right: 0;
+    bottom: calc(20vh*0.3);
+    /* flex-direction: row; */
+    /* padding: 20px; */
+    display: grid;
+    /* grid-template-columns: 30vw 30vw 30vw; */
+    grid-template-columns: repeat(auto-fill, 33.33%);
+    justify-items: center;
+    /* grid-template-rows: 80% 20%; */
+    z-index: 20;
+}
+#musicplayerControl_sub{
+    background-color: rgba(255, 255, 255, 0.321);
+    position: fixed;
+    width: 100%;
+    height: calc(20vh*0.3);
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 33.33%);
+    justify-content: space-between;
+    justify-items: center;
+    align-items: end;
+    z-index: 20;
+}
+.musicplayerButton_sub{
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom:1vh ;
+    height: 40px;
+    width: 40px;
+    border-radius: 20%;
+    /* transform: rotate(45deg); */
+    /* background-color: rgb(115, 115, 115); */
+    border: none;
+    background-color: rgba(0, 0, 0, 0.455);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+/* #musicplayer #control #musicStatrbutton{
+    position: relative;
+} */
+.musicplayerButton{
+    margin: 20px;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    /* border: #3f3f3f solid 2px; */
+    border: none;
+    /* transform: rotate(45deg); */
+    background-color: rgba(0, 0, 0, 0.455);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 50;
+}
+.musicplayerButton svg{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+#audioAnalyser-message{
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(135, 135, 135, 0.15); */
+    z-index: 11;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 50vh 10vh 10vh;
+    align-items: center;
+    justify-content:center;
+    justify-items:center;
+    font-family: Georgia, 'Times New Roman', Times, serif;   
+
+}
+#audioAnalyser-message-img-box{
+    /* position: relative; */
+    position: relative;
+    display: block ;
+    width: 80vw;
+    height: 80vw;
+    z-index: 999;
+    padding: 10%;
+    animation: fadeIn 1s ease-in-out 1;
+}
+#audioAnalyser-message-img{
+    z-index: 11;
+    position: relative;
+    /* position: absolute; */
+    /* left: -20vw;
+    top: 40vh; */
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    animation: fadeIn 1s ease-in-out 1;
+}
+#audioAnalyser-message-name{
+    /* position: absolute; */
+    position: relative;
+    /* height: 20vh; */
+    width: 100%; 
+    white-space: nowrap;
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    z-index: 999;
+    text-shadow: 8px 8px 10px rgb(255, 255, 255);
+    width: 80%;
+    /* overflow-x: hidden; */
+
+    animation: fadeIn 1s ease-in-out 1;
+    
+}
+#audioAnalyser-message-artist{
+    /* position: absolute; */
+    /* position: fixed; */
+    position: relative;
+    /* bottom: 10px; */
+    /* left: 30px; */
+    /* margin: 20px; */
+    font-size:40px;
+    width: 80%;
+    display: block;
+    height: fit-content;
+    white-space: nowrap;
+    overflow-x: hidden;
+    /* text-indent: 2cap; */
+    color: white;
+    z-index: 999;
+    text-shadow: 7px 7px 5px rgb(79, 0, 122);
+    font-style: oblique;
+
+    animation: fadeIn 1s ease-in-out 1;
+}
+#audioAnalyser-message-name,#audioAnalyser-message-artist{
+    mask: linear-gradient(
+        90deg, 
+        transparent, 
+        #fff 10%,
+        white 90%,
+        transparent);
+        display: flex    ;
+        justify-content: center;
+        align-items: center;
+    }
+
+#audioAnalyser-message-name-text, #audioAnalyser-message-artist-text{
+    position: relative;
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    white-space: nowrap;
+    animation: titleMove 0s linear infinite;
+    white-space: pre    ;
+}
+
+#audioAnalyser-pogressBar-box{
+    z-index: 20;
+    position: relative;
+    width: 99%;
+    height: 1vh;
+    bottom: 20vh;
+    /* background-color: blueviolet; */
+    background-color: rgba(44, 47, 50, 0);
+    border: 30px solid rgba(255, 255, 255, 0.343);
+    border-left: 10px solid rgba(67, 108, 147, 0.819);
+    border-right: 10px solid   rgba(126, 50, 50, 0.712);
+    /* border-radius:20px ; */
+}
+#audioAnalyser-pogressAll{
+    z-index: 999;
+    position: fixed;
+    background-color: rgba(224, 49, 212, 0);
+    height: 10px;
+    width: 100%;
+}
+#audioAnalyser-pogressNow{
+    position: relative;
+    background-color: rgb(92, 70, 214);
+    align-items: self-start;
+    
+    height: 8px;
+    /* width: 100%; */
+    width: 20%;
+}
+#audioAnalyser-pogressTimeText{
+    position: relative;
+    /* background-color: blue; */
+    /* background-color: rgb(104, 114, 122); */
+    /* border-radius: 20px 20px 0 0; */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-shadow: 2px 2px 2px black;
+    top: -7vh;
+    width: fit-content;
+    font-size: 35px;
+}
+
+#musicSettingDisplayBox{
+    z-index: 2;
+    background-color: aliceblue;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+#musicSettingDisplayBox p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    margin: 10px;
+    padding: 1px;
+}
+/*  */
+#content{
+    /* overflow: scroll; */
+    z-index: 4;
+    position: relative;
+    width: 100%;
+    min-width: auto;
+    min-height: 800px;
+    height: fit-content;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);
+}
+#D_content{
+    margin: 40px;
+}
+#cancleCharacterBox{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    height: 30px;
+    width: 30px;
+    background-color:rgb(109, 0, 0);
+    border-radius: 50%;
+}
