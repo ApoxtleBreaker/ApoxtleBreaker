@@ -465,7 +465,7 @@ font-size: 20px;
     /* text-indent: 2cap; */
     color: white;
     z-index: 999;
-    text-shadow: 7px 7px 5px rgb(79, 0, 122);
+    text-shadow: 7px 7px 5px rgb(51, 34, 181);
     font-style: oblique;
 
     animation: fadeIn 1s ease-in-out 1;
