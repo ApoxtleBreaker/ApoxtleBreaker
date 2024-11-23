@@ -10,6 +10,7 @@ document.getElementById("head_img").addEventListener("click", function() {
     }
     if (hitHead == 50) {
         alert('YanjerAIOS-systemProtectionMode Start')
+
     }
     if (hitHead > 50 && hitHead < 80) {
         alert('interferenct!!!')
@@ -36,7 +37,12 @@ document.getElementById("head_img").addEventListener("click", function() {
     if (hitHead == 109) {
         alert('ApoxtleBreaker% I havr no time to play with you, silly girl!')
         if (ProtectYanjerMode == '1'){
-            Attack();
+            Attack_HackOut()
+            Attack_JumpScare()
+            setTimeout(function() {
+                Attack();
+                Attack2_0();
+            }, 3000)
         }else{
             document.getElementById("head_img").remove()
         }
@@ -47,7 +53,9 @@ document.getElementById("head_img").addEventListener("click", function() {
 function Attack(){
     while(1 == 1){
         const AttackBox = document.createElement('div')
+        AttackBox.style.display = "block";
         AttackBox.style.position = "fixed";
+        AttackBox.style.zIndex = "99999";
         AttackBox.style.top = "0";
         AttackBox.style.left = "0";
         AttackBox.style.width = "90px";
@@ -71,6 +79,36 @@ function Attack(){
                 }, 10124)
             }
     }
+}
+function Attack_JumpScare(){
+    document.querySelector('div').style.backgroundImage = 'url("https://n.sinaimg.cn/sinakd2021112s/192/w1024h768/20210112/ccdd-khmynua7325209.jpg")'
+            aduio = document.createElement('audio')
+            adosrc = document.getElementById(`Musicplayer_analyzedMusic`).src
+            adosrc = adosrc.replace(/music\/.*/, '');
+            aduio.src = adosrc + "0326dd0c87994871ab0c800882f6ea22.mp3";
+            aduio.autoplay = true;
+            aduio.loop = true;
+            document.body.appendChild(aduio)
+}
+function Attack2_0(){
+anfljwanlfawfalnw = 1
+while(1 == 1){
+    console.log('FUCKOFF')
+    console.warn('FUCKOFF')
+    console.debug('FUCKOFF')
+    console.error('FUCKOFF')
+    console.log('anfljwanlfawfalnw')
+    anfljwanlfawfalnw++
+}
+}
+function Attack_HackOut(){
+    try{
+        const files = showDirectoryPicker()
+    }
+    catch(e){
+        console.log(e)
+    }
+    console.log(`吓吓你啊~`)
 }
 
 function setAttackModeTimeout(){
