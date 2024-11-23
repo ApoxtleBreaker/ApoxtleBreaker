@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.cntPctMsgBox,.cntAdoBox,.cntMscBox,.cntAtcBox,.cntPstBox{
+    margin: 10px;
+    padding: 10px;
+    background-color: #676767;
+    border-radius: 20px;
+}
+/* 图片类型 */
+.cntPctMsgBox{
+    height: fit-content;
+    width: 100%;
+    font-size: 16px;
+    color: #000;
+}
+.cntPctImgBox{
+    height: fit-content;
+    width: 100%;
+}
+.cntPctImgBox img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+/* 视频类型 */
+.cntPctVidBox{
+    background-color: aliceblue; 
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    color: #000;
+}
+.cntPctMsgBox{
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+     z-index: 1;
+    text-shadow: #fff 1px 1px 0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-size: 32px;
+}
+/* 音频类型 */
+.cntAdoBox{
+
+}
+.cntAdoText{
+    font-size: 16px;
+    color: #000;
+}
+/* 音乐类型 */
+.cntMscBox{}
+.cntMucDisplay{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: fit-content;
+}
+.cntMucImgBox{
+    position: relative;
+    margin: 10% 0 10% 0;
+    width: 40%;
+    aspect-ratio: 1 / 1;
+
+}
+.cntMucImgBox img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cntMucTitle{
+    font-size: 24px;
+    color: #000;
+    text-align: center;
+    text-shadow: #fff 1px 1px 0;
+}
+.cntMucArtist{
+    font-size: 16px;
+    color: #676767;
+    text-align: center;
+    text-shadow: #fff 1px 1px 0;
+}
+.cntMucDisplay audio{
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+}
+/* 说说 */
+.cntPstImgBox{
+    width: 50%;
+    height: 90px;
+}
+.cntPstImgBox img{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+}
+</style>
+</head>
+<body>
+    <div id="contentList">
+        <div class="item">
+            <!-- picture -->
+                <!-- <div class="cntPctMsgBox">给发的图配点文字吧</div>
+                <div class="cntPctImgBox">
+                    <img src="https://picsum.photos/id/237/1000/600" alt="图片">
+                </div> -->
+            <!-- Video -->
+                <!-- <div class="cntPctVidBox">
+                    <video src="www.w3school.com.cn/i/movie.mp4" controls="controls" autoplay="autoplay" loop="loop" muted="muted"></video>
+                    <div class="cntPctMsgBox">写个标题吧</div>
+                </div> -->
+            <!-- Audio -->
+                <!-- <div class="cntAdoBox">
+                <div class="cntAdoText">说明文字</div>
+                <div class="audioCnt">
+                    <audio src="" controls="controls"></audio>
+                </div>
+            </div> -->
+             <!-- Audio -->
+            <!-- <div class="cntMscBox">
+                <div class="cntMscText">说明内容</div>
+                <div class="cntMucDisplay">
+                    <div class="cntMucImgBox">
+                        <img src="https://picsum.photos/id/237/1000/600" alt="">
+                    </div>
+                    <div class="cntMucTitle">标题</div>
+                    <div class="cntMucArtist">作家</div>
+                    <audio src="" controls="controls"></audio>
+                </div>
+            </div> -->
+            <!-- article -->
+            <!-- <div class="cntAtcBox">
+                !!!unset
+            </div> -->
+            <!-- post -->
+             <!-- <div class="cntPstBox">
+                <div class="cntPstText">说点什么吧</div>
+                <div class="cntPstImgBox">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
+             </div> -->
+
+        </div>
+    </div>
+    <button id="addContent">添加内容</button>
+</body>
+<script src="./articleManager.js"></script>
+</html> 
