@@ -1,0 +1,397 @@
+@font-face {
+    font-family: 'Exo';
+    src: url(../MusicGame/Arc_fonts/Exo-Medium.ttf);
+}
+@font-face {
+    font-family: 'GeosansLight';
+    src: url(../MusicGame/Arc_fonts/GeosansLight.ttf);
+}
+@font-face {
+    font-family: 'NotoSansCJKtc';
+    src: url(../MusicGame/Arc_fonts/NotoSansCJKtc-Regular.otf);
+}
+@font-face {
+    font-family: 'Aa祝你我明媚向春天';
+    src: url(../font/AaZhuNiWoMingMeiXiangChunTian-2.ttf);
+}
+#jump{
+    font-family:Aa祝你我明媚向春天 ;
+}
+#Arcaea{
+    position: relative;
+    height: fit-content;
+    width: 563px;
+    margin: 0 auto;
+}
+#ArcBox::before{
+    content: '';
+    position: absolute;
+    height: 640px;
+    width: 563px;
+    background-image: url(../MusicGame/Arc_bg/world.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#ArcBox{
+    position: relative;
+    height: fit-content;
+    width: 563px;
+    /* margin: 0 auto; */
+    /* background-color: #25152a; */
+    background-color: #858585;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -webkit-user-select: none;
+    user-select: none;
+
+}
+#Arcfigure{
+    height: auto;
+    width: 563px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+#Arcfigure img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: drop-shadow(4px 10px 8px rgb(84, 84, 84)) 
+}
+#pttBox {
+    /* background-color: blue; */
+    position: relative;
+    height: 73px;
+    width: 563px;
+    bottom: 40px;
+}
+#ArcPlayerName {
+    font-family: GeosansLight;
+    position: absolute;
+    font-size: 50px;
+    color: rgb(85, 62, 82);
+    text-shadow: rgb(251, 241, 246) 1px 1px;
+    left: 160px;
+}
+#ArcMainBar {
+    position: absolute;
+    left: 0;
+    height: 0;
+    width: 563px;
+    height: 73px;
+    mask: linear-gradient(
+    90deg, 
+    /* transparent,  */
+    /* #fff 10%, */
+    white 90%,
+    transparent);
+}
+#ArcMainBadge{
+    position: absolute;
+    right: 0;
+    top: -40px;
+    height: 150px;
+    aspect-ratio: 1/1;
+    filter: drop-shadow(4px 4px 8px rgb(142, 0, 202)) 
+
+}
+#ArcPTTData{
+    position: absolute;
+    right: 27px;
+    bottom: 12px;
+    font-family: Exo,sans-serif;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-weight: 700;
+    font-size: 37px;
+    color: white;
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0)) 
+}
+
+#ArcID{
+    position: absolute;
+    left: 160px;
+    bottom: -20px;
+    font-family: GeosansLight;
+    font-family: Exo,sans-serif;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    white-space: wrap;  
+    color: rgb(232, 232, 232);
+    text-shadow: black 1px 2px;
+    /* -webkit-backdrop-filter: blur(10px); */
+    /* backdrop-filter: blur(10px); */
+    -webkit-user-select: all;
+    user-select: all;
+}
+
+
+
+#ArcDocument{
+
+}
+.ArcDocumentElement{
+    position: relative;
+    width: 560px;
+    height: 60px;
+    background-color: #25152a;
+    background-image: url(../MusicGame/Arc_bar/course_banner_10.png);
+    background-image: url(../MusicGame/Arc_bar/delete.png);
+    /* background-image: url(../MusicGame/Arc_bar/course_banner_12.png); */
+    /* background-image: url(../MusicGame/Arc_bar/banner.png); */
+    background-image: url(../MusicGame/Arc_bar/dan-banner_01.png);
+    /* background-image: url(../MusicGame/Arc_bar/bg-shapes_dark.png);   */
+    /* background-image: url(../MusicGame/Arc_bar/bg-shapes_light.png); */
+    background-repeat: no-repeat ;
+    background-position: right center;
+    background-size: cover;
+    color: white;
+    font-size: 40px;
+}
+.ArcDocumentDiff{
+    font-size: 15px;
+}
+
+:root{
+    --light: #ffffffdd
+}
+.ArcDocumentElement{
+    margin-bottom: 14px;
+}
+.ArcDiff{
+    font-family: Exo;
+    font-size: 50px;
+    position: absolute;
+    /* left: -50%; */
+    text-indent: 20px;
+    height: 60px;
+    aspect-ratio: 6/1;
+    mask: linear-gradient(
+        90deg, 
+        /* transparent,  */
+        /* #fff 10%, */
+        white 80%,
+        transparent);
+
+        color: white;
+        text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+
+}
+.ArcDiff[pst]{
+    background-color: rgba(39, 118, 237, 0.608);    
+}
+.ArcDiff[prs]{
+    background-color: rgba(25, 254, 98, 0.604);    
+}
+.ArcDiff[ftr]{
+    background-color: rgba(139, 25, 184, 0.668);    
+}
+.ArcDiff[etr]{
+    background-color: rgba(179, 118, 229, 0.895);    
+}
+.ArcDiff[byd]{
+    background-color: rgba(148, 0, 0, 0.537);    
+}
+.ArcScore{
+    font-family: GeosansLight;
+    font-size: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+}
+/*  */
+.ArcRating{
+    font-family: NotoSansCJKtc;
+    font-size: 30px;
+    position: absolute;
+    left: 100px;
+}
+.ArcRating[exUp]::before{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    content: 'EX+';
+        /* color: lightblue; */
+    /* text-shadow: #f1bff6 3px 3px 0; */
+    background: linear-gradient(to bottom, rgb(120, 11, 132),20%, rgb(0, 41, 136) 50%, rgb(60, 193, 255) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.ArcRating[exUp]::after{
+    z-index: 2;
+    content: 'EX+';
+    font-weight: 300;
+    text-shadow: -2px -2px 2px var(--light),0 -2px 2px var(--light),2px -2px 2px var(--light),2px 0 2px var(--light),2px 2px 2px var(--light),0 2px 2px var(--light),-2px 2px 2px var(--light),-2px 0 2px var(--light);    
+}
+.ArcRating[ex]::after{
+    content: 'EX';
+    background: linear-gradient(to bottom, rgb(120, 11, 132),20%, rgb(0, 41, 136) 50%, rgb(60, 193, 255) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.ArcRating[aa]::after{
+    content: 'AA';
+    text-shadow: #690079 3px 3px 0;
+}
+.ArcRating[a]::after{
+    content: 'A';
+    text-shadow: #6e276d 3px 3px 0;
+}
+.ArcRating[b]::after{
+    content: 'B';
+    text-shadow: #0b6f40 3px 3px 0;
+}
+.ArcRating[c]::after{
+    content: 'C';
+    text-shadow: #406016 3px 3px 0;
+}
+.ArcRating[d]::after{
+    content: 'D';
+    text-shadow: #631438 3px 3px 0;
+}
+
+/*  */
+.ArcRatingSub{
+    font-family: NotoSansCJKtc;
+    font-size: 30px;
+    position: absolute;
+    left: 130px;
+    top: 20px;
+}
+.ArcRatingSub[AP]::after{
+    content: 'P';
+    color: rgb(36, 197, 218);
+    text-shadow: #d9ff00 2px 2px 1px;
+}
+.ArcRatingSub[FC]::after{
+    content: 'F';
+    color: rgb(47, 194, 223);
+    text-shadow: #0087ca 3px 3px 1px;
+}
+.ArcRatingSub[HdC]::after{
+    content: 'C';
+    color: rgb(138, 37, 37);
+    text-shadow: #ff135e 3px 3px 1px;
+}
+.ArcRatingSub[NmC]::after{
+    content: 'C';
+    color: rgb(144, 32, 150);
+    text-shadow: #f00dcb 3px 3px 1px;
+}
+.ArcRatingSub[EzC]::after{
+    content: 'C';
+    color: rgb(27, 160, 237);
+    text-shadow: #3d95ff 3px 3px 1px;
+}
+.ArcRatingSub[L]::after{
+    content: 'L';
+    color: rgb(102, 20, 20);  
+}
+/*  */
+.PTchange{
+    font-family: Exo;
+    position: absolute;
+    right: -25px;
+    top: -15px;
+}
+.PTchange[up]{
+    text-shadow: -2px -2px 0 #18dfed,0 -2px 0 #18dfed,2px -2px 0 #18dfed,2px 0 0 #18dfed,2px 2px 0 #18dfed,0 2px 0 #18dfed,-2px 2px 0 #18dfed,-2px 0 0 #18dfed;
+}
+.PTchange[unchanged]{
+    text-shadow: -2px -2px 0 #bb0098,0 -2px 0 #bb0098,2px -2px 0 #bb0098,2px 0 0 #bb0098,2px 2px 0 #bb0098,0 2px 0 #bb0098,-2px 2px 0 #bb0098,-2px 0 0 #bb0098;
+}
+.PTchange[down]{
+    text-shadow: -2px -2px 0 #7d1737,0 -2px 0 #7d1737,2px -2px 0 #7d1737,2px 0 0 #7d1737,2px 2px 0 #7d1737,0 2px 0 #7d1737,-2px 2px 0 #7d1737,-2px 0 0 #7d1737;
+}
+
+.ArcMusicTitle{
+    font-family: GeosansLight;
+    position: absolute;
+    font-size: 30px;
+    left: 160px;
+    color: rgb(255, 255, 255);
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+}
+
+.ArcPass{
+    font-family: Exo;
+    font-family: NotoSansCJKtc;
+    font-size: 25px;
+    position: absolute;
+    right: 160px;
+    bottom: -16px;
+
+}
+.ArcPass[cpl]::after{
+    content: 'TRACK COMPLETE';
+    color: rgb(254, 254, 254);  
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+}
+.ArcPass[lst]::after{
+    content: 'TRACK LOST';
+    color: #000000;
+    text-shadow: -2px -2px 0 #b00000,0 -2px 0 #b00000,2px -2px 0 #b00000,2px 0 0 #b00000,2px 2px 0 #b00000,0 2px 0 #b00000,-2px 2px 0 #b00000,-2px 0 0 #b00000;
+}
+.ArcPass[fc]::after{
+    content: 'FULL RECALL';
+    color: rgb(235, 32, 238);
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+}
+.ArcPass[ap]::after{
+    content: 'PURE MEMORY';
+    color: rgb(171, 35, 255);
+    text-shadow: -2px -2px 0 #ffffff ,0 -2px 0 #9abfff,2px -2px 0 #ffffff,2px 0 0 #9abfff,2px 2px 0 #9abfff,0 2px 0 #9abfff,-2px 2px 0 #9abfff,-2px 0 0 #9abfff;
+}
+.ArcPass[play1st]::after{
+    content: '1st PLAY';
+    color: rgb(168, 255, 189);
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+}
+.ArcPass[cpl1st]::after{
+    content: '1st COMPLETE';
+    color: rgb(210, 238, 255);
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+}
+.ArcPass[fc1st]::after{
+    content: '1st FULL RECALL';
+    color: rgb(235, 32, 238);
+    text-shadow: -2px -2px 0 #25152a,0 -2px 0 #25152a,2px -2px 0 #25152a,2px 0 0 #25152a,2px 2px 0 #25152a,0 2px 0 #25152a,-2px 2px 0 #25152a,-2px 0 0 #25152a;
+
+}
+.ArcPass[ap1st]::after{
+    content: '1st PURE MEMORY';
+    color: rgb(171, 35, 255);
+    text-shadow: -2px -2px 0 #ffffff ,0 -2px 0 #9abfff,2px -2px 0 #ffffff,2px 0 0 #9abfff,2px 2px 0 #9abfff,0 2px 0 #9abfff,-2px 2px 0 #9abfff,-2px 0 0 #9abfff;
+}
+.ArcPass[oneSeeFC]::after{
+    content: '初见FC';
+    font-family: Aa祝你我明媚向春天;
+    font-size: 40px;
+    color: rgb(35, 255, 215);
+    text-shadow: -2px -2px 0 #000000 ,0 -2px 0 #9abfff,2px -2px 0 #ffffff,2px 0 0 #9abfff,2px 2px 0 #9abfff,0 2px 0 #ffffff,-2px 2px 0 #9abfff,-2px 0 0 #9abfff;
+}
+.ArcPass[oneSeeAP]::before{
+    content: '初见';
+    font-family: Aa祝你我明媚向春天;
+    font-size: 40px;
+    color: rgb(255, 234, 0);
+    text-shadow: -2px -2px 0 #000000 ,0 -2px 0 #ffab9a,2px -2px 0 #ffffff,2px 0 0 #ff3640,2px 2px 0 #ff32ad,0 2px 0 #ff32ad,-2px 2px 0 #ff32ad,-2px 0 0 #ff32ad;
+}
+.ArcPass[oneSeeAP]::after{
+    content: '杀';
+    font-family: Aa祝你我明媚向春天;
+    font-size: 70px;
+    color: rgb(0, 0, 0);
+    text-shadow: -2px -2px 0 #ff0000 ,0 -2px 0 #ff0000,2px -2px 0 #ff0000,2px 0 0 #ff0000,2px 2px 0 #ff0000,0 2px 0 #ff0000,-2px 2px 0 #ff0000,-2px 0 0 #ff0000;
+}
