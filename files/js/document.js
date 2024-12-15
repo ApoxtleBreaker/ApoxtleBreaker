@@ -14,6 +14,10 @@ var MusicTitle;
     MusicTitle["Chronostasis"] = "Chronostasis";
     MusicTitle["Altair"] = "Altair (feat. *spiLa*)";
     MusicTitle["Dement_AfterLengend_"] = "Dement ~after lengend~";
+    MusicTitle["RedrawTheColorlessWorld"] = "Redraw the Colorless World";
+    MusicTitle["Nhelv"] = "Nhelv";
+    MusicTitle["ClothoAndTheStargazer"] = "Clotho and the Stargazer";
+    MusicTitle["Ignotus"] = "Ignotus";
     //Memory Archive
     MusicTitle["Innocence"] = "Innocence";
     MusicTitle["EinherjarJoker"] = "Einherjar Joker";
@@ -30,6 +34,7 @@ var MusicTitle;
     //Black Fate
     MusicTitle["HH1f1e33"] = "#1f1e33";
     MusicTitle["Equilibrium"] = "Equilibrium";
+    MusicTitle["LostDesire"] = "Lost Desire";
     //Adverse Prelude
     MusicTitle["SaintOrSinner"] = "Saint or Sinner";
     //Main Story Act II
@@ -131,6 +136,15 @@ var ArcPlayerPttValue = 10.42;
     addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9513956, 'AA', 'NmC', '-0.01', 'Complete', 20241214);
     addArc(Diff.FTR, '9', MusicTitle.InVan, 9379918, 'A', 'L', '-0.02', 'Lost', 20241214);
     addArc(Diff.FTR, '9', MusicTitle.DistortedFate, 9855978, 'EX', 'HdC', '+0.02', 'Complete', 20241214);
+    addArc(Diff.FTR, '9', MusicTitle.RedrawTheColorlessWorld, 9532306, 'AA', 'NmC', '0', 'firstComplete', 20241214);
+    addArc(Diff.FTR, '9+', MusicTitle.LostDesire, 9264283, 'A', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.FTR, '9+', MusicTitle.LostDesire, 9498286, 'A', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.FTR, '9+', MusicTitle.Nhelv, 9531593, 'AA', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.FTR, '10', MusicTitle.GIMMEDABLOOD, 9415337, 'A', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.ETR, '8+', MusicTitle.ClothoAndTheStargazer, 9738926, 'AA', 'HdC', '0', 'firstComplete', 20241215);
+    addArc(Diff.FTR, '9', MusicTitle.Ignotus, 9760228, 'AA', 'NmC', '0', 'firstComplete', 20241215);
+    addArc(Diff.FTR, '10', MusicTitle.LamentRain, 7707272, 'D', 'L', '-0.01', 'Lost', 20241215);
+    addArc(Diff.FTR, '10', MusicTitle.BreachOfFaith, 9407485, 'A', 'NmC', '-0.01', 'Complete', 20241215);
     addArc(Diff.BYD, '∞', MusicTitle.YanjerTSAdmin, 19198100, 'EX+', 'AP', "0", 'firstPlay', 20250401);
     ARCarr.reverse();
 }

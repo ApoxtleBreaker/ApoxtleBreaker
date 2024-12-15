@@ -18,7 +18,9 @@ jumpChild.style.color = "black";
 jumpChild.style.fontSize = "8em";
 jumpChild.style.textAlign = "center";
 jumpChild.style.whiteSpace = "wrap";
-jumpChild.innerHTML = "源  神";
+jumpChild.innerHTML = 
+`源     神<br/>
+谁寄吧爱玩谁玩`;
 jumpE.appendChild(jumpChild);
 
 
@@ -26,5 +28,5 @@ window.onload = function() {
     document.body.appendChild(jumpE);
     setTimeout(() => {
         jumpE.remove()
-    }, 1000);
+    }, 3000);
 }

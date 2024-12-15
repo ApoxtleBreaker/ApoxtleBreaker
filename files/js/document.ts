@@ -14,7 +14,10 @@ enum MusicTitle{
     Chronostasis='Chronostasis',
     Altair = 'Altair (feat. *spiLa*)',
     Dement_AfterLengend_ = 'Dement ~after lengend~',
-
+    RedrawTheColorlessWorld = 'Redraw the Colorless World',
+    Nhelv = 'Nhelv',
+    ClothoAndTheStargazer = 'Clotho and the Stargazer',
+    Ignotus = 'Ignotus',
 //Memory Archive
     Innocence='Innocence',
     EinherjarJoker='Einherjar Joker',
@@ -34,6 +37,7 @@ enum MusicTitle{
     //Black Fate
     HH1f1e33 = '#1f1e33',
     Equilibrium = 'Equilibrium',
+    LostDesire = 'Lost Desire',
 
     //Adverse Prelude
     SaintOrSinner='Saint or Sinner',
@@ -157,6 +161,16 @@ let ArcPlayerPttValue:number = 10.42
     addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9513956, 'AA', 'NmC', '-0.01', 'Complete', 20241214);
     addArc(Diff.FTR, '9', MusicTitle.InVan, 9379918, 'A', 'L', '-0.02', 'Lost', 20241214);
     addArc(Diff.FTR, '9', MusicTitle.DistortedFate, 9855978, 'EX', 'HdC', '+0.02', 'Complete', 20241214);
+    addArc(Diff.FTR, '9', MusicTitle.RedrawTheColorlessWorld, 9532306, 'AA', 'NmC', '0', 'firstComplete', 20241214);
+    addArc(Diff.FTR, '9+', MusicTitle.LostDesire, 9264283, 'A', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.FTR, '9+', MusicTitle.LostDesire, 9498286, 'A', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.FTR, '9+', MusicTitle.Nhelv, 9531593, 'AA', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.FTR, '10', MusicTitle.GIMMEDABLOOD, 9415337, 'A', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.ETR, '8+', MusicTitle.ClothoAndTheStargazer, 9738926, 'AA', 'HdC', '0', 'firstComplete', 20241215);
+    addArc(Diff.FTR, '9', MusicTitle.Ignotus, 9760228, 'AA', 'NmC', '0', 'firstComplete', 20241215);
+    addArc(Diff.FTR, '10', MusicTitle.LamentRain, 7707272, 'D', 'L', '-0.01', 'Lost', 20241215);
+    addArc(Diff.FTR, '10', MusicTitle.BreachOfFaith, 9407485, 'A', 'NmC', '-0.01', 'Complete', 20241215);
+    
 
     
 
