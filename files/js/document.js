@@ -55,9 +55,13 @@ var MusicTitle;
     //Rotaeno Collaboration
     MusicTitle["WaltzForLorelei"] = "Waltz for lorelei";
     MusicTitle["MVURBD"] = "MVURBD";
+    //O.N.G.E.K.I. Collaboration Chapter 2
+    MusicTitle["GoodBye_Merry_Go_Round"] = "Good bye, Merry-Go-Round.";
+    MusicTitle["LAMIA"] = "LAMIA";
     //O.N.G.E.K.I. Collaboration Chapter 3
     MusicTitle["DontFightTheMusic"] = "Don't Fight The Music";
     MusicTitle["SUPERAMBULANCE"] = "SUPER AMBULANCE";
+    MusicTitle["AndReviveTheMelody"] = "And Revive the Melody";
 })(MusicTitle || (MusicTitle = {}));
 var ARCarr = [];
 var ARCarrSub = [];
@@ -80,6 +84,7 @@ function addArc(eDiff, eDiffNum, eTitle, eScore, eRating, eRatingSub, ePTTchange
     console.clear();
     console.log('你可以在这里看到所有记录曲目的对象数据  包含日期');
     console.log(ARCarr);
+    console.log("    \n    \u5165\u6863\u89C4\u5219\n        \u9996\u6B21\u6E38\u73A9/...\n        FC/AP\n        \u5F71\u54CD\u5230\u5206\u6570\n        \u5386\u53F2\u65B0\u9AD8\n        \u6709\u7279\u6B8A\u610F\u4E49\n    ");
 }
 //ptt初始值
 var ArcPlayerPttValue = 10.42;
@@ -145,6 +150,29 @@ var ArcPlayerPttValue = 10.42;
     addArc(Diff.FTR, '9', MusicTitle.Ignotus, 9760228, 'AA', 'NmC', '0', 'firstComplete', 20241215);
     addArc(Diff.FTR, '10', MusicTitle.LamentRain, 7707272, 'D', 'L', '-0.01', 'Lost', 20241215);
     addArc(Diff.FTR, '10', MusicTitle.BreachOfFaith, 9407485, 'A', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.FTR, '8+', MusicTitle.Hypnotize, 9754105, 'AA', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.FTR, '9+', MusicTitle.Ashen6oundary, 9633253, 'AA', 'NmC', '+0.01', 'Complete', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9676396, 'AA', 'NmC', '0', 'firstPlay', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9672175, 'AA', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.PRS, '8', MusicTitle.Judgement, 9925103, 'EX+', 'NmC', '0', 'firstPlay', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9570982, 'AA', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9748056, 'AA', 'HdC', '0', 'Complete', 20241215);
+    addArc(Diff.PRS, '8', MusicTitle.Judgement, 9977250, 'EX+', 'FC', '+0.01', 'firstFC', 20241216);
+    addArc(Diff.PRS, '6', MusicTitle.InVan, 9978501, 'EX+', 'NmC', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9726988, 'AA', 'NmC', '-0.01', 'Complete', 20241216);
+    addArc(Diff.PRS, '7', MusicTitle.GoodBye_Merry_Go_Round, 9943163, 'EX+', 'HdC', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.LAMIA, 7017511, 'D', 'L', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.LAMIA, 9814341, 'EX', 'NmC', '0', 'firstComplete', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.AndReviveTheMelody, 9886883, 'EX', 'HdC', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.LAMIA, 9921693, 'EX+', 'HdC', '0', 'Complete', 20241216);
+    addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9779229, 'AA', 'NmC', '0', 'Complete', 20241216);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9798664, 'AA', 'NmC', '0', 'Complete', 20241216);
+    //入档规则
+    //首次游玩/...
+    //FC/AP
+    //影响到分数
+    //历史新高
+    //有特殊意义
     addArc(Diff.BYD, '∞', MusicTitle.YanjerTSAdmin, 19198100, 'EX+', 'AP', "0", 'firstPlay', 20250401);
     ARCarr.reverse();
 }
