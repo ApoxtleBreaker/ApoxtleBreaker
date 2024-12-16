@@ -66,14 +66,19 @@ enum MusicTitle{
     WaltzForLorelei='Waltz for lorelei',
     MVURBD = 'MVURBD',
     
+    //O.N.G.E.K.I. Collaboration Chapter 2
+    GoodBye_Merry_Go_Round='Good bye, Merry-Go-Round.',
+    LAMIA = 'LAMIA',
+
     //O.N.G.E.K.I. Collaboration Chapter 3
     DontFightTheMusic='Don\'t Fight The Music',
     SUPERAMBULANCE = 'SUPER AMBULANCE',
+    AndReviveTheMelody='And Revive the Melody',
     
 }
 interface EArc{
     Diff: Diff;
-    DiffNum: '7' | '7+' | '8' | '8+' | '9' | '9+' | '10' | '10+' | '11' | '???'     |'∞';
+    DiffNum: '6' | '7' | '7+' | '8' | '8+' | '9' | '9+' | '10' | '10+' | '11' | '???'     |'∞';
     Title: string;
     Score: number;
     Rating: 'EX+' | 'EX' | 'AA' | 'A' | 'B' | 'C' | 'D'     ;
@@ -85,7 +90,7 @@ interface EArc{
 
 let ARCarr:Array<any> = []
 let ARCarrSub:Array<any> = []
-function addArc(eDiff:Diff, eDiffNum: '7' | '7+' | '8' | '8+' | '9' |'9+' | '10' | '10+' | '11' | '???'         |'∞', eTitle: string, eScore: number, eRating: 'EX+' | 'EX' | 'AA' | 'A' | 'B' | 'C' | 'D' , eRatingSub: 'AP' | 'FC' | 'HdC' | 'NmC' | 'EzC' | 'L' , ePTTchanged: '-0.05' | '-0.04' | '-0.03' | '-0.02' | '-0.01' | '0' | '+0.01' | '+0.02' | '+0.03' | '+0.04' | '+0.05' , ePass: 'Complete' | 'Lost' | 'FC' | 'AP' | 'firstPlay' | 'firstComplete' | 'firstFC' | 'firstAP', eDate: number): void {
+function addArc(eDiff:Diff, eDiffNum:'6' | '7' | '7+' | '8' | '8+' | '9' |'9+' | '10' | '10+' | '11' | '???'         |'∞', eTitle: string, eScore: number, eRating: 'EX+' | 'EX' | 'AA' | 'A' | 'B' | 'C' | 'D' , eRatingSub: 'AP' | 'FC' | 'HdC' | 'NmC' | 'EzC' | 'L' , ePTTchanged: '-0.05' | '-0.04' | '-0.03' | '-0.02' | '-0.01' | '0' | '+0.01' | '+0.02' | '+0.03' | '+0.04' | '+0.05' , ePass: 'Complete' | 'Lost' | 'FC' | 'AP' | 'firstPlay' | 'firstComplete' | 'firstFC' | 'firstAP', eDate: number): void {
     var eYear = String(eDate).slice(0, 4);
     var eMonth = String(eDate).slice(4, 6);
     var eDay = String(eDate).slice(6, 8);
@@ -105,6 +110,14 @@ function addArc(eDiff:Diff, eDiffNum: '7' | '7+' | '8' | '8+' | '9' |'9+' | '10'
     console.clear()
     console.log('你可以在这里看到所有记录曲目的对象数据  包含日期')
     console.log(ARCarr)
+    console.log(`    
+    入档规则
+        首次游玩/...
+        FC/AP
+        影响到分数
+        历史新高
+        有特殊意义
+    `)
 }
 //ptt初始值
 let ArcPlayerPttValue:number = 10.42
@@ -170,6 +183,30 @@ let ArcPlayerPttValue:number = 10.42
     addArc(Diff.FTR, '9', MusicTitle.Ignotus, 9760228, 'AA', 'NmC', '0', 'firstComplete', 20241215);
     addArc(Diff.FTR, '10', MusicTitle.LamentRain, 7707272, 'D', 'L', '-0.01', 'Lost', 20241215);
     addArc(Diff.FTR, '10', MusicTitle.BreachOfFaith, 9407485, 'A', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.FTR, '8+', MusicTitle.Hypnotize, 9754105, 'AA', 'NmC', '0', 'Complete', 20241215);
+    addArc(Diff.FTR, '9+', MusicTitle.Ashen6oundary, 9633253, 'AA', 'NmC', '+0.01', 'Complete', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9676396, 'AA', 'NmC', '0', 'firstPlay', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9672175, 'AA', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.PRS, '8', MusicTitle.Judgement, 9925103, 'EX+', 'NmC', '0', 'firstPlay', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9570982, 'AA', 'NmC', '-0.01', 'Complete', 20241215);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9748056, 'AA', 'HdC', '0', 'Complete', 20241215);
+    addArc(Diff.PRS, '8', MusicTitle.Judgement, 9977250, 'EX+', 'FC', '+0.01', 'firstFC', 20241216);
+    addArc(Diff.PRS, '6', MusicTitle.InVan, 9978501, 'EX+', 'NmC', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9726988, 'AA', 'NmC', '-0.01', 'Complete', 20241216);
+    addArc(Diff.PRS, '7', MusicTitle.GoodBye_Merry_Go_Round, 9943163, 'EX+', 'HdC', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.LAMIA, 7017511, 'D', 'L', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.LAMIA, 9814341, 'EX', 'NmC', '0', 'firstComplete', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.AndReviveTheMelody, 9886883, 'EX', 'HdC', '0', 'firstPlay', 20241216);
+    addArc(Diff.PRS, '8', MusicTitle.LAMIA, 9921693, 'EX+', 'HdC', '0', 'Complete', 20241216);
+    addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9779229, 'AA', 'NmC', '0', 'Complete', 20241216);
+    addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9798664, 'AA', 'NmC', '0', 'Complete', 20241216);
+    
+    //入档规则
+        //首次游玩/...
+        //FC/AP
+        //影响到分数
+        //历史新高
+        //有特殊意义
     
 
     
