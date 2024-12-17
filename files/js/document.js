@@ -18,6 +18,7 @@ var MusicTitle;
     MusicTitle["Nhelv"] = "Nhelv";
     MusicTitle["ClothoAndTheStargazer"] = "Clotho and the Stargazer";
     MusicTitle["Ignotus"] = "Ignotus";
+    MusicTitle["Purgatorium"] = "Purgatorium";
     //Memory Archive
     MusicTitle["Innocence"] = "Innocence";
     MusicTitle["EinherjarJoker"] = "Einherjar Joker";
@@ -167,6 +168,9 @@ var ArcPlayerPttValue = 10.42;
     addArc(Diff.PRS, '8', MusicTitle.LAMIA, 9921693, 'EX+', 'HdC', '0', 'Complete', 20241216);
     addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9779229, 'AA', 'NmC', '0', 'Complete', 20241216);
     addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9798664, 'AA', 'NmC', '0', 'Complete', 20241216);
+    addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9757490, 'AA', 'HdC', '-0.01', 'Complete', 20241217);
+    addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9748781, 'AA', 'NmC', '-0.01', 'Complete', 20241217);
+    addArc(Diff.BYD, '9', MusicTitle.Purgatorium, 9739165, 'AA', 'HdC', '+0.01', 'firstPlay', 20241217);
     //入档规则
     //首次游玩/...
     //FC/AP
@@ -294,4 +298,5 @@ function ArrIntoDocElem() {
 var addArcDoc = document.getElementById('addArcDoc');
 addArcDoc === null || addArcDoc === void 0 ? void 0 : addArcDoc.addEventListener('click', function () {
     ArrIntoDocElem();
+    alert("    \n        \u5165\u6863\u89C4\u5219\n            \u9996\u6B21\u6E38\u73A9/...\n            FC/AP\n            \u5F71\u54CD\u5230\u5206\u6570\n            \u5386\u53F2\u65B0\u9AD8\n            \u6709\u7279\u6B8A\u610F\u4E49\n        ");
 });

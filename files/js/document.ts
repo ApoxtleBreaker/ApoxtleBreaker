@@ -18,6 +18,7 @@ enum MusicTitle{
     Nhelv = 'Nhelv',
     ClothoAndTheStargazer = 'Clotho and the Stargazer',
     Ignotus = 'Ignotus',
+    Purgatorium = 'Purgatorium',
 //Memory Archive
     Innocence='Innocence',
     EinherjarJoker='Einherjar Joker',
@@ -118,6 +119,7 @@ function addArc(eDiff:Diff, eDiffNum:'6' | '7' | '7+' | '8' | '8+' | '9' |'9+' |
         历史新高
         有特殊意义
     `)
+
 }
 //ptt初始值
 let ArcPlayerPttValue:number = 10.42
@@ -200,6 +202,9 @@ let ArcPlayerPttValue:number = 10.42
     addArc(Diff.PRS, '8', MusicTitle.LAMIA, 9921693, 'EX+', 'HdC', '0', 'Complete', 20241216);
     addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9779229, 'AA', 'NmC', '0', 'Complete', 20241216);
     addArc(Diff.PRS, '8+', MusicTitle.LamentRain, 9798664, 'AA', 'NmC', '0', 'Complete', 20241216);
+    addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9757490, 'AA', 'HdC', '-0.01', 'Complete', 20241217);
+    addArc(Diff.FTR, '10', MusicTitle.ViciousHeroism, 9748781, 'AA', 'NmC', '-0.01', 'Complete', 20241217);
+    addArc(Diff.BYD, '9', MusicTitle.Purgatorium, 9739165, 'AA', 'HdC', '+0.01', 'firstPlay', 20241217);
     
     //入档规则
         //首次游玩/...
@@ -349,4 +354,12 @@ function ArrIntoDocElem():void{
 const addArcDoc = document.getElementById('addArcDoc') as HTMLButtonElement | null;
 addArcDoc?.addEventListener('click', function() {
     ArrIntoDocElem()
+    alert(`    
+        入档规则
+            首次游玩/...
+            FC/AP
+            影响到分数
+            历史新高
+            有特殊意义
+        `)
 });
