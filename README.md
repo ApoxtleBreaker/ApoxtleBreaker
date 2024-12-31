@@ -1,10 +1,10 @@
 废物高中生\
-我的联系方式一览\
+我的联系方式一览
 ### 文件共享
 > -[GitHub]- https://github.com/ApoxtleBreaker/ApoxtleBreaker/tree/FilesSharing \
 > -[百度云]- 
 >- 链接https://pan.baidu.com/s/1ufObFIhbaRb1SX7VkCRe9A?pwd=yjts 
->- 提取码yjts  
+>- 提取码  *yjts*   
 
 ### 视频网站
 统一ID：**鄢桀蚀荼-YanjerTS**<br/>
