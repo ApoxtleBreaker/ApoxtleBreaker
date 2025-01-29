@@ -38,5 +38,5 @@ XIApoxtleIX / YanjerTS (Bedrock Edition)-[XboxName]<br/>
 392398383325966350 (**账号遗失**)<br/>
 **Arcaea**:YanjerTS: 605208261<br/>
 
-[--音游展示--](https://apoxtlebreaker.github.io/ApoxtleBreaker/)
+[--个人主页--](https://apoxtlebreaker.github.io/ApoxtleBreaker/)
 

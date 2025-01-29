@@ -1,7 +1,116 @@
+@media screen and (min-width: 3650px) {
+    :root{
+        --bodyFontSize :30px;
+
+        --CoverDirection1Size:100px;
+        --CoverDirection1AbsoluteTop: -0.1em;
+        --CoverDirection1AbsoluteLeft: 0;
+        --CoverDirection2Size: 50px;
+
+        --welocmeFontSize :110px;
+        --YanjerTS : 110px;
+        --YanjerAbsolutesRight : -50%;
+        --YanjerAbsolutesBottom : -100%;
+
+        --YanjerCardSideFontSize : 90px;
+        --YanjerCardFontSize: 50px;
+
+        --YanjerConnectFontSize : 80px;
+        --YanjerConnectMargin : 4em;
+
+        --selectNoticeFontSize : 60px;
+        --selectFontSize : 55px;
+
+        --filmFontSize : 60px;
+        --filmMessageFontSize : 80px;
+        --filmMessageDateFontSize : 100px;
+        
+        --contentFontSizTitle : 100px;
+        --contentFontSiz : 60px;
+        --contentFontSizDate : 50px;
+
+        --contentFontSizLarge : 60px;
+
+    }    
+}
+@media screen and (min-width: 1460px) and (max-width: 3649px) {
+    :root{
+        --CoverDirection1Size: 80px;
+        --CoverDirection1AbsoluteTop: -0.1em;
+        --CoverDirection1AbsoluteLeft: 0;
+        --CoverDirection2Size: 30px;
+        /* 这里需要额外设置head span的大小 */
+
+
+        --bodyFontSize :16px;
+        --welocmeFontSize :90px;
+        --YanjerTS : 90px;
+        --YanjerAbsolutesRight : -50%;
+        --YanjerAbsolutesBottom : -100%;
+
+        --YanjerCardSideFontSize : 70px;
+        --YanjerCardFontSize: 30px;
+
+        --YanjerConnectFontSize : 60px;
+        --YanjerConnectMargin : 2em;
+
+        --selectNoticeFontSize : 40px;
+        --selectFontSize : 35px;
+
+        --filmFontSize : 40px;
+        --filmMessageFontSize : 60px;
+        --filmMessageDateFontSize : 80px;
+        
+        --contentFontSizTitle : 80px;
+        --contentFontSiz : 40px;
+        --contentFontSizDate : 30px;
+
+        --contentFontSizLarge : 40px;
+    }    
+}
+@media screen and (max-width: 1459px) {
+    :root{
+        --bodyFontSize :8px;
+        /* 未调试临时用的 */
+        --CoverDirection1Size: 50px;
+        --CoverDirection1AbsoluteTop: -0.1em;
+        --CoverDirection1AbsoluteLeft: 0;
+        --CoverDirection2Size: 20px;
+
+        --welocmeFontSize :90px;
+        --YanjerTS : 35px;
+        --YanjerAbsolutesRight : -50%;
+        --YanjerAbsolutesBottom : -100%;
+
+        --YanjerCardSideFontSize : 30px;
+        --YanjerCardFontSize: 35px;
+
+        --YanjerConnectFontSize : 35px;
+        --YanjerConnectMargin : 2em;
+
+        --selectNoticeFontSize : 30px;
+        --selectFontSize : 20px;
+
+        --filmFontSize : 30px;
+        --filmMessageFontSize : 30px;
+        --filmMessageDateFontSize : 40px;
+        
+        --contentFontSizTitle : 40px;
+        --contentFontSiz : 25px;
+        --contentFontSizDate : 20px;
+
+        --contentFontSizLarge : 24px;
+    }
+}
+:root{
+    LICENSE{
+        text-decoration: underline double;
+    }
+}
 body{
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: var(--bodyFontSize);
     &::-webkit-scrollbar{
         background-color: #ffffff00;
     }
@@ -81,18 +190,17 @@ body{
             transform: translateY(-50%);
             width: 100%;
             >h1{
-                --fontSize :90px;
                 position: relative;
                 width: 100%;
                 height: fit-content;
-                font-size: var(--fontSize);
+                font-size: var(--welocmeFontSize);
                 line-height: 100%;
                 text-align: center;
                 >span{
                     position: absolute;
                     font-size: 50px;
                     text-align: center;
-                    width: var(--fontSize);
+                    width: var(--welocmeFontSize);
                     /* 宽度和父元素font-size相同 方便居中 */
                     top: -100%;
                 }
@@ -148,16 +256,17 @@ body{
             user-select: none;
             display: inline-block;
             position: absolute;
-            font-size: 90px;
+            left: injs;
+            font-size: var(--YanjerTS);
             font-family: 义启星空之翼;
             color: #291283;
             text-shadow: white 1px 1px 1px, white -1px -1px 1px, white 1px -1px 1px, white -1px 1px 1px;
             &::after{
                 content: '𝒴𝒶𝓃𝒿𝑒𝓇𝒯𝒮';
                 position: absolute;
-                right: -50%;
-                bottom: -100%;
-                font-size: 90px;
+                right: var(--YanjerAbsolutesRight);
+                bottom: var(--YanjerAbsolutesBottom);
+                font-size: var(--YanjerTS);
                 font-family: 义启星空之翼;
                 color: #291283;
                 text-shadow: white 1px 1px 1px, white -1px -1px 1px, white 1px -1px 1px, white -1px 1px 1px;
@@ -172,23 +281,23 @@ body{
             /* background-color: #291283; */
             width: 80px;
             height: 80px;
-            border-radius: 100%;
-            
+            /* 这个宽高会被js修改 只是为了方便调试时看见 无意义 */
+            border-radius: 100%;        
             &::after{
                 content: '✡';
-                font-size: 90px;
+                font-size: var(--CoverDirection1Size);
                 position: absolute;
-                top: -10%;
-                left: 0;
+                top: var(--CoverDirection1AbsoluteTop);
+                left: var(--CoverDirection1AbsoluteLeft);
                 width: 100%;
                 line-height: 100%;
-                text-indent: 0.1em;
+                /* text-indent: 0.1em; */
                 color: #920d0d;
                 text-shadow: white 1px 1px 1px, white -1px -1px 1px, white 1px -1px 1px, white -1px 1px 1px;
             }
             &::before{
                 content: '༺༒◈⧰◈༒༻';
-                font-size: 30px;
+                font-size: var(--CoverDirection2Size);
                 position: absolute;
                 bottom: 0;
                 right: 0;
@@ -196,7 +305,7 @@ body{
                 text-align: center;
                 width: 100%;
                 line-height: 100%;
-                text-indent: 0.1em;
+                /* text-indent: 0.1em; */
                 color: #ff0800;
                 text-shadow: white 1px 1px 1px, white -1px -1px 1px, white 1px -1px 1px, white -1px 1px 1px;
             }
@@ -214,7 +323,6 @@ body{
             background-color: #291283;
             border-radius: 100%;
             overflow: hidden;
-
             >img{
                 width: 100%;
                 height: 100%;
@@ -238,7 +346,7 @@ body{
             &::before{
                 content: '/////';
                 font-family: RuiZiAoYunJingShenPinBoJianMianFei;
-                font-size: 70px;
+                font-size: var(--YanjerCardSideFontSize);
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -253,7 +361,7 @@ body{
             &::after{
                 content: '/////';
                 font-family: RuiZiAoYunJingShenPinBoJianMianFei;
-                font-size: 70px;
+                font-size: var(--YanjerCardSideFontSize);
                 position: absolute;
                 bottom: 0;
                 right: 0;
@@ -266,6 +374,7 @@ body{
                 -webkit-text-stroke: #C4D4F0 2px;
             }
             >*{
+                font-size: var(--YanjerCardFontSize);
                 color: #000;
                 -webkit-text-stroke: #f2f2f2 1px;
                 text-shadow: 2px 2px 2px #ffffff, -2px -2px 2px #ffffff, 2px -2px 2px #ffffff, -2px 2px 2px #ffffff;
@@ -288,9 +397,9 @@ body{
             flex-wrap: nowrap;
             align-items: center;
             justify-content: center;
-            max-height: 10%;
-            margin-top: 8%;
-            margin-bottom: 6%;
+            /* max-height: 10%; */
+            margin-top: var(--YanjerConnectMargin);
+            margin-bottom: var(--YanjerConnectMargin);
             >span{
                 display: inline-block;
                 position: relative;
@@ -305,7 +414,7 @@ body{
                 display: flex;
                 align-items: center;
                 >a{
-                    font-size: 60px;
+                    font-size: var(--YanjerConnectFontSize);
                     display: inline-block;
                     line-height: 120%;
                     text-align: left;
@@ -378,7 +487,7 @@ body{
     backdrop-filter: blur(10px);
     border-radius: 20px 20px 0 0;
     height: max-content;
-    font-size: 40px;
+    font-size: var(--selectNoticeFontSize);
     font-family: RuiZiAoYunJingShenPinBoJianMianFei;
     padding: 20px;
 }
@@ -403,7 +512,7 @@ body{
     position: relative;
     width: 100%;
     height: 50px;
-    font-size: 35px;
+    font-size: var(--selectFontSize);
     background-color: #000000bc;
     display: flex;
     align-items: stretch;
@@ -413,7 +522,7 @@ body{
         display: block;
         border: #000 solid 1px;
         text-align: center;
-        width: 30%; 
+        width: 100%; 
     }
     >span[active=true]{
         transition: all 0.3s ease-in-out;
@@ -424,7 +533,7 @@ body{
 /* 番剧box */
 #ctn-film{
     font-family: 义启星空之翼;
-    font-size: 40px;
+    font-size: var(--filmFontSize);
     position: relative;
     width: 100%;
     height: 100%;
@@ -451,7 +560,7 @@ body{
             transition: all 0.3s ease-in-out;
             font-family: RuiZiAoYunJingShenPinBoJianMianFei;
             color: #000;
-            font-size: 80px;
+            font-size: var(--filmMessageFontSize);
             top: 0;
             left: 0;
             -webkit-text-stroke: #f2f2f2 1px;
@@ -467,7 +576,7 @@ body{
         .jp{
             font-family: TogeGothic;
             color: #ffffff;
-            font-size: 60px;
+            font-size: var(--filmMessageFontSize);
             font-weight: 600;
             left: 5%;
             bottom: 0%;
@@ -478,7 +587,7 @@ body{
         .en{
             /* font-family: 优设标题黑; */
             color: #707070;
-            font-size: 60px;
+            font-size: var(--filmMessageFontSize);
             font-weight: 600;
             left: 40%;
             top: 0%;
@@ -489,7 +598,7 @@ body{
             text-shadow: 2px 2px 2px #000, -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000;
             font-weight: 600;
             text-align: end;
-            font-size: 80px;
+            font-size: var(--filmMessageDateFontSize);
             opacity: 0.9;
         }
     }
@@ -578,6 +687,14 @@ body{
     font-size: 90px;
     top: -200%;
 }
+.name[verylong]{
+    line-height: 100px;
+    font-size: 40px;
+}
+.name[verylong]::before{
+    font-size: 90px;
+    top: -340%;
+}
 
 .name::before{
     font-size: 90px;
@@ -612,6 +729,11 @@ body{
     -webkit-text-stroke: #DD4A80 5px;
     text-shadow:#F7C0CC 5px 5px 5px, #F7C0CC -5px 5px 5px, #F7C0CC 5px -5px 5px, #F7C0CC -5px -5px 5px;
 }
+.name[るるどらいおん]::before{
+    color: #FDF8A3;
+    -webkit-text-stroke: #E1B79F 5px;
+    text-shadow:#FFFFF5 5px 5px 5px, #FFFFF5 -5px 5px 5px, #FFFFF5 5px -5px 5px, #FFFFF5 -5px -5px 5px;
+}
 
 .chr{
     transition: all 0.3s ease-in-out;
@@ -627,7 +749,7 @@ body{
     }
 }
 /* 个人空间 */
-#ctn-personalSpace{
+#ctn-personalSpace,#ctn-notice{
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     width: 100%;
@@ -657,23 +779,37 @@ body{
             width: 100%;
             display: inline-block;
             text-indent: 1em;
-            font-size: 60px;
+            font-size: var(--contentFontSizTitle);
             color: #000000;
             -webkit-text-stroke: #f2f2f2 1px;
             text-shadow: 2px 2px 2px #000, -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000;
         }
         >content{
-            font-size: 30px;
+            font-size: var(--contentFontSiz);
             >p{
                 line-height: 120%;
                 text-indent: 2em
             }
         };
+        img{
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            height: 50vh;
+            &:hover{
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: -10px;
+                margin-bottom: -10px;
+                transition: all 0.3s ease-in-out;
+                border-radius: 20px;
+                filter: drop-shadow(2px 5px 5px #7939e6);
+            }
+        }
         >date{
             display: inline-block;
             width: 100%;
             text-align: end;
-            font-size: 30px;
+            font-size: var(--contentFontSizDate);
             /* &::after{
                 content: '';
                 display: block;
@@ -693,7 +829,7 @@ body{
         content: '已经到底了';
         width: 100%;
         text-align: center;
-        font-size: 70px;
+        font-size: var(--YanjerConnectFontSize);
         display: block;
         position: absolute;
         bottom: 1em;
@@ -738,16 +874,16 @@ body{
             text-shadow: 2px 2px 2px #000, -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000;
         }
         >content{
-            font-size: 30px;
+            font-size: var(--contentFontSizDate);
             >p{
                 line-height: 120%;
-                text-indent: 2em
             }
         };
         >.large{
-            font-size: 50px;
+            font-size: var(--contentFontSizLarge);
         }
         >.center,.end,.start{
+            text-indent: 2em;
             display: block;
             width: 100%;
         }
@@ -756,6 +892,7 @@ body{
         }
         >.center{
             text-align: center;
+            text-indent: 0!important;
         }
         >.end{
             text-align: end;
@@ -764,7 +901,7 @@ body{
             display: inline-block;
             width: 100%;
             text-align: end;
-            font-size: 30px;
+            font-size: var(--contentFontSizDate);
             /* &::after{
                 content: '';
                 display: block;
@@ -776,7 +913,7 @@ body{
         
         >author{
             white-space: pre;
-            font-size: 40px;
+            font-size: var(--contentFontSiz);
             display: block;
             width: 100%;
             text-align: end;
@@ -787,7 +924,7 @@ body{
         }
         ps{
         white-space: pre;
-            font-size: 30px;
+            font-size: var(--contentFontSizDate);
             color: #4b4b4b;
             -webkit-text-stroke: #4b4b4b 1px;
         }
@@ -802,7 +939,7 @@ body{
         content: '已经到底了';
         width: 100%;
         text-align: center;
-        font-size: 70px;
+        font-size: var(--filmMessageFontSize);
         display: block;
         position: absolute;
         bottom: 1em;

@@ -1,4 +1,5 @@
-let UpdateDate = "2025/1/29/1:00 a.m"
+let SpaceUpdateDate = "2025/1/30/2:39 a.m"
+let UpdateDate = "2025/1/30 a.m"
 //欢迎页面文字  蚀荼=>使徒
 document.getElementById("welcomeText").children[0].addEventListener("mouseover", function() {
     document.getElementById("welcomeText").children[0].innerHTML=`<span>yān</span>鄢<span>jié</span>桀<span>shǐ</span>使<span>tú</span>徒-YanjerTS`
@@ -10,12 +11,18 @@ document.getElementById("welcomeText").children[0].addEventListener("mouseout", 
 document.getElementById("welcomeText").addEventListener("click", function() {
     document.getElementById('coverBg').close();
     document.getElementById('coverBg').remove();
+// 添加图片功能
+addOpenImg()
+
 });
 //时间到自动取消欢迎窗口
 setTimeout(function() {
     if (document.getElementById('coverBg')) {
         document.getElementById('coverBg').close();
         document.getElementById('coverBg').remove();
+        // 添加图片功能
+        addOpenImg()
+
     }
 }, 5000);
 
@@ -32,7 +39,7 @@ selectBoxArray.forEach(function(item) {
     })
 })
 // 选项卡对应栏目重置
-function reloadBoxDisplay() {
+function reloadBoxDisplay(a) {
     //所有ctn隐藏
     Array.from(document.getElementsByClassName("select-ctn")).forEach(function(item) {
         item.style.display = "none";
@@ -53,12 +60,18 @@ function reloadBoxDisplay() {
     }
     if (foc == "ctn-personalSpace") {
         document.getElementById("selectMain").style.overflow = "hidden";
-        document.getElementById('selectNotice').innerText = `上次更新时间:${UpdateDate}`
+        document.getElementById('selectNotice').innerText = `空间上次更新时间:${SpaceUpdateDate}`
     }
     if (foc == "ctn-favourite") {
         document.getElementById("selectMain").style.overflow = "hidden";
         document.getElementById('selectNotice').innerText = '主观见解 有错联系作者纠正'
     }
+    if (foc == "ctn-notice") {
+        document.getElementById("selectMain").style.overflow = "hidden";
+        document.getElementById('selectNotice').innerText = `网站上次更新时间:${UpdateDate}`
+    }
+
+    if(a != 'firstload'){
     let selectNoticeTop = document.getElementById('selectNotice').offsetTop
     let selectTop = document.getElementById('selectMain').offsetTop
     window.scrollTo({
@@ -71,19 +84,18 @@ function reloadBoxDisplay() {
             behavior: 'smooth',
         })
     }, 600)
-
+    }
 }
 // 初始化选项卡
 // 延迟2ms执行 保证番剧信息可以加载完毕
-window.onload = function() {
-    setTimeout(() => {
-        reloadBoxDisplay();
-        // 加载后回归顶部
-            setTimeout(() => {
-            window.scrollTo(0, 0);
-        }, 1000);
-    }, 2);
-}
+reloadBoxDisplay('firstload')
+window.scrollTo(0, 0);
+Array.from(document.getElementsByClassName("select-ctn")).forEach(function(item) {
+    item.style.display = "none";
+})
+document.getElementById('ctn-notice').style.display = "block";
+document.getElementById("selectMain").style.overflow = "hidden";
+document.getElementById('selectNotice').innerText = `网站上次更新时间:${UpdateDate}`
 
 //番剧信息对应表
 Map = {
@@ -262,10 +274,46 @@ function readArticle(fileName,inputAim){
 readArticle(`personalSpace.html`,'ctn-personalSpace')
 readArticle(`favourite.html`,'ctn-favourite')
 readArticle(`YanjerInfo.html`,'YanjerInfo')
+readArticle(`notice.html`,'ctn-notice')
+//个人空间图片打开
+function addOpenImg(){
+    let psImg = []
+    let personalSpaceArray = Array.from(document.getElementById('ctn-personalSpace').children)
+    personalSpaceArray.forEach(ps => {
+        psImg.push(ps.querySelectorAll('img'))
+        // console.log(ps.querySelectorAll('img'))
+        // console.log(psImg)
+    })
+    psImg.forEach(imgs => {
+        console.log(imgs)
+        if(imgs != null){
+            imgs.forEach(img => {
+                img.addEventListener('click', function() {
+                    window.open(img.src)
+                    //后续改成和film的fullCover一样的效果
+
+                })
+            })
+        }
+    })
+}
+
 
 
 // 头像框
-console.log(document.getElementById('YanjerHead').offsetWidth)
+// console.log(document.getElementById('YanjerHead').offsetWidth)
+function headResize(){
+    //头像框大小同步头像box
 document.getElementById('YanjerHeadCover').style.width = document.getElementById('YanjerHead').offsetWidth + 'px'
 document.getElementById('YanjerHeadCover').style.height = document.getElementById('YanjerHead').offsetWidth + 'px'
+//文字位置
 document.getElementById('YanjerTS').style.left = document.getElementById('YanjerHead').offsetWidth + 'px'
+}
+window.addEventListener('resize', function() {
+    headResize()
+})
+window.onload = function() {
+    headResize()
+}
+headResize()
+
