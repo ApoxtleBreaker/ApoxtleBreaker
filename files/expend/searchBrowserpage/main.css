@@ -1,6 +1,21 @@
+:root{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
 body{
     margin: 0;
     padding: 0;
+}
+@font-face {
+    font-family:义启星空之翼;
+    src: url(../../font/义启星空之翼.ttf);
+}
+@font-face {
+    font-family:优设标题黑;
+    src: url(../../font/优设标题黑.ttf);
+}
+@font-face {
+    font-family:RuiZiAoYunJingShenPinBoJianMianFei;
+    src: url(../../font/RuiZiAoYunJingShenPinBoJianMianFei-Shan\(REEJI-PinboGB-Flash\)-2.ttf);
 }
 #bg{
     z-index: -1;
@@ -27,13 +42,16 @@ body{
         width: 100%;
         height: 50px;
         margin: 0 auto;
-        margin-top: 20vh;
+        margin-top: 50vh;
 
         display: flex;
         justify-content: center;
         align-items: center;
         transition: all 0.3s ease-in-out;
         >#searchInput{
+            /* font-family: RuiZiAoYunJingShenPinBoJianMianFei; */
+            /* font-family: 优设标题黑; */
+            font-family: 义启星空之翼;
             width: 20%;
             height: 100%;
             padding: 0 10px;
@@ -53,6 +71,9 @@ body{
             outline: none;
         }
         >#searchButton{
+            font-family: RuiZiAoYunJingShenPinBoJianMianFei;
+            /* font-family: 优设标题黑; */
+            /* font-family: 义启星空之翼; */
             width: 6%;
             height: 100%;
             border: none;
@@ -70,6 +91,9 @@ body{
         }
     }
     >#selectContainer{
+        /* font-family: RuiZiAoYunJingShenPinBoJianMianFei; */
+        font-family: 优设标题黑;
+        /* font-family: 义启星空之翼; */
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -111,6 +135,7 @@ body{
                     height: 100%;
                 }
                 >.more{
+                    font-family: 优设标题黑;
                     font-size: 20px;
                     display: block;
                     transition: all 0.3s ease-in-out;
@@ -128,56 +153,76 @@ body{
             }
         }
     }
-}
-
->#searchContainer{
-    width: 100%;
-    height: 50px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-    >#searchInput{
-        width: 20%;
-        height: 100%;
-        padding: 0 10px;
-        border: 2px solid #931414;
-        background-color: #2f2f2f;
-        color: #ffffff;
-        border-radius: 5px;
-        font-size: 18px;
-        transition: all 0.3s ease-in-out;
-    }
-    >#searchInput:focus{
-        width: 50%;
-        border: 5px solid #2f2f2f;
-        background-color: #671515;
-        text-shadow: #2f2f2f 2px 2px 2px, #2f2f2f -2px -2px 2px, #2f2f2f 2px -2px 2px, #2f2f2f -2px 2px 2px;
-        transition: all 0.3s ease-in-out;
-        outline: none;
-    }
-    >#searchButton{
-        width: 6%;
-        height: 100%;
-        border: none;
-        border-radius: 5px;
-        font-size: 18px;
-        color: #ffffff;
-        background-color: #a5a5a5;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        &:hover{
-            width: 10%;
-            transition: all 0.3s ease-in-out;
+    #history{
+        &::before{
+            content: '历史记录';
+            font-family: 义启星空之翼;
+            font-size: 24px;
+            color: #ffffff;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: fit-content;
+            display: flex;
             background-color: #931414;
+            padding: 10px;
+            border-radius: 20px;
+        }
+        width: 100%;
+        margin: 0 auto;
+        min-height: 20px;
+        height: fit-content;
+        background-color: #7e7e7e70;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: #931414 2px solid;
+        border-radius: 20px;
+        >#historyList{
+            margin: 20px;
+            padding: 0;
+            list-style: none;
+            overflow-y: scroll;
+            overflow-x: visible;
+            height: max-content;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            >li{
+                font-size: 30px;
+                color:  #ffffff;
+                font-family: 义启星空之翼;
+                /* list-style-position: inside; */
+                list-style-type:none;
+                background-color: #3926267a;
+                margin: 0;
+                &:hover{
+                    margin-left: 2%;
+                    margin-top: 1%;
+                    background-color: #931414;
+                }
+            }
+            >historyTip{
+                font-size: 30px;
+                color: #ffffff;
+                width: 100%;
+                text-align: center;
+                text-shadow: #931414 2px 2px 2px, #931414 -2px -2px 2px, #931414 2px -2px 2px, #931414 -2px 2px 2px;
+               
+            }
         }
     }
 }
+
+
 #moreSelect{
+            /* font-family: RuiZiAoYunJingShenPinBoJianMianFei; */
+            font-family: 优设标题黑;
+            /* font-family: 义启星空之翼; */
     background-color: #95959577;
     border-radius: 20px;
     #closeMoreSelect{
+        /* font-family: 优设标题黑; */
+        font-family: 义启星空之翼;
         position: absolute;
         top: 0;
         right: 0;
@@ -195,9 +240,30 @@ body{
         }
     }
     >#searchALL{
+        /* font-family: 优设标题黑; */
+        font-family: 义启星空之翼;
         position: absolute;
         bottom: 0;
         right: 0;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 50%;
+        background-color: #6a6a6a;
+        border: #2f2f2f 2px solid;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        &:hover{
+            background-color: #671515;
+        }
+    }
+    >#keyTips{
+        /* font-family: 优设标题黑; */
+        font-family: 义启星空之翼;
+        position: absolute;
+        bottom: 0;
+        left: 0;
         width: 60px;
         height: 60px;
         border: none;
@@ -256,9 +322,11 @@ body{
                 margin: 20px;
             }
             >.option[active=true]{
+                transform: scale(1.2);
                 transition: all 0.3s ease-in-out;
                 background-color: #931414;
                 height: 100%;
+                width: 100%;
             }
             >.more{
                 font-size: 20px;

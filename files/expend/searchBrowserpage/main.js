@@ -1,3 +1,4 @@
+// Dom元素创建
     document.getElementsByTagName('body')[0].innerHTML = ''
     // 创建背景元素
     const bgDiv = document.createElement('div');
@@ -177,7 +178,13 @@
     图片Option1.setAttribute('foc', 'Pixiv');
     图片Option1.textContent = 'Pixiv';
 
+    const 图片Option2 = document.createElement('span');
+    图片Option2.className = 'option';
+    图片Option2.setAttribute('foc', 'X');
+    图片Option2.textContent = 'X';
+
     图片InnerSpan.appendChild(图片Option1);
+    图片InnerSpan.appendChild(图片Option2);
 
     图片Span.appendChild(图片InnerSpan);
 
@@ -197,8 +204,14 @@
     视频Option2.setAttribute('foc', 'YouTube');
     视频Option2.textContent = 'YouTube';
 
+    const 视频Option3 = document.createElement('span');
+    视频Option3.className = 'option';
+    视频Option3.setAttribute('foc', '动漫花园');
+    视频Option3.textContent = '动漫花园';
+
     视频InnerSpan.appendChild(视频Option1);
     视频InnerSpan.appendChild(视频Option2);
+    视频InnerSpan.appendChild(视频Option3);
 
     视频Span.appendChild(视频InnerSpan);
 
@@ -234,7 +247,25 @@
     开发Option1.setAttribute('foc', 'GitHub');
     开发Option1.textContent = 'GitHub';
 
+    const 开发Option2 = document.createElement('span');
+    开发Option2.className = 'option';
+    开发Option2.setAttribute('foc', 'iconfont');
+    开发Option2.textContent = 'iconfont';
+
+    const 开发Option3 = document.createElement('span');
+    开发Option3.className = 'option';
+    开发Option3.setAttribute('foc', '字体天下');
+    开发Option3.textContent = '字体天下';
+
+    const 开发Option4 = document.createElement('span');
+    开发Option4.className = 'option';
+    开发Option4.setAttribute('foc', 'mdn');
+    开发Option4.textContent = 'mdn';
+
     开发InnerSpan.appendChild(开发Option1);
+    开发InnerSpan.appendChild(开发Option2);
+    开发InnerSpan.appendChild(开发Option3);
+    开发InnerSpan.appendChild(开发Option4);
 
     开发Span.appendChild(开发InnerSpan);
 
@@ -248,6 +279,11 @@
     searchALLButton.id = 'searchALL';
     searchALLButton.textContent = 'ALL';
 
+    // 按键提示按钮
+    const keyTipsButton = document.createElement('button');
+    keyTipsButton.id = 'keyTips';
+    keyTipsButton.textContent = '键盘快捷键'
+
     // 将所有部分添加到对话框内部容器中
     moreSelectContainer.appendChild(常规Span);
     moreSelectContainer.appendChild(百科Span);
@@ -260,6 +296,7 @@
     moreSelectDialog.appendChild(moreSelectContainer);
     moreSelectDialog.appendChild(closeMoreSelectButton);
     moreSelectDialog.appendChild(searchALLButton);
+    moreSelectDialog.appendChild(keyTipsButton);
 
     // 将背景元素、主容器和对话框添加到 body 中
     document.body.appendChild(bgDiv);
@@ -267,73 +304,137 @@
     document.body.appendChild(moreSelectDialog);
 
 
+//历史记录
+const history = document.createElement('div')
+history.style.display = 'none'
+history.id = 'history'
+history.appendChild(document.createElement('ul'))
+history.children[0].id = 'historyList'
+mainContainer.appendChild(history)
 
 
 
 
+//标题更改
 const title = document.createElement(`title`)
 title.innerHTML = '眼界搜-YanjerSearch'
 document.head.append(title)
-
+//css引入
 const link = document.createElement(`link`)
 link.rel = 'stylesheet'
-// improtant debug
+//// improtant debug
 link.href = './main.css'//test定位
 link.href = './files/expend/searchBrowserpage/main.css'//expend定位
-// improtant debug
+//// improtant debug
+//随机搜索推荐
 document.head.append(link)
 let searchArray = [
     '鄢桀蚀荼',
     'YanjerTS',
 ]
+//搜索历史初始化
 let HistoryArray = []
+
+//数组随机获取
 function randomResult(array){
     let randomIndex = Math.floor(Math.random() * array.length)
     return array[randomIndex]
 }
+//取随机推荐
 let recommend = randomResult(searchArray)
+//元素绑定
 const searchInput = document.getElementById('searchInput')
 const searchContainer = document.getElementById('searchContainer')
 const searchButton = document.getElementById('searchButton')
+const historyContainer = document.getElementById('history')
+const historyList = document.getElementById('historyList')
 //成为焦点
 searchInput.addEventListener('focus', () => {
+    //随机刷新推荐
     recommend = randomResult(searchArray)
+    //预显示推荐
     searchInput.placeholder = recommend
-    searchContainer.style.marginTop = '50vh'
+    //搜索框上升
+    searchContainer.style.marginTop = '20vh'
+    // 显示历史
+    historyContainer.style.display = 'block'
+    if(HistoryArray.length == 0){
+        historyContainer.style.height = '30vh'
+        historyList.innerHTML = '<historyTip>不妨现在在这里留下一笔?</historyTip>'
+    }
 })
+//历史记录更新
+setInterval(() => {
+    if(HistoryArray.length > 0){
+        historyList.innerHTML = ``
+        HistoryArray.forEach(item => {
+            let li = document.createElement('li')
+            li.textContent = item
+            historyList.appendChild(li)
+        })
+        document.getElementById('historyList').querySelectorAll('li').forEach(item => {
+            item.addEventListener('click', () => {
+                searchInput.value = item.textContent
+                searchButton.click()
+            })
+        })
+    }
+}, 1000)
+//让搜索引擎选择框跟随输入框移动
 setInterval(() => {
     document.getElementById('selectContainer').children[0].style.width = searchInput.offsetWidth +document.getElementById('more').offsetWidth + 'px'
+    document.getElementById('history').style.width = searchInput.offsetWidth + 'px'
 }, 1)
+
 //失去焦点
 searchInput.addEventListener('blur', () => {
-    searchInput.placeholder = '输入关键字搜索'
-    searchContainer.style.marginTop = '20vh'
+    if(searchInput.value === ''){
+        //清空推荐
+        searchInput.placeholder = '输入关键字搜索'
+        //搜索框下降
+        searchContainer.style.marginTop = '65vh'
+    }
+    //如果只输入一个空格就清空并下降
+    if(searchInput.value === ' '){
+        searchInput.value = ''
+        searchContainer.style.marginTop = '65vh'
+    }
+    setTimeout(() => {
+        // 隐藏历史
+        historyContainer.style.display = 'none'
+    }, 200)
+
 })
+//搜索引擎前缀
 let focUrl
+//按钮焦点配合搜索框 防止点击后失去焦点恢复原位而造成按钮点击失败
 searchButton.addEventListener('focus', () => {
     if(searchInput.focus){
-        searchContainer.style.marginTop = '50vh'
+        searchContainer.style.marginTop = '20vh'
     }
 })
-
+//点击搜索按钮
 searchButton.addEventListener('click', () => {
     if(searchInput.focus){
-        searchContainer.style.marginTop = '50vh'
+        searchContainer.style.marginTop = '20vh'
     }
+    //如果没输入内容
     if(searchInput.value.trim() === '') {
-        window.open(focUrl + recommend.trim())
+        //搜索推荐内容
+        window.open(focUrl + recommend.trim())//trim()防止空格
+    if(HistoryArray.includes(searchInput.value.trim())){return}else{
+        //搜索历史记录
+        HistoryArray.push(recommend.trim())}
     }else{
+        //搜索输入内容
         window.open(focUrl + searchInput.value.trim())
         searchArray.push(searchInput.value.trim())
-        HistoryArray.push(searchInput.value.trim())
+        if(HistoryArray.includes(searchInput.value.trim())){return}else{
+        HistoryArray.push(searchInput.value.trim())}
     }
 })
 
-//     '谷歌': 'https://www.google.com/search?q=',
-//     '必应': 'https://cn.bing.com/search?q=',
-//     '百度': 'https://www.baidu.com/s?wd=',
-//     '搜狗': 'https://www.sogou.com/web?query=',
-
+//搜索引擎绑定
 let hrefMap = new Map([
     //常规
     ['谷歌', 'https://www.google.com/search?q='],
@@ -349,14 +450,19 @@ let hrefMap = new Map([
     ['萌娘百科', 'https://mzh.moegirl.org.cn/index.php?search='],
     //图片
     ['Pixiv', 'https://www.pixiv.net/search.php?s_mode=s_tag&word='],
+    ['X','https://x.com/search?q='],
     //视频
     ['Bilibili', 'https://search.bilibili.com/all?keyword='],
     ['YouTube', 'https://www.youtube.com/results?search_query='],
+    ['动漫花园','https://dmhy.b168.net/topics/list?keyword='],
     //音乐
     ['网易云音乐', 'https://music.163.com/#/search/m/?s='],
     ['QQ音乐', 'https://y.qq.com/portal/search.html#page=1&searchid=1&remoteplace=txt.yqq.top&t=song&w='],
     //开发
     ['GitHub', 'https://github.com/search?q='],
+    ['iconfont', 'https://www.iconfont.cn/search/index?searchType=icon&q=123'],
+    ['字体天下', 'https://www.fonts.net.cn/font-search-result.html?q='],
+    ['mdn', 'https://developer.mozilla.org/zh-CN/search?q='],
 ]);
 
 
@@ -412,10 +518,47 @@ document.getElementById('more').addEventListener('click', () => {
     })
 })
 
+//按键提示
+document.getElementById('keyTips').addEventListener('click', () => {
+    var tips = `
+    [↑]打开更多搜索
+    [↓]关闭更多搜索
+    [空格]打开搜索框
+    [Esc]取消搜索框聚焦
+    [Enter]搜索
+    输入两个空格固定搜索框
+    `
+    console.log(tips)
+    alert(tips)
+})
 //监听enter
 document.getElementById('searchInput').addEventListener('keyup', (event) => {
     if(event.keyCode === 13){
         searchButton.click()
+    }
+})
+//ArrowUp打开moreSelect
+document.addEventListener('keydown', (event) => {
+    if(event.keyCode === 38){
+        document.getElementById('more').click()
+    }
+})
+//ArrowDown关闭moreSelect
+document.addEventListener('keydown', (event) => {
+    if(event.keyCode === 40){
+        document.getElementById('closeMoreSelect').click()
+    }
+})
+//Space打开搜索框
+document.addEventListener('keydown', (event) => {
+    if(event.keyCode === 32){
+        document.getElementById('searchInput').focus()
+    }
+})
+//esc取消搜索框焦点
+document.addEventListener('keydown', (event) => {
+    if(event.keyCode === 27){
+        document.getElementById('searchInput').blur()
     }
 })
 
