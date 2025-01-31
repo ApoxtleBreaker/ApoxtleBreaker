@@ -100,6 +100,15 @@
         --contentFontSizDate : 20px;
 
         --contentFontSizLarge : 24px;
+
+    }
+    body{
+        .content{
+            -webkit-text-stroke:#00000000 0px!important;
+            >author{
+                text-shadow: #fff 0px 0px 10px, #fff 0px 0px 10px, #fff 0px 0px 10px, #fff 0px 0px 10px!important;
+            }
+        }
     }
 }
 :root{
@@ -283,6 +292,11 @@ body{
             height: 80px;
             /* 这个宽高会被js修改 只是为了方便调试时看见 无意义 */
             border-radius: 100%;        
+            transition: all 0.2s ease-in-out;
+            &:hover{
+                transition: all 0.2s ease-in-out;
+                box-shadow: 0px 0px 10px #000000; 
+            }
             &::after{
                 content: '✡';
                 font-size: var(--CoverDirection1Size);
@@ -328,6 +342,7 @@ body{
                 height: 100%;
                 aspect-ratio: 1/1;
                 object-fit: cover;
+
             }
         }
         >#YanjerCard{
@@ -791,18 +806,42 @@ body{
                 text-indent: 2em
             }
         };
-        img{
-            transition: all 0.3s ease-in-out;
+        imgContainer{
             display: inline-block;
-            height: 50vh;
-            &:hover{
-                margin-top: 10px;
-                margin-left: 10px;
-                margin-right: -10px;
-                margin-bottom: -10px;
-                transition: all 0.3s ease-in-out;
+            width: fit-content;
+            /* height: auto; */
+            height: 60vh;
+            overflow-y: scroll;
+            /* white-space: nowrap; */
+            border: #291283 solid 1px;
+            border-radius: 20px;
+            &::-webkit-scrollbar{
+                background-color: #ffffff00;
+            }
+            &::-webkit-scrollbar-track{
+                height: 40px;
+                background-color: #050505e5;
+                border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb{
+                height: 40px;
+                background-color: #dadadabe;
                 border-radius: 20px;
-                filter: drop-shadow(2px 5px 5px #7939e6);
+            }
+            >img{
+                margin: 30px;
+                transition: all 0.3s ease-in-out;
+                display: inline-block;
+                height: 50vh;
+                &:hover{
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    transition: all 0.3s ease-in-out;
+                    border-radius: 20px;
+                    filter: drop-shadow(2px 5px 5px #7939e6);
+                }
             }
         }
         >date{

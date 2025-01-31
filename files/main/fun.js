@@ -221,5 +221,179 @@ window.onload = function(){
     scrollTitle()
     setTimeout(function(){
         infiniteScroll()
-    },30000)
+    },60000)
+}
+{
+    let 鄢桀蚀荼 = 0
+    document.getElementById('YanjerHeadCover').addEventListener('click',function(){
+        鄢桀蚀荼++
+        // let oOo = document.createElement('script')
+        // oOo.innerHTML = `
+        // console.warn('❤')
+        // `
+        // document.body.appendChild(oOo)
+        HTMLcreateElement('script','body',0,`console.warn('❤')`)
+        if(鄢桀蚀荼==10){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==20){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==30){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==40){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==50){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==60){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==70){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==80){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==90){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+        }
+        if(鄢桀蚀荼==100){
+                console.clear()
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                HTMLcreateElement('script','body',0,`console.warn('❤❤❤❤❤❤❤❤❤❤')`)
+                alert('  ')
+                setTimeout(
+                    function(){
+                        console.clear()
+                        console.error(`
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+❤❤❤❤❤❤❤❤❤❤
+                            `)
+                    },500)
+                setTimeout(
+                    function(){
+                        console.clear()
+                        console.error(`
+████████████████
+████████████████
+████████████████
+████████████████
+████████████████
+████████████████
+████████████████
+████████████████
+████████████████
+████████████████
+                            `)
+                    },1500)
+                    setTimeout(
+                        function(){
+                            console.clear()
+                            console.error(`
+███▒▒▒▒██▒▒▒▒███
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+██▒▒▒▒▒▒▒▒▒▒▒▒██
+███▒▒▒▒▒▒▒▒▒▒███
+████▒▒▒▒▒▒▒▒████
+█████▒▒▒▒▒▒█████
+██████▒▒▒▒██████
+███████▒▒███████
+                                `)
+                        },1800)
+                        setTimeout(
+                            function(){
+                                console.clear()
+                                console.error(`
+███▒▒▒▒██▒▒▒▒███
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
+███▒▒▒▒▒▒▒▒▒▒███
+█████▒▒▒▒▒▒█████
+███████▒▒███████
+████████████████
+██████ℒℴѵℯ██████
+████████████████
+                                    `)
+                            },1800)
+
+                    setTimeout(
+                        function(){
+                            alert('但是')
+                            alert('这一切')
+                            alert('毫无意义')
+                            window.location.reload()
+                            console.log('你会不会注意到这一句话呢')
+                            console.log('不过...至少你愿意回来到这里看我')
+                            console.log('让我以这个身份,活下去吧')
+                        },2000)
+                
+        }
+    })
 }

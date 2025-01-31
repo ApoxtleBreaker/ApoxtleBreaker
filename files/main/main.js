@@ -98,27 +98,50 @@ document.getElementById("selectMain").style.overflow = "hidden";
 document.getElementById('selectNotice').innerText = `网站上次更新时间:${UpdateDate}`
 
 //番剧信息对应表
-Map = {
-    // 中|日|英|上映时间|链接
-    "彻夜之歌": "彻夜之歌|よふかしのうた|CALLOF THE NIGHT|2022-07-07|mzh.moegirl.org.cn/彻夜之歌(漫画)#",
-    "前辈是男孩子":"前辈是男孩子|先輩はおとこのこ|This is Him|2019-12-07|mzh.moegirl.org.cn/前辈是伪娘",    
-    "比翼之吻": "比翼之吻|ダーリン・イン・ザ・フランキス|DARLING in the FRANXX|2018-01-13|mzh.moegirl.org.cn/DARLING_in_the_FRANXX",
-    "无职转生": "无职转生：到了异世界就拿出真本事|無職転生～異世界行ったら本気だす～||2021-01-10|mzh.moegirl.org.cn/无职转生～到了异世界就拿出真本事～",
-    "无职转生ⅡPart1": "无职转生Ⅱ：到了异世界就拿出真本事|無職転生Ⅱ～異世界行ったら本気だす～ 第1クール||2023-07-02|mzh.moegirl.org.cn/无职转生～到了异世界就拿出真本事～",
-    "无职转生ⅡPart2": "无职转生Ⅱ：到了异世界就拿出真本事|無職転生Ⅱ～異世界行ったら本気だす～ 第2クール||2024-04-07|mzh.moegirl.org.cn/无职转生～到了异世界就拿出真本事～",
-    "不时用俄语小声说真心话的邻桌艾莉同学": "不时用俄语小声说真心话的邻桌艾莉同学|時々ボソッとロシア語でデレる隣のアーリャさん||2024-07-03|mzh.moegirl.org.cn/不时轻声地以俄语遮羞的邻座艾莉同学",
-    "恋爱随意链接":"恋爱随意链接|ココロコネクト|Kokoro Connect|2012-07-07|mzh.moegirl.org.cn/心灵链环",
-    "通往夏天的隧道，离别的出口":"通往夏天的隧道，离别的出口|夏へのトンネル、さよならの出口||2024-08-30|mzh.moegirl.org.cn/通往夏天的隧道，再见的出口",
-    "莉可丽丝":"莉可丽丝|リコリス・リコイル|Lycoris Recoil|2022-07-02|mzh.moegirl.org.cn/莉可丽丝",
-    "终结的炽天使":"终结的炽天使|終わりのセラフ| Seraph of the End|2015-04-04|mzh.moegirl.org.cn/终结的炽天使",
-    "终结的炽天使：名古屋决战篇":"终结的炽天使：名古屋决战篇|終わりのセラフ 名古屋決戦編|S2|2015-10-10|mzh.moegirl.org.cn/终结的炽天使",
-    "青春猪头少年不会梦到圣诞服女郎":"青春猪头少年不会梦到圣诞服女郎|青春ブタ野郎はサンタクロースの夢を見ない||2025(预告)|mzh.moegirl.org.cn/青春猪头少年系列 ",
-    "青春猪头少年不会梦到红书包女孩":"青春猪头少年不会梦到红书包女孩|青春ブタ野郎はランドセルガールの夢を見ない||2023-12-01|mzh.moegirl.org.cn/青春猪头少年系列 ",
-    "青春猪头少年不会梦到外出娇怜妹":"青春猪头少年不会梦到外出娇怜妹|青春ブタ野郎はおでかけシスターの夢を見ない||2023-06-23|mzh.moegirl.org.cn/青春猪头少年系列 ",
-    "青春猪头少年不会梦到怀梦美少女":"青春猪头少年不会梦到怀梦美少女|青春ブタ野郎はゆめみる少女の夢を見ない ||2019-06-15|mzh.moegirl.org.cn/青春猪头少年系列 ",
-    "青春猪头少年不会梦到野生兔女郎":"青春猪头少年不会梦到野生兔女郎|青春ブタ野郎はバニーガール先輩の夢を見ない||2018-10-03|mzh.moegirl.org.cn/青春猪头少年系列 ",
-    "孤独摇滚":"孤独摇滚！|ぼっち・ざ・ろっく！|BOCCHI THE ROCK!|2022-10-08|mzh.moegirl.org.cn/孤独摇滚！"
+let filmMap = new Map([
+    ["彻夜之歌", "彻夜之歌|よふかしのうた|CALLOF THE NIGHT|2022-07-07|mzh.moegirl.org.cn/彻夜之歌(漫画)#"],
+    ["前辈是男孩子", "前辈是男孩子|先輩はおとこのこ|This is Him|2019-12-07|mzh.moegirl.org.cn/前辈是伪娘"],
+    ["比翼之吻", "比翼之吻|ダーリン・イン・ザ・フランキス|DARLING in the FRANXX|2018-01-13|mzh.moegirl.org.cn/DARLING_in_the_FRANXX"],
+    ["无职转生", "无职转生：到了异世界就拿出真本事|無職転生～異世界行ったら本気だす～||2021-01-10|mzh.moegirl.org.cn/無職転生～到了异世界就拿出真本事～"], 
+    ["无职转生ⅡPart1", "无职转生Ⅱ：到了异世界就拿出真本事|無職転生Ⅱ～異世界行ったら本気だす～ 第1クール||2023-07-02|mzh.moegirl.org.cn/無職転生～到了异世界就拿出真本事～"],
+    ["无职转生ⅡPart2", "无职转生Ⅱ：到了异世界就拿出真本事|無職転生Ⅱ～異世界行ったら本気だす～ 第2クール||2024-04-07|mzh.moegirl.org.cn/無職転生～到了异世界就拿出真本事～"],
+    ["不时用俄语小声说真心话的邻桌艾莉同学", "不时用俄语小声说真心话的邻桌艾莉同学|時々ボソッとロシア語でデレる隣のアーリャさん||2024-07-03|mzh.moegirl.org.cn/不時轻声地以俄语遮羞的邻座艾莉同学"],
+    ["恋爱随意链接", "恋爱随意链接|ココロコネクト|Kokoro Connect|2012-07-07|mzh.moegirl.org.cn/心灵链环"],
+    ["通往夏天的隧道，离别的出口", "通往夏天的隧道，离别的出口|夏へのトンネル、さよならの出口||2024-08-30|mzh.moegirl.org.cn/通往夏天的隧道，再见的出口"],
+    ["莉可丽丝", "莉可丽丝|リコリス・リコイル|Lycoris Recoil|2022-07-02|mzh.moegirl.org.cn/莉可丽丝"],
+    ["终结的炽天使", "终结的炽天使|終わりのセラフ| Seraph of the End|2015-04-04|mzh.moegirl.org.cn/終結的炽天使"],
+    ["终结的炽天使：名古屋决战篇", "终结的炽天使：名古屋决战篇|終わりのセラフ 名古屋決戦編|S2|2015-10-10|mzh.moegirl.org.cn/終結的炽天使"],
+    ["青春猪头少年不会梦到圣诞服女郎", "青春猪头少年不会梦到圣诞服女郎|青春ブタ野郎はサンタクロースの夢を見ない||2025(预告)|mzh.moegirl.org.cn/青春猪头少年系列 "],
+    ["青春猪头少年不会梦到红书包女孩", "青春猪头少年不会梦到红书包女孩|青春ブタ野郎はランドセルガールの夢を見ない||2023-12-01|mzh.moegirl.org.cn/青春猪头少年系列 "],
+    ["青春猪头少年不会梦到外出娇怜妹", "青春猪头少年不会梦到外出娇怜妹|青春ブタ野郎はおでかけシスターの夢を見ない||2023-06-23|mzh.moegirl.org.cn/青春猪头少年系列 "],
+    ["青春猪头少年不会梦到怀梦美少女", "青春猪头少年不会梦到怀梦美少女|青春ブタ野郎はゆめみる少女の夢を見ない ||2019-06-15|mzh.moegirl.org.cn/青春猪头少年系列 "],
+    ["青春猪头少年不会梦到野生兔女郎", "青春猪头少年不会梦到野生兔女郎|青春ブタ野郎はバニーガール先輩の夢を見ない||2018-10-03|mzh.moegirl.org.cn/青春猪头少年系列 "],
+    ["孤独摇滚", "孤独摇滚！|ぼっち・ざ・ろっく！|BOCCHI THE ROCK!|2022-10-08|mzh.moegirl.org.cn/孤独摇滚！"]
+
+])
+ {
+//     // 中|日|英|上映时间|链接
+//     "彻夜之歌": "彻夜之歌|よふかしのうた|CALLOF THE NIGHT|2022-07-07|mzh.moegirl.org.cn/彻夜之歌(漫画)#",
+//     "前辈是男孩子":"前辈是男孩子|先輩はおとこのこ|This is Him|2019-12-07|mzh.moegirl.org.cn/前辈是伪娘",    
+//     "比翼之吻": "比翼之吻|ダーリン・イン・ザ・フランキス|DARLING in the FRANXX|2018-01-13|mzh.moegirl.org.cn/DARLING_in_the_FRANXX",
+//     "无职转生": "无职转生：到了异世界就拿出真本事|無職転生～異世界行ったら本気だす～||2021-01-10|mzh.moegirl.org.cn/无职转生～到了异世界就拿出真本事～",
+//     "无职转生ⅡPart1": "无职转生Ⅱ：到了异世界就拿出真本事|無職転生Ⅱ～異世界行ったら本気だす～ 第1クール||2023-07-02|mzh.moegirl.org.cn/无职转生～到了异世界就拿出真本事～",
+//     "无职转生ⅡPart2": "无职转生Ⅱ：到了异世界就拿出真本事|無職転生Ⅱ～異世界行ったら本気だす～ 第2クール||2024-04-07|mzh.moegirl.org.cn/无职转生～到了异世界就拿出真本事～",
+//     "不时用俄语小声说真心话的邻桌艾莉同学": "不时用俄语小声说真心话的邻桌艾莉同学|時々ボソッとロシア語でデレる隣のアーリャさん||2024-07-03|mzh.moegirl.org.cn/不时轻声地以俄语遮羞的邻座艾莉同学",
+//     "恋爱随意链接":"恋爱随意链接|ココロコネクト|Kokoro Connect|2012-07-07|mzh.moegirl.org.cn/心灵链环",
+//     "通往夏天的隧道，离别的出口":"通往夏天的隧道，离别的出口|夏へのトンネル、さよならの出口||2024-08-30|mzh.moegirl.org.cn/通往夏天的隧道，再见的出口",
+//     "莉可丽丝":"莉可丽丝|リコリス・リコイル|Lycoris Recoil|2022-07-02|mzh.moegirl.org.cn/莉可丽丝",
+//     "终结的炽天使":"终结的炽天使|終わりのセラフ| Seraph of the End|2015-04-04|mzh.moegirl.org.cn/终结的炽天使",
+//     "终结的炽天使：名古屋决战篇":"终结的炽天使：名古屋决战篇|終わりのセラフ 名古屋決戦編|S2|2015-10-10|mzh.moegirl.org.cn/终结的炽天使",
+//     "青春猪头少年不会梦到圣诞服女郎":"青春猪头少年不会梦到圣诞服女郎|青春ブタ野郎はサンタクロースの夢を見ない||2025(预告)|mzh.moegirl.org.cn/青春猪头少年系列 ",
+//     "青春猪头少年不会梦到红书包女孩":"青春猪头少年不会梦到红书包女孩|青春ブタ野郎はランドセルガールの夢を見ない||2023-12-01|mzh.moegirl.org.cn/青春猪头少年系列 ",
+//     "青春猪头少年不会梦到外出娇怜妹":"青春猪头少年不会梦到外出娇怜妹|青春ブタ野郎はおでかけシスターの夢を見ない||2023-06-23|mzh.moegirl.org.cn/青春猪头少年系列 ",
+//     "青春猪头少年不会梦到怀梦美少女":"青春猪头少年不会梦到怀梦美少女|青春ブタ野郎はゆめみる少女の夢を見ない ||2019-06-15|mzh.moegirl.org.cn/青春猪头少年系列 ",
+//     "青春猪头少年不会梦到野生兔女郎":"青春猪头少年不会梦到野生兔女郎|青春ブタ野郎はバニーガール先輩の夢を見ない||2018-10-03|mzh.moegirl.org.cn/青春猪头少年系列 ",
+//     "孤独摇滚":"孤独摇滚！|ぼっち・ざ・ろっく！|BOCCHI THE ROCK!|2022-10-08|mzh.moegirl.org.cn/孤独摇滚！"
 }
+
+
 //获得ctn-film中所有film的div并加入数组
 let filmBox = document.getElementById('ctn-film')
 // console.log(filmBox)
@@ -139,9 +162,9 @@ filmArray.forEach(f => {
     f.style.backgroundImage = `url(${url})`
     let cn, jp, en, date, link
     //匹配map中的信息
-    if (Map[foc]) {
+    if (filmMap.has(foc)) {
         // 获得对应信息组
-        let info = Map[foc].split('|')
+        let info = filmMap.get(foc).split('|')
         //格式不正常就抛出错误
         if (info.length == 5) {
         cn = info[0]
@@ -151,7 +174,7 @@ filmArray.forEach(f => {
         link = `https://${info[4]}`
            }else{
             alert('番剧信息对应表格式错误')
-            console.log(Map[foc])
+            console.log(filmMap.get(foc))
         }
     }
     //基本信息显示
@@ -242,7 +265,20 @@ vtbArray.forEach(v => {
     v.querySelector('.head').innerHTML = `<span style="background-image: url('${vtbUrl}/head/${Vname}.png');"></span>`
 
     v.querySelector('.name').innerHTML = Vname
+    //头像点击跳转
+    v.addEventListener('click', function() {
+        window.open(vtbLive.get(Vname))
+    })
 })
+let vtbLive = new Map([
+    ['恩骨', 'https://live.bilibili.com/173586'],
+    ['东雪莲', 'https://live.bilibili.com/22816111#/'],
+    ['甘城なつき','https://www.twitch.tv/nacho_dayo'],
+    ['神楽七奈', 'https://www.twitch.tv/kagurananaaaaa'],
+    ['るるどらいおん', 'https://www.youtube.com/@rurudo_LION'],
+])
+
+
 
 // 个人空间信息读取
 
@@ -309,11 +345,21 @@ document.getElementById('YanjerHeadCover').style.height = document.getElementByI
 //文字位置
 document.getElementById('YanjerTS').style.left = document.getElementById('YanjerHead').offsetWidth + 'px'
 }
+headResize()
 window.addEventListener('resize', function() {
     headResize()
 })
 window.onload = function() {
     headResize()
 }
-headResize()
+setInterval(() => {
+    headResize() 
+}, 1000);
 
+function HTMLcreateElement(E,location,index,innerHTML){
+    let eE =document.createElement(E)
+    eE.innerHTML = innerHTML
+    document.getElementsByTagName(location)[index].appendChild(eE)
+    // console.log(eE)
+    // console.log(document.getElementsByTagName(location)[index])
+}
