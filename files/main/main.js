@@ -1,5 +1,5 @@
-let SpaceUpdateDate = "2025/1/30/2:39 a.m"
-let UpdateDate = "2025/1/30 a.m"
+let SpaceUpdateDate = "2025/2/2/ 凌晨"
+let UpdateDate = "2025/2/2 凌晨"
 //欢迎页面文字  蚀荼=>使徒
 document.getElementById("welcomeText").children[0].addEventListener("mouseover", function() {
     document.getElementById("welcomeText").children[0].innerHTML=`<span>yān</span>鄢<span>jié</span>桀<span>shǐ</span>使<span>tú</span>徒-YanjerTS`

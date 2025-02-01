@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YanjerExpender</title>
 </head>
 <body>
-    <script src="./files/expend/searchBrowserpage/main.js"></script>
+    <dialog open>
+        <div>
+            <span>选择要加载的扩展功能</span>
+            <button id="YanjerSearch" class="btn">鄢桀搜-YanjerSearch</button>
+            <button id="YanjerUnicodeCharacter" class="btn">Unicode字符生成器-YanjerUnicodeCharacter</button>
+        </div>
+    </dialog>
 </body>
+    <script>
+    {
+        let btn = Array.from(document.getElementsByClassName("btn"))
+        btn.forEach(e => {
+            e.addEventListener("click", function() {
+                let eScript = document.createElement('script');
+                let foc = e.getAttribute("id")
+                eScript.src = `./files/expend/${foc}/main.js`;
+                document.querySelector('body').append(eScript)
+                // document.querySelector('html').append(eScript)
+                //发现神奇小特性  如果在body里插入script执行 最后浏览器检查会找不到script标签 但是不影响js功能执行           
+            })
+        })
+    }
+    </script>
 </html>

@@ -324,10 +324,11 @@ const link = document.createElement(`link`)
 link.rel = 'stylesheet'
 //// improtant debug
 link.href = './main.css'//test定位
-link.href = './files/expend/searchBrowserpage/main.css'//expend定位
+link.href = './files/expend/YanjerSearch/main.css'//expend定位
 //// improtant debug
-//随机搜索推荐
 document.head.append(link)
+
+//随机搜索推荐
 let searchArray = [
     '鄢桀蚀荼',
     'YanjerTS',
