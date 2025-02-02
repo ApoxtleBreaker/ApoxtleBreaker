@@ -385,6 +385,7 @@ window.onload = function(){
 
                     setTimeout(
                         function(){
+                            alert('没想到你会发现这个')
                             alert('但是')
                             alert('这一切')
                             alert('毫无意义')
