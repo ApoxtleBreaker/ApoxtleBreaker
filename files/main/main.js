@@ -1,5 +1,5 @@
 let SpaceUpdateDate = "2025/2/2/ 凌晨"
-let UpdateDate = "2025/2/2 凌晨"
+let UpdateDate = "2025/2/2-10:55a.m"
 //欢迎页面文字  蚀荼=>使徒
 document.getElementById("welcomeText").children[0].addEventListener("mouseover", function() {
     document.getElementById("welcomeText").children[0].innerHTML=`<span>yān</span>鄢<span>jié</span>桀<span>shǐ</span>使<span>tú</span>徒-YanjerTS`
@@ -25,6 +25,51 @@ setTimeout(function() {
 
     }
 }, 5000);
+//mc小人
+{
+    document.getElementById('minecraftSkin').addEventListener('mouseover', function() {
+        // document.getElementById('minecraftSkin').style.left =  document.getElementById('minecraftSkin').style.left.split("px")[0] - 30 + "px";
+        //直接修改.style无法获得css中设置的left值，只能用getComputedStyle获取计算后的样式值
+        document.getElementById('minecraftSkin').style.left = getComputedStyle(document.getElementById('minecraftSkin')).left.split("px")[0] - 30 + "px";
+        setTimeout(function() {
+            document.getElementById('minecraftSkin').style.left = getComputedStyle(document.getElementById('minecraftSkin')).left.split("px")[0] - 60 + "px";
+        }, 1000);
+        setTimeout(function() {
+            document.getElementById('minecraftSkin').style.left = getComputedStyle(document.getElementById('minecraftSkin')).left.split("px")[0] - 80 + "px";
+        }, 1200);
+    });
+}
+
+//b站视频
+let bGame = new Map([
+    // ['MinecraftSurvive','我的世界生存|https://www.bilibili.com/video/BV1wh411N7Qg/'],
+    ['OtakusAdventure','宅男的人间冒险|https://www.bilibili.com/video/BV1YM4y177m5/'],
+    ['TricolourLovestory','三色绘恋|https://www.bilibili.com/video/BV1N9vrerEV1/'],
+    ['TheHungryLambTravelingintheLateMingDynasty','饿殍,明末千里行|https://www.bilibili.com/video/BV1Bz421h7n8/'],
+    ['TrueLoveConfidetotheMaple','真恋~寄语枫秋~|https://www.bilibili.com/video/BV1rFvkeiEfX/'],
+    ['ConspiracyFieldFogShadow','雾之本境S|https://www.bilibili.com/video/BV1kfvreTEym/'],
+    ['ConspiracyFieldSnowTrap','雪之本境S|https://bilibili.com/video/BV1jT421q7KS/'],
+]);
+const bSeriesALL = document.getElementById('bSeriesALL')
+const bSeries = Array.from(document.getElementById('bWork').querySelectorAll('.bSeries'));
+let url = bSeriesALL.children[0].src;
+bSeriesALL.children[0].remove();
+bSeries.forEach(function(i) {
+let ID = i.id;
+let foc = bGame.get(ID);
+let title = foc.split('|')[0];
+let href = foc.split('|')[1];
+ i.querySelector('.title').innerHTML = title;
+ console.log(i.querySelector('.cover'))
+ console.log(`${url}${ID}.png`)
+ i.querySelector('.cover').style.backgroundImage = `url(${url}${ID}.png)`;
+ i.querySelector('.cover').addEventListener('click', function() {
+     window.open(href);
+ });
+});
+bSeriesALL.addEventListener('click',function(){
+    window.open('https://space.bilibili.com/1979641484/channel/series')
+})
 
 //选项卡
 let selectBox = document.getElementsByClassName("option");
@@ -174,7 +219,7 @@ filmArray.forEach(f => {
         link = `https://${info[4]}`
            }else{
             alert('番剧信息对应表格式错误')
-            console.log(filmMap.get(foc))
+            // console.log(filmMap.get(foc))
         }
     }
     //基本信息显示
