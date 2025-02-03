@@ -60,8 +60,8 @@ let foc = bGame.get(ID);
 let title = foc.split('|')[0];
 let href = foc.split('|')[1];
  i.querySelector('.title').innerHTML = title;
- console.log(i.querySelector('.cover'))
- console.log(`${url}${ID}.png`)
+//  console.log(i.querySelector('.cover'))
+//  console.log(`${url}${ID}.png`)
  i.querySelector('.cover').style.backgroundImage = `url(${url}${ID}.png)`;
  i.querySelector('.cover').addEventListener('click', function() {
      window.open(href);
@@ -373,7 +373,7 @@ function addOpenImg(){
         // console.log(psImg)
     })
     psImg.forEach(imgs => {
-        console.log(imgs)
+        // console.log(imgs)
         if(imgs != null){
             imgs.forEach(img => {
                 img.addEventListener('click', function() {
