@@ -71,7 +71,8 @@ bSeriesALL.addEventListener('click',function(){
     window.open('https://space.bilibili.com/1979641484/channel/series')
 })
 //b站收藏夹
-let indexUrl = window.location.href.split('index.html')[0];
+// let indexUrl = window.location.href.split('index.html')[0];//这是在正常测试环境
+let indexUrl = window.location.href;//这是在github pages环境
 document.getElementById('expend').addEventListener('click',function(){
     window.open(`${indexUrl}expandDoc.html`);
 });
