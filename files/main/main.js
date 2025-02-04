@@ -1,5 +1,5 @@
-let SpaceUpdateDate = "2025/2/2-晚"
-let UpdateDate = "2025/2/3-凌晨"
+let SpaceUpdateDate = "2025/2/4 下午"
+let UpdateDate = "2025/2/4 下午"
 //欢迎页面文字  蚀荼=>使徒
 document.getElementById("welcomeText").children[0].addEventListener("mouseover", function() {
     document.getElementById("welcomeText").children[0].innerHTML=`<span>yān</span>鄢<span>jié</span>桀<span>shǐ</span>使<span>tú</span>徒-YanjerTS`
@@ -71,11 +71,12 @@ bSeriesALL.addEventListener('click',function(){
     window.open('https://space.bilibili.com/1979641484/channel/series')
 })
 //b站收藏夹
+let indexUrl = window.location.href.split('index.html')[0];
 document.getElementById('expend').addEventListener('click',function(){
-    window.open('../../expandDoc.html');
+    window.open(`${indexUrl}expandDoc.html`);
 });
 document.getElementById('bFilmFav').addEventListener('click',function(){
-    window.open('../../bFilmFav.html');
+    window.open(`${indexUrl}bFilmFav.html`);
 });
 
 //选项卡

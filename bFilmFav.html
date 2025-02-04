@@ -4,13 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        :root {
+            --t:0.8s;
+            /* --a:cubic-bezier(0.895, 0.03, 0.685, 0.22) */
+            --a:cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        @keyframes fadeIn {
+            1% {
+                transform: translateY(0);
+                opacity: 0;
+                scale: 1;
+            }
+            2% {
+                transform: translateY(900%);
+                opacity: 0.4;
+                scale: 9.9;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+                scale: 1;
+            }
+        }
+
+        #main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            >div{
+                width: 100%;
+                position: relative;
+            }
+        }
+
+        iframe, img {
+            width: 40vw;
+            aspect-ratio: 16/9;
+            height: auto;
+            object-fit: cover;
+            margin: 0 auto;
+            margin-top: 100px;
+            opacity: 0; /* 初始不可见 */
+            animation: fadeIn var(--t) var(--a) forwards;
+            background-color: aquamarine;
+        }
+
+        .fade-in-element {
+            opacity: 0; /* 初始不可见 */
+            animation: fadeIn var(--t) var(--a) forwards;
+            animation-play-state: paused; /* 暂停动画 */
+        }
+
+        .fade-in-element.visible {
+            animation-play-state: running; /* 开始动画 */
+        }
+    </style>
 </head>
 <body>
+    <div id="main">
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+        <div>
+            <img src="./files/img/background/恩骨.png" alt="" class="fade-in-element">
+        </div>
+    </div>
 </body>
 <script>
-    window.onload = function() {
-        alert("还没做");
-        window.location.href = "./index.html";
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const elements = document.querySelectorAll('.fade-in-element');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.01 // 当元素进入视口的1%时触发
+        });
+
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+    });
+    document.querySelectorAll('img').forEach(function(item){
+        //默认居中
+        item.style.marginLeft = window.innerWidth/2 - item.offsetWidth/2 + 'px';
+        //随机偏移
+        item.style.marginLeft = Math.floor(Math.random() * (window.innerWidth - (1 * item.offsetWidth))) + 'px';
+    });
 </script>
 </html>
