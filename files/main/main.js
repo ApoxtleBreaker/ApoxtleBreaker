@@ -1,5 +1,5 @@
 let SpaceUpdateDate = "2025/2/4 下午"
-let UpdateDate = "2025/2/4 下午"
+let UpdateDate = "2025/2/9 下午"
 //欢迎页面文字  蚀荼=>使徒
 document.getElementById("welcomeText").children[0].addEventListener("mouseover", function() {
     document.getElementById("welcomeText").children[0].innerHTML=`<span>yān</span>鄢<span>jié</span>桀<span>shǐ</span>使<span>tú</span>徒-YanjerTS`
@@ -77,7 +77,7 @@ document.getElementById('expend').addEventListener('click',function(){
     window.open(`${indexUrl}expandDoc.html`);
 });
 document.getElementById('bFilmFav').addEventListener('click',function(){
-    window.open(`${indexUrl}bFilmFav.html`);
+    window.open(`${indexUrl}/files/fav/bFilmFav.html`);
 });
 
 //选项卡
