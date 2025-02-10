@@ -124,7 +124,6 @@ function reloadBoxDisplay(a) {
         document.getElementById("selectMain").style.overflow = "hidden";
         document.getElementById('selectNotice').innerText = `网站上次更新时间:${UpdateDate}`
     }
-
     if(a != 'firstload'){
     let selectNoticeTop = document.getElementById('selectNotice').offsetTop
     let selectTop = document.getElementById('selectMain').offsetTop
@@ -138,8 +137,26 @@ function reloadBoxDisplay(a) {
             behavior: 'smooth',
         })
     }, 600)
+    if(iIiIi == 0){
+        setHiddens()
+        iIiIi = 1;
+    }
     }
 }
+let iIiIi = 0;
+function setHiddens(){
+    document.querySelectorAll('span[class="hidden"]').forEach(function(item){
+        item.display = 'inline-block'
+        item.style.color = 'black'
+        item.style.backgroundColor = 'black' 
+        item.addEventListener('mouseover', function() {
+            item.style.color = 'white'
+        })
+        item.addEventListener('mouseout', function() {
+            item.style.color = 'black'
+        })
+    })
+    }
 // 初始化选项卡
 // 延迟2ms执行 保证番剧信息可以加载完毕
 reloadBoxDisplay('firstload')

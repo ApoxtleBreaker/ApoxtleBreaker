@@ -31,6 +31,12 @@
 
         --contentFontSizLarge : 60px;
 
+
+        --imgConHeight : 80vh;
+        --imgConConHeight : 80vh;
+        --imgConWidth : unset;
+        --biliWidth : auto;
+        --biliHeight : 60vh;
     }    
 }
 @media screen and (min-width: 1460px) and (max-width: 3649px) {
@@ -66,6 +72,13 @@
         --contentFontSizDate : 30px;
 
         --contentFontSizLarge : 40px;
+
+
+        --imgConHeight : 60vh;
+        --imgConConHeight : 60vh;
+        --imgConWidth : unset;
+        --biliWidth : auto;
+        --biliHeight : 60vh;
     }    
 }
 @media screen and (max-width: 1459px) {
@@ -101,6 +114,12 @@
 
         --contentFontSizLarge : 24px;
 
+
+        --imgConHeight : unset;
+        --imgConConHeight : 40vh;
+        --imgConWidth : 85%;
+        --biliWidth : 100%;
+        --biliHeight : auto;
     }
     body{
         .content{
@@ -944,7 +963,8 @@ body{
                 aspect-ratio: 16/9;
                 position: relative;
                 /* width: 67%; */
-                height: 60vh;
+                height: var(--biliHeight);
+                width: var(--biliWidth);
                 margin: 0 auto;
                 >iframe{
                     position: absolute;
@@ -955,11 +975,20 @@ body{
                 }
             }
         };
+        .imgDisplay{
+            display: inline-block;
+            width: 100%;
+            height: auto;
+            >img{
+                width: 100%;
+                height: auto;
+            }
+        }
         imgContainer{
             display: inline-block;
             width: fit-content;
             /* height: auto; */
-            height: 60vh;
+            height: var(--imgConConHeight);
             overflow-y: scroll;
             /* white-space: nowrap; */
             border: #291283 solid 1px;
@@ -981,7 +1010,8 @@ body{
                 margin: 30px;
                 transition: all 0.3s ease-in-out;
                 display: inline-block;
-                height: 50vh;
+                height: var(--imgConHeight);
+                max-width: var(--imgConWidth);
                 &:hover{
                     margin-top: 10px;
                     margin-left: 10px;
@@ -999,6 +1029,7 @@ body{
             width: 100%;
             text-align: end;
             font-size: var(--contentFontSizDate);
+            margin-bottom: 20vh;
             /* &::after{
                 content: '';
                 display: block;
@@ -1006,6 +1037,9 @@ body{
                 width: 100%;
                 margin-bottom: 20em;
             } */
+        }
+        date[nospace]{
+            margin-bottom: 0;
         }
     }
     >space{
@@ -1109,6 +1143,10 @@ body{
             text-shadow: none;
             &::before{
                 content: '————';
+            }
+            >span[class='hidden']{
+                -webkit-text-stroke: black 1px;
+                transition: all 0.3s ease-in-out;
             }
         }
         ps{
