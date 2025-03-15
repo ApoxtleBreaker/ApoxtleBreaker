@@ -199,9 +199,9 @@
             // 歌单页面
             let bvid = [
                 //['title', 'bvid']
-                ['4nim0sity|99.999999999%|','BV1rE421u7zo'],
-                ['逃 ❗️','BV1TS421d7dZ'],
-                ['Loveit?','BV1mg4y1M7Ee'],
+                ['4nim0sity|99.999999999%|','BV1rE421u7zo','sIyYgcWnG94'],
+                ['逃 ❗️','BV1TS421d7dZ','undefined'],
+                ['Loveit?','BV1mg4y1M7Ee','uXZkGWbyvcM'],
                 ['電子ドラッグ(笑)','BV17NpzepEz2'],
                 ['ECHO','BV1vs41197Fh'],
                 ['嬢王','BV1df421f7WB'],
@@ -220,12 +220,16 @@
             // iframe.src = `https://www.bilibili.com/blackboard/html5player.html?aid=${bvid[i][1]}`;
             for (let i = 0; i < bvid.length; i++) {
                 let div = document.createElement("div");
+                let Biliiframe = [`<iframe src="https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=`,`" allowfullscreen></iframe>`]
+                let YTiframe = [`<iframe width="560" height="315" src="https://www.youtube.com/embed/`,`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`]; 
+
                 div.innerHTML = `
                     <div>
                         <h2>${bvid[i][0]}</h2>
-                        <iframe src="https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=${bvid[i][1]}" allowfullscreen></iframe>
+                        ${Biliiframe[0]}${bvid[i][1]}${Biliiframe[1]}
+                        ${YTiframe[0]}${bvid[i][2]}${YTiframe[1]}
                     </div>`;
-                document.getElementById("ctn-playlist").appendChild(div);   
+                document.getElementById("ctn-playlist").appendChild(div);  
             }
             }
         }
