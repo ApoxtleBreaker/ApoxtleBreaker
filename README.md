@@ -12,7 +12,6 @@
 > -[Bili]-(Main) 鄢桀蚀荼-YanjerTS https://space.bilibili.com/1979641484<br/>
 //low frecuency update ↓↓
 > -[西瓜]- 鄢桀蚀荼-YanjerTS www.ixigua.com/home/3334192801522304<br/>
-> -[IQiYi]- 鄢桀蚀荼-YanjerTS www.iqiyi.com/u/1781582330/feeds<br/>
 > -[抖音(CN)]- 鄢桀蚀荼-YanjerTS www.douyin.com/user/MS4wLjABAAAAtEKKUEiiVOQ6iCnh19-v9WUU86c3bsbWz4gLfP_rtwE<br/>
  
 主要更新进度都在**b站为主**，其他平台也会有更新 可能稍慢 可能部分不更。\
