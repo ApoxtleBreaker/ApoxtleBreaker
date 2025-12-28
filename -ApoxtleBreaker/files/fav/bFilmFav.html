@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --t:0.8s;
+            /* --a:cubic-bezier(0.895, 0.03, 0.685, 0.22) */
+            --a:cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        @keyframes fadeIn {
+            1% {
+                transform: translateY(0);
+                opacity: 0;
+                scale: 1;
+            }
+            2% {
+                transform: translateY(900%);
+                opacity: 0.4;
+                scale: 9.9;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+                scale: 1;
+            }
+        }
+
+        #main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            >div{
+                width: 100%;
+                position: relative;
+            }
+        }
+
+        iframe, img {
+            width: 30vw;
+            /* aspect-ratio: 16/9; */
+            height: auto;
+            object-fit: cover;
+            margin: 0 auto;
+            margin-top: 100px;
+            margin-top: -100px;
+            opacity: 0; /* 初始不可见 */
+            animation: fadeIn var(--t) var(--a) forwards;
+            background-color: rgb(92, 92, 92);
+        }
+        iframe{
+            margin-top: 0;
+            aspect-ratio: 16/9;
+            width: 60vw;
+        }
+        #ctn-playlist{
+            >div{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 100px;
+                margin:0 auto;
+            }
+        }
+
+        .fade-in-element {
+            opacity: 0; /* 初始不可见 */
+            animation: fadeIn var(--t) var(--a) forwards;
+            animation-play-state: paused; /* 暂停动画 */
+        }
+
+        .fade-in-element.visible {
+            animation-play-state: running; /* 开始动画 */
+        }
+        /* 选项卡 */
+        #select{
+            -webkit-user-select: none;
+            user-select: none;
+            position: relative;
+            width: 100%;
+            height: 50px;
+            font-size: var(--selectFontSize);
+            background-color: #000000bc;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-evenly;
+            .option{
+                transition: all 0.3s ease-in-out;
+                display: block;
+                border: #000 solid 1px;
+                text-align: center;
+                width: 100%; 
+            }
+            >span[active=true]{
+                transition: all 0.3s ease-in-out;
+                background-color: rgba(172, 172, 172, 0.55);
+                /* transform: rotateX(30deg) rotateY(30deg); */
+            }
+        }
+        #backgroundCanvas{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="select">
+                <span class="option" focE="ctn-gallery" active=true>画廊</span>
+                <span class="option" focE="ctn-playlist">歌单</span>
+                <span class="option" focE="ctn-video">视频</span>
+            </div>
+        </div>
+        <!-- <canvas id="backgroundCanvas"></canvas> -->
+        <div id="ctn-gallery" class="select-ctn"></div>
+        <div id="ctn-playlist" class="select-ctn"></div>
+        <div id="ctn-video" class="select-ctn"></div>
+    </div>
+</body>
+<script>
+    function readArticle(fileName, inputAim) {
+        // 本级url
+        let url = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/';
+        console.log(url);
+        let aim = inputAim;
+        return fetch(`${url}${fileName}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                return new Promise((resolve) => {
+                    document.getElementById(aim).innerHTML = data;
+                    resolve(); // 当文档加载完毕后解决 Promise
+                });
+            })
+            .catch(error => {
+                console.error('加载文档时出错:', error);
+            });
+    }
+
+    // 作用对象
+    function setTarget() {
+        const target = ['img', 'iframe'];
+        target.forEach(function(iTarget) {
+            document.querySelectorAll(iTarget).forEach(function(item) {
+                item.setAttribute('class', 'fade-in-element');
+            });
+        });
+    }
+
+    // 选项卡
+    function setupTabs() {
+        let selectBox = document.getElementsByClassName("option");
+        let selectBoxArray = Array.from(selectBox);
+        selectBoxArray.forEach(function(item) {
+            item.addEventListener("click", function() {
+                selectBoxArray.forEach(function(item2) {
+                    item2.setAttribute("active", false);
+                });
+                item.setAttribute("active", true);
+                reloadBoxDisplay();
+            });
+        });
+    }
+
+    // 选项卡
+    function reloadBoxDisplay() {
+        // 所有ctn隐藏
+        Array.from(document.getElementsByClassName("select-ctn")).forEach(function(item) {
+            item.style.display = "none";
+        });
+        // 获得active的选项对应的focE值
+        let foc = document.querySelector(".option[active=true]").getAttribute("focE");
+        // focE值对应的元素显示
+        document.getElementById(foc).style.display = "block";
+        if (foc === "ctn-playlist") {
+            if(document.getElementById("ctn-playlist").innerHTML === "") {
+            // 歌单页面
+            let bvid = [
+                //['title', 'bvid']
+                ['4nim0sity|99.999999999%|','BV1rE421u7zo','sIyYgcWnG94'],
+                ['逃 ❗️','BV1TS421d7dZ','undefined'],
+                ['Loveit?','BV1mg4y1M7Ee','uXZkGWbyvcM'],
+                ['電子ドラッグ(笑)','BV17NpzepEz2'],
+                ['ECHO','BV1vs41197Fh'],
+                ['嬢王','BV1df421f7WB'],
+                ['キャットラビング','BV1iY411U7kL'],
+                ['ラヴィ','BV1VurpYhEpz'],
+                ['被生命所厌恶(中文填词)','BV1UkwheaE5k'],
+                ['未来的志愿书','BV16x411T7KC'],
+                ['饿殍 明末千里行','BV1Rm421W7MF'],
+                ['ロウワー','BV1qL4y1q7ky'],
+                ['フォニイ','BV1qX4y1t7u2'],
+            ];
+            
+            // document.getElementById("ctn-playlist").innerHTML = `<iframe src="https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=${bvid[0]}" allowfullscreen></iframe>`;
+            // document.getElementById("ctn-playlist").innerHTML = `<iframe src="https://www.bilibili.com/blackboard/html5player.html?aid=xxx" allowfullscreen></iframe>`;
+            // let iframe = document.querySelector("iframe");
+            // iframe.src = `https://www.bilibili.com/blackboard/html5player.html?aid=${bvid[i][1]}`;
+            for (let i = 0; i < bvid.length; i++) {
+                let div = document.createElement("div");
+                let Biliiframe = [`<iframe src="https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=`,`" allowfullscreen></iframe>`]
+                let YTiframe = [`<iframe width="560" height="315" src="https://www.youtube.com/embed/`,`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`]; 
+
+                div.innerHTML = `
+                    <div>
+                        <h2>${bvid[i][0]}</h2>
+                        ${Biliiframe[0]}${bvid[i][1]}${Biliiframe[1]}
+                        ${YTiframe[0]}${bvid[i][2]}${YTiframe[1]}
+                    </div>`;
+                document.getElementById("ctn-playlist").appendChild(div);  
+            }
+            }
+        }
+    }
+
+    // 确保在 readArticle 执行完毕之后再执行其他函数
+    readArticle('gallery.html', 'ctn-gallery')
+        .then(() => {
+            setTarget();
+            reloadBoxDisplay();
+            // console.log('文档加载完毕');
+
+            //背景绘制初始化[图片背景连接功能]:严重的性能问题
+            // const canvas = document.getElementById('backgroundCanvas');
+            // const ctx = canvas.getContext('2d');
+            // canvas.style.top = document.getElementById('ctn-gallery').offsetTop + 'px';
+            // function canvasResize() {
+            //     canvas.width = getComputedStyle(document.getElementById('ctn-gallery')).width.split('px')[0];
+            //     canvas.height = getComputedStyle(document.getElementById('ctn-gallery')).height.split('px')[0];
+            //     canvas.style.width = canvas.width + 'px';
+            //     canvas.style.height = canvas.height + 'px';
+            // }
+            // canvasResize()
+            //涉及元素位置[图片背景连接功能]
+            // window.addEventListener('resize', () => {
+            // canvasResize()
+            // drawCurves();  // 重新绘制曲线
+            // });
+            // 线条样式[图片背景连接功能]
+            // ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+            // ctx.lineWidth = 3;
+            // ctx.fillStyle = 'rgba(255, 255, 0)';
+            // ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // debugger
+            //调试背景位置和大小
+            // 绘制连接所有元素的曲线[图片背景连接功能]
+        //     function drawCurves() {
+        //     ctx.clearRect(0, 0, canvas.width, canvas.height); // 清除旧的曲线
+        //     for (let i = 0; i < elementPositions.length - 1; i++) {
+        //         const start = elementPositions[i];
+        //         const end = elementPositions[i + 1];
+        //         // const start = elementPositions.pop();
+        //         // const end = elementPositions.pop();
+
+        //         ctx.beginPath();
+        //         ctx.moveTo(start.x, start.y); // 起点
+
+        //         // 使用贝塞尔曲线连接两个元素
+        //         const controlPointX = (start.x + end.x) / 2;
+        //         const controlPointY = Math.min(start.y, end.y) - 100; // 控制点调整弯曲度
+
+        //         ctx.bezierCurveTo(controlPointX, controlPointY, controlPointX, controlPointY, end.x, end.y); // 曲线
+        //         ctx.stroke();
+        //     }
+        // }
+            // 初始化效果函数
+            const elements = document.querySelectorAll('.fade-in-element');
+            // 元素位置数组
+            const elementPositions = [];
+            // 监听元素进入视口
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                // 记录进入视口的元素位置[图片背景连接功能]
+                //     const rect = entry.target.getBoundingClientRect();
+                //     elementPositions.push({
+                //     x: rect.left + rect.width / 2, // 水平居中的坐标
+                //     y: rect.top + rect.height / 2,  // 垂直居中的坐标
+                // });
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // canvasResize()[图片背景连接功能]
+                        // drawCurves();[图片背景连接功能]
+                    }
+                });
+            }, {
+                threshold: 0.01 // 当元素进入视口的1%时触发
+            });
+
+            elements.forEach((element) => {
+                observer.observe(element);
+            });
+
+            // 随机偏移
+            
+            document.querySelectorAll('img')[0].style.marginTop = 100 + 'px';
+            document.querySelectorAll('img').forEach(function(item) {
+            item.addEventListener('load', function() {
+                // alert('图片开始加载');
+                console.log(item.clientHeight);
+                if (item.clientHeight < window.innerHeight*0.5) {
+                    item.style.width = '70vw';
+                }
+                // 默认居中
+                item.style.marginLeft = window.innerWidth / 2 - item.offsetWidth / 2 + 'px';
+                // 随机偏移
+                item.style.marginLeft = Math.floor(Math.random() * (window.innerWidth - (1 * item.offsetWidth))) + 'px';
+                });
+            });
+            document.querySelectorAll('img').forEach(function(item) {
+                // // 默认居中
+                // item.style.marginLeft = window.innerWidth / 2 - item.offsetWidth / 2 + 'px';
+                // // 随机偏移
+                // item.style.marginLeft = Math.floor(Math.random() * (window.innerWidth - (1 * item.offsetWidth))) + 'px';
+            });
+
+            // 初始化选项卡
+            setupTabs();
+        })
+        .catch(error => {
+            console.error('加载文档时出错:', error);
+        });
+</script>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YanjerExpender</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #4CAF50;
+            background-image: url(./files/img/background/);
+            background-size: cover;
+            background-position: static;
+            background-repeat: no-repeat;
+        }
+        dialog{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.774);
+            z-index: 9999;
+            color: rgb(0, 0, 0);
+            border: #4CAF50 2px solid;
+            border-radius: 20px;
+        }
+        .btn{
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+    <dialog open>
+        <div>
+            <span>选择要加载的扩展功能: </span>
+            <button id="YanjerSearch" class="btn">鄢桀搜-YanjerSearch</button>
+            <button id="YanjerUnicodeCharacter" class="btn">Unicode字符生成器-YanjerUnicodeCharacter</button>
+        </div>
+    </dialog>
+</body>
+    <script>
+    //randomBg
+    {
+        let imgs = [
+            '102812882_p0_master1200.jpg',
+            '103666558_p0_master1200.jpg',
+            '107034113_p0.png',
+            '113131009_p2.jpg',
+            '113761723_p1.jpg',
+            '113761723_p2.jpg',
+        ]
+        let randomImg = imgs[Math.floor(Math.random() * imgs.length)];
+        document.body.style.backgroundImage = `url(./files/img/background/${randomImg})`
+    }
+    //mian
+    {
+        let btn = Array.from(document.getElementsByClassName("btn"))
+        btn.forEach(e => {
+            e.addEventListener("click", function() {
+                let eScript = document.createElement('script');
+                let foc = e.getAttribute("id")
+                eScript.src = `./files/expend/${foc}/main.js`;
+                document.querySelector('body').append(eScript)
+                // document.querySelector('html').append(eScript)
+                //发现神奇小特性  如果在body里插入script执行 最后浏览器检查会找不到script标签 但是不影响js功能执行           
+            })
+        })
+    }
+    </script>
+</html>
