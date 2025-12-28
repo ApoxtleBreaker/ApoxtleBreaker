@@ -1,0 +1,239 @@
+/* 玻璃拟态主题 - 背景图片 + 毛玻璃效果 */
+[data-theme="glassmorphism"] {
+    /* 背景设置 - 使用图片背景 */
+    --bgImage: url('../../../../assets/img/BG/enGu1.png'); /* 默认背景图片 */
+    --bgImageFallback: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 备用渐变 */
+    
+    /* 毛玻璃效果 */
+    --glassBg: rgba(255, 255, 255, 0.15);
+    --glassBgHover: rgba(255, 255, 255, 0.25);
+    --glassBorder: rgba(255, 255, 255, 0.2);
+    --glassBorderHover: rgba(255, 255, 255, 0.3);
+    --glassShadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --glassShadowHover: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --glassBlur: blur(12px);
+    --glassBlurHover: blur(16px);
+    
+    /* 文本颜色 - 适配背景图片 */
+    --textPrimary: #ffffff;
+    --textSecondary: rgba(255, 255, 255, 0.8);
+    --textAccent: rgba(255, 255, 255, 0.95);
+    --textWhite: #ffffff;
+    
+    /* 背景颜色 - 玻璃效果 */
+    --bgPrimary: rgba(255, 255, 255, 0.1);
+    --bgSecondary: rgba(255, 255, 255, 0.15);
+    --bgTertiary: rgba(255, 255, 255, 0.05);
+    
+    /* 边框颜色 - 玻璃效果 */
+    --borderLight: rgba(255, 255, 255, 0.2);
+    --borderMedium: rgba(255, 255, 255, 0.3);
+    --borderDark: rgba(255, 255, 255, 0.4);
+    
+    /* 阴影效果 - 柔和的投影 */
+    --shadowLight: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadowMedium: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --shadowHeavy: 0 12px 48px rgba(0, 0, 0, 0.2);
+    --shadowButton: 0 6px 24px rgba(0, 0, 0, 0.2);
+    --shadowTag: 0 4px 16px rgba(255, 255, 255, 0.1);
+    
+    /* 按钮样式 - 扁平化设计 */
+    --btnPrimaryBg: rgba(76, 175, 80, 0.8);
+    --btnPrimaryHover: rgba(76, 175, 80, 0.9);
+    --btnSecondaryBg: rgba(33, 150, 243, 0.8);
+    --btnSecondaryHover: rgba(33, 150, 243, 0.9);
+    --btnWarningBg: rgba(255, 152, 0, 0.8);
+    --btnWarningHover: rgba(255, 152, 0, 0.9);
+    --btnDangerBg: rgba(244, 67, 54, 0.8);
+    --btnDangerHover: rgba(244, 67, 54, 0.9);
+    
+    /* 圆角 - 更柔和的曲线 */
+    --radiusSmall: 8px;
+    --radiusMedium: 12px;
+    --radiusLarge: 16px;
+    --radiusXLarge: 24px;
+    --radiusRound: 50%;
+    --radiusCircle: 50%;
+    
+    /* 间距 - 保持舒适 */
+    --spaceXS: 4px;
+    --spaceSM: 8px;
+    --spaceMD: 12px;
+    --spaceLG: 16px;
+    --spaceXL: 20px;
+    --spaceXXL: 24px;
+    --spaceXXXL: 32px;
+    --spaceXLG: 40px;
+    
+    /* 字体大小 - 清晰可读 */
+    --fontXS: 0.85em;
+    --fontSM: 0.95em;
+    --fontMD: 1em;
+    --fontLG: 1.1em;
+    --fontXL: 1.6em;
+    --fontXXL: 1.8em;
+    --fontXXXL: 2.2em;
+    
+    /* 错误状态 - 半透明效果 */
+    --errorBg: rgba(244, 67, 54, 0.15);
+    --errorText: rgba(255, 255, 255, 0.9);
+    
+    /* 加载状态 */
+    --loadingColor: rgba(255, 255, 255, 0.7);
+    --loadingSpinner: rgba(255, 255, 255, 0.9);
+}
+
+/* 玻璃拟态主题的额外样式 */
+[data-theme="glassmorphism"] body {
+    background-image: var(--bgImage);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* 背景遮罩层 - 增加对比度 */
+[data-theme="glassmorphism"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: var(--glassBlur);
+    z-index: -1;
+}
+
+/* 玻璃卡片效果 */
+[data-theme="glassmorphism"] .container,
+[data-theme="glassmorphism"] .stat-card,
+[data-theme="glassmorphism"] .categories-section,
+[data-theme="glassmorphism"] .tags-section {
+    background: var(--glassBg);
+    backdrop-filter: var(--glassBlur);
+    border: 1px solid var(--glassBorder);
+    box-shadow: var(--glassShadow);
+}
+
+/* 悬停效果 */
+[data-theme="glassmorphism"] .stat-card:hover,
+[data-theme="glassmorphism"] .category-item:hover,
+[data-theme="glassmorphism"] .tag-item:hover {
+    background: var(--glassBgHover);
+    backdrop-filter: var(--glassBlurHover);
+    border-color: var(--glassBorderHover);
+    box-shadow: var(--glassShadowHover);
+}
+
+/* 按钮玻璃效果 */
+[data-theme="glassmorphism"] .btn-primary {
+    background: var(--btnPrimaryBg);
+    border: 1px solid var(--glassBorder);
+    backdrop-filter: var(--glassBlur);
+}
+
+[data-theme="glassmorphism"] .btn-primary:hover {
+    background: var(--btnPrimaryHover);
+}
+
+[data-theme="glassmorphism"] .btn-secondary {
+    background: var(--btnSecondaryBg);
+    border: 1px solid var(--glassBorder);
+    backdrop-filter: var(--glassBlur);
+}
+
+[data-theme="glassmorphism"] .btn-secondary:hover {
+    background: var(--btnSecondaryHover);
+}
+
+[data-theme="glassmorphism"] .btn-warning {
+    background: var(--btnWarningBg);
+    border: 1px solid var(--glassBorder);
+    backdrop-filter: var(--glassBlur);
+}
+
+[data-theme="glassmorphism"] .btn-warning:hover {
+    background: var(--btnWarningHover);
+}
+
+[data-theme="glassmorphism"] .btn-danger {
+    background: var(--btnDangerBg);
+    border: 1px solid var(--glassBorder);
+    backdrop-filter: var(--glassBlur);
+}
+
+[data-theme="glassmorphism"] .btn-danger:hover {
+    background: var(--btnDangerHover);
+}
+
+/* 分类和标签的玻璃效果 */
+[data-theme="glassmorphism"] .category-item {
+    background: var(--glassBg);
+    backdrop-filter: var(--glassBlur);
+    border: 1px solid var(--glassBorder);
+}
+
+[data-theme="glassmorphism"] .tag-item {
+    background: var(--glassBg);
+    backdrop-filter: var(--glassBlur);
+    border: 1px solid var(--glassBorder);
+}
+
+/* 标题文字效果 */
+[data-theme="glassmorphism"] .header h1 {
+    background: none;
+    -webkit-text-fill-color: var(--textPrimary);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+[data-theme="glassmorphism"] .section-title {
+    color: var(--textPrimary);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 数字和文字的高对比度 */
+[data-theme="glassmorphism"] .stat-card .number,
+[data-theme="glassmorphism"] .category-name,
+[data-theme="glassmorphism"] .category-count,
+[data-theme="glassmorphism"] .tag-item {
+    color: var(--textPrimary);
+    font-weight: 500;
+}
+
+[data-theme="glassmorphism"] .stat-card .label,
+[data-theme="glassmorphism"] .header p {
+    color: var(--textSecondary);
+}
+
+/* 错误信息玻璃效果 */
+[data-theme="glassmorphism"] .error-message {
+    background: var(--errorBg);
+    color: var(--errorText);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    backdrop-filter: var(--glassBlur);
+}
+
+/* 加载动画适配 */
+[data-theme="glassmorphism"] .loading {
+    color: var(--loadingColor);
+}
+
+[data-theme="glassmorphism"] .loading::after {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid var(--loadingSpinner);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    [data-theme="glassmorphism"] {
+        --radiusSmall: 6px;
+        --radiusMedium: 10px;
+        --radiusLarge: 14px;
+        --radiusXLarge: 20px;
+        --fontXXXL: 1.8em;
+        --fontXL: 1.4em;
+    }
+}

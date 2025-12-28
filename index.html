@@ -3,248 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鄢桀蚀荼的个人主页-YanjerTS HomePage</title>
-    <link rel="icon" href="./files/img/logo/🐢.png">
-    <link rel="stylesheet" href="./files/main/main.css">
+    <title>HomePage</title>
+    <link id="css" rel="stylesheet" href="./assets/css/index.css">
+    <script src="./src/js/-init.js"></script>
 </head>
 <body>
-    <!-- 弹窗开屏欢迎 即时删除 -->
-    <!-- <dialog id="coverBg" open> -->
-    <dialog id="coverBg">
-        <div>
-            <div id="welcomeText">
-                <!-- (shǐtú) -->
-                <h1><span>yān</span>鄢<span>jié</span>桀<span>shí</span>蚀<span>tú</span>荼-YanjerTS</h1>
-                <h1>Welcome to my websites<img src="./files/img/logo/APER.png" alt=""></h1>
-            </div>
-        </div>
-    </dialog>
-    <!-- 背景 -->
-    <div id="bg"></div>
-    <!-- MC小人 -->
-    <chr id="minecraftSkin">
-        <img src="./files/img/logo/YanjerTS - 🐢 .png" alt="">
-    </chr>
-    <!-- 主要内容 -->
-    <div id="mainBox">
-        <!-- 个人简介 -->
-         <!--
-            |头像| |信息
-            ----- |信息
-            个签   |信息
-            主联   |信息        
-         -->
-         <div id="YanjerBox">
-            <!-- 左侧box -->
-            <div id="YanjerBoxChild1">
-                <!-- 头像 -->
-                <div id="YanjerHead"><img src="./files/YanjerTS/head.jpg" alt=""></div>
-                <!-- 头像框 -->
-                <div id="YanjerHeadCover"></div>
-                <span id="YanjerTS">鄢桀蚀荼</span>
-                <!-- 个签 -->
-                <div id="YanjerCard">
-                    <h2>成<kami>神</kami>之路并无真理</h2>
-                    <h2><kami>神</kami>的旨意即是真理</h2>
-                </div>
-                <!-- 联系 -->
-                <div id="YanjerConnect">
-                  <span>
-                    <span style="height: 100%; display: inline-block; margin: 0 1em;">
-                        <svg style="height:100%;width:100%;" fill="#000" t="1734968099929" class="icon" viewBox="0 0 2299 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6050" width="200" height="200"><path d="M1775.840814 322.588002c6.0164 1.002733 53.144869-9.525967 55.150336-6.016401 3.0082 4.5123 24.065601 155.92504 18.550567 156.927774s-44.621635 10.027334-44.621635 10.027334c-3.0082-20.556034-28.577901-147.903173-29.079268-160.938707m75.205003-14.539634l20.556034 162.944174c10.5287-0.501367 53.144869-3.509567 57.155803-4.010934-6.0164-61.668103-16.545101-158.933241-16.545101-158.93324-20.054668-4.010934-41.112069-4.010934-61.166736 0m-40.610702 226.116376s92.752838-23.564234 126.344406-12.0328c17.046467 61.668103 48.131202 407.611118 51.139402 421.649386-21.057401 2.506833-90.246004 8.523234-95.761037 10.027333-4.5123-26.071068-81.72277-403.098818-81.722771-419.643919m343.436183-207.565809c5.515034 1.5041 54.648969-5.013667 55.150335-1.5041 1.002733 12.032801 6.0164 157.42914 0.501367 157.930507s-44.621635 4.010934-44.621635 4.010934c-1.002733-20.054668-12.032801-146.90044-11.030067-160.437341m75.70637-4.010933l4.010933 160.938707c10.5287 0 52.643502 2.506833 57.155803 2.005467-1.002733-61.668103 0-158.933241 0-158.933241-20.054668-3.509567-40.610702-5.013667-61.166736-4.010933m-64.676303 216.089043s94.758304-12.534167 126.845772 2.506833c7.019134 72.196803 6.0164 408.613852 7.019134 422.652119-21.558768 0-90.246004 1.002733-95.761038 2.005467-1.002733-26.071068-39.607968-410.619319-38.103868-427.164419m-220.099977-413.627519c54.648969 278.759879 96.262404 755.058234 97.766504 785.641602 0 0 43.117535 1.002733 91.750105 4.010934C2105.740095 614.383415 2070.644427 134.575493 2071.145794 119.033126c-12.032801-13.536901-126.344406 6.0164-126.344406 6.0164m-120.328005 659.297196c-10.5287-78.213204-290.291313-166.955108-447.720454-138.377206 0 0-19.553301-172.470141-27.073801-339.425248-6.517767-143.390873-1.002733-282.770813 0.501366-305.833681-10.5287-7.5205-123.837572 46.627102-185.004308 69.188603 0 0 73.199537 309.844614 126.344406 952.59671 0 0 84.730971 9.0246 230.12731-19.051934s317.365114-115.815705 302.825481-219.097244m-341.932083 140.88404l-24.566967-176.982441c6.0164-3.0082 156.927774 53.144869 172.971507 63.172203-2.506833 11.030067-148.40454 113.810238-148.40454 113.810238M610.664628 322.588002c6.0164 1.002733 53.144869-9.525967 55.150335-6.016401 3.0082 4.5123 24.065601 155.92504 18.550568 156.927774s-44.621635 10.027334-44.621635 10.027334c-3.0082-20.556034-28.577901-147.903173-29.079268-160.938707m75.205003-14.539634l20.556034 162.944174c10.5287-0.501367 53.144869-3.509567 57.155803-4.010934-6.517767-61.668103-16.545101-158.933241-16.545101-158.93324-20.054668-4.010934-41.112069-4.010934-61.166736 0m-40.610702 226.116376s92.752838-23.564234 126.344406-12.0328c17.046467 61.668103 48.131202 407.611118 51.139402 421.649386-21.057401 2.506833-90.246004 8.523234-95.761037 10.027333-4.5123-26.071068-81.72277-403.098818-81.722771-419.643919m343.436182-207.565809c5.515034 1.5041 54.648969-5.013667 55.150336-1.5041 1.002733 12.032801 6.0164 157.42914 0.501367 157.930507s-44.621635 4.010934-44.621635 4.010934c-1.002733-20.054668-11.531434-146.90044-11.030068-160.437341m75.706371-4.010933l4.010933 160.938707c10.5287 0 52.643502 2.506833 57.155803 2.005467-1.002733-61.668103 0-158.933241 0-158.933241-20.054668-3.509567-40.610702-4.5123-61.166736-4.010933m-64.676303 216.089043s94.758304-12.534167 126.845772 2.506833c7.019134 72.196803 6.0164 408.613852 7.019134 422.652119-21.558768 0-90.246004 1.002733-95.761038 2.005467-0.501367-26.071068-39.607968-410.619319-38.103868-427.164419m-220.099977-413.627519c54.648969 278.759879 96.262404 755.058234 97.766504 785.641602 0 0 43.117535 1.002733 91.750105 4.010934-28.577901-300.318647-63.67357-780.126569-63.172203-796.170303-12.032801-13.035534-126.344406 6.517767-126.344406 6.517767m-120.328005 659.297196c-10.5287-78.213204-290.291313-166.955108-447.720454-138.377206 0 0-19.553301-172.470141-27.073801-339.425248-6.517767-143.390873-1.002733-282.770813 0.501366-305.833681C174.475608-6.308547 61.166736 47.337689 0 69.89919c0 0 73.199537 309.844614 126.344406 952.59671 0 0 84.730971 9.0246 230.12731-19.051934s317.365114-115.815705 302.825481-219.097244m-341.932083 140.88404l-24.566967-176.982441c6.0164-3.0082 156.927774 53.144869 172.971507 63.172203-2.506833 11.030067-148.40454 113.810238-148.40454 113.810238" p-id="6051"></path></svg>
-                    </span>
-                    <a href="https://space.bilibili.com/1979641484" target="_blank">BiliBili</a>
-                  </span>
-                  <span>
-                    <span style="height: 100%; display: inline-block; margin: 0 1em;">
-                        <svg style="width:100%;height:100%;" fill="#000" t="1734967847945" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4242" width="200" height="200"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" p-id="4243"></path></svg>
-                    </span>
-                    <a href="https://github.com/ApoxtleBreaker" target="_blank">GitHub</a>
-                  </span>
-                </div>
-            </div>
-            <div id="YanjerBoxChild2">
-                <div id="YanjerInfo"></div>
-            </div>
-         </div>
-         <!-- b站代表作 -->
-        <div id="bWork">
-            <span id="bSeriesALL">B站合集(查看全部)<img src="./files/img/bWork/gameCover/" alt=""></span>
-            <div id="OtakusAdventure" class="bSeries">
-                <span class="title"></span>
-                <span class="cover"></span>
-            </div>
-            <div id="TrueLoveConfidetotheMaple" class="bSeries">
-                <span class="title"></span>
-                <span class="cover"></span>
-            </div>
-            <div id="TricolourLovestory" class="bSeries">
-                <span class="title"></span>
-                <span class="cover"></span>
-            </div>
-            <div id="ConspiracyFieldFogShadow" class="bSeries">
-                <span class="title"></span>
-                <span class="cover"></span>
-            </div>
-            <div id="TheHungryLambTravelingintheLateMingDynasty" class="bSeries">
-                <span class="title"></span>
-                <span class="cover"></span>
-            </div>
-            <div id="ConspiracyFieldSnowTrap" class="bSeries">
-                <span class="title"></span>
-                <span class="cover"></span>
-            </div>
-        </div>
-        <!-- 扩展 -->
-        <div id="extraBoard">
-            <div id="expend">
-                <button>扩展功能合集</button>
-            </div>
-            <div id="bFilmFav">
-                <button>视频收藏画廊</button>
-            </div>
-        </div>
-         <!-- 选择内容提示词 -->
-        <div id="selectNotice"></div>
-        <div id="selectMain">
-            <!-- 选择 -->
-            <div id="select">
-                <span class="option" focE="ctn-notice" active=true>公告</span>
-                <span class="option" focE="ctn-personalSpace">个人空间</span>
-                <span class="option" focE="ctn-favourite">收藏夹</span>
-                <span class="option" focE="ctn-film" >追番</span>
-                <span class="option" focE="ctn-vtuber">喜欢的V</span>
-            </div>
-            <!-- 番剧 -->
-            <div id="ctn-film" class="select-ctn">
-                <!-- 仅用于获得url 即时删除 -->
-                <img src="./files/img/filmCover/" alt="">
-                <div class="film" foc="彻夜之歌"></div>
-                画风不是很习惯但是喜欢,一天看完,又是一个很多角色都喜欢的作品(绿,芹,明),虽然多数吸血鬼以诱骗为目的,但是外貌画风喜欢,另外感觉自己和男主很像又不一样
-                <div class="film" foc="前辈是男孩子"></div>
-                看切片感兴趣去看的,本以为会是男娘男主和女主的奇妙恋爱之旅,结果是男娘男主和基友和女主的互相救赎之旅
-                <div class="film" foc="无职转生ⅡPart2"></div>
-                连着看了好几晚看完了,依旧意犹未尽期待第三季,感觉洛琪希前面爱而不得很可怜,但是为了变强保护鲁迪的艾莉丝却被误解,觉得更可怜,可惜;
-                如果可以,我又何尝不想无职转生呢
-                <div class="film" foc="无职转生ⅡPart1"></div>
-                同情堕落的男主,试图用新的去遗忘旧的感觉很渣,但毕竟是上帝视角不能妄下定论,相较而言不太喜欢希露菲叶特,喜欢执着回家的高中少女七星静香,那首特殊ed'ツバサ'特别喜欢,声音也好听
-                <div class="film" foc="无职转生"></div>
-                因为洛琪希来看的番,前期很喜欢洛琪希,在分离之后就不想再看下去了,但是继续看后又因为漫长的经理喜欢上艾莉丝,大小姐的傲娇经过一路上的磨砺的成长,对洛琪希算见色起意,艾莉丝日久生情?
-                <div class="film" foc="不时用俄语小声说真心话的邻桌艾莉同学"></div>
-                剧情前期喜欢,后期有点看不下去,画风很喜欢,每个角色在这种画风下都好看,喜欢妹妹外在的优雅和内在的可爱,不过最后的目的本性暴露有点可怕.除此之外还有乃乃亚,虽然恋爱不可能有结果,但是喜欢这个配音和这种性格吧(意外的经常喜欢奇怪的性格)
-                <div class="film" foc="恋爱随意链接"></div>
-                通过名场面去看的超老番,有点青猪的唯心超自然设定,连着几晚看完的,剧情不错,每次转折都意料之外,喜欢稻叶姬子,有点反差萌,和我差不多的方法论,一样难以信任所有人,不过我不为此愧疚,女主反而变成形单影只那个,这个我真的没感觉
-                <div class="film" foc="通往夏天的隧道，离别的出口"></div>
-                也是看过一个片段后去看的,剧情还可以,不过据说不如小说写的清楚,后期的发展主观看来有点奇怪
-                <div class="film" foc="莉可丽丝"></div>
-                没看完 就看了前几集,对这种剧情不太感兴趣,但是喜欢井上泷奈
-                <div class="film" foc="终结的炽天使：名古屋决战篇"></div>
-                不太喜欢结局,感觉剧情很刀,而且动画设定上很多空缺,好多设定和前传还得看漫画
-                <div class="film" foc="终结的炽天使"></div>
-                早就看过柊筱娅,费娘,克鲁鲁的切片,很晚才看完整版,世界观下吸血鬼和人类不分正邪,但是我更喜欢吸血鬼一点,那种优雅的战斗和能力,挺磕米伽和优一郎
-                <div class="film" foc="青春猪头少年不会梦到圣诞服女郎"></div>
-                还没找到发布的片源,占位期待一下
-                <div class="film" foc="青春猪头少年不会梦到红书包女孩"></div>
-                本来以为是和麻衣童年有关的内容,结果最后是对于男主自己的救赎,剧场版以来牧之原翔子,梓川枫,梓川咲太估计下一个是麻衣了,什么时候有我双叶的剧场版啊,没看过漫画,感觉没戏,双叶的救赎在正片已经差不多了
-                <div class="film" foc="青春猪头少年不会梦到外出娇怜妹"></div>
-                第一季的时候最后妹妹的内容狠狠的刀了一下,不过比起极度兄控的花枫,正常的妹妹枫更习惯一点吧,校园暴力会带来的阴影很深,所以我才有学校里不近外人不交友的习惯吧
-                <div class="film" foc="青春猪头少年不会梦到怀梦美少女"></div>
-                第一遍顺序看错看的这个,好多角色看的莫名其妙,大脑cpu过载,后来再看觉得逻辑上很扯,不过我不懂量子力学之类的就当合理吧,对于初中时救赎咲太的牧之原翔子这种设定没什么感觉,不过也是她的契机之下才认识其他这些人的,最后结局挺感动的
-                <div class="film" foc="青春猪头少年不会梦到野生兔女郎"></div>
-                最早也只是慕名而看,顺序看错了先看的剧场版1,最喜欢的是同为INTP的双叶理央,不幸的童年遭遇,相似的脑回路,一样的逻辑方式和行为方式,喜欢实验服,我不在乎麻衣的人妻感女友力,双叶理央对咲太的你需要我就在,和在你之后也想着帮助你更让我喜欢
-                <div class="film" foc="孤独摇滚"></div>
-                本来只是随波逐流看的,但是过程中喜欢上这种乐队的感觉,自己和波奇差不多,希望遇到那种朋友还成立乐队的美好幻想吧,连着看了好几遍,喜欢温柔的虹夏,但是最喜欢的还是符合自己性格的凉,更喜欢独处
-                <div class="film" foc="比翼之吻"></div>
-                小学6年级的时候就开始火,最早还是在爱奇艺看完的,虽然都喜欢02,但是感觉更喜欢015莓一点,就算败犬我也喜欢
-                
-                <!-- 美剧
-                <div class="film" foc="梦魇绝镇"></div>
-                港澳台
-                <div class="film" foc="周处除三害"></div> -->
-
-                
-            </div>  
-            <!-- 即时删除 -->
-            <img id="vtbUrl" src="./files/img/Vtuber/" alt="">
-
-            <div id="ctn-vtuber" class="select-ctn">
-                <div class="vtuber" foc="恩骨">
-                    <span class="head">
-                    <!-- <span>头像图片bg</span> -->
-                    </span>
-                    <span class="name" 恩骨></span>
-                    <span class="chr">
-                        <img src="./files/img/Vtuber/chr/恩骨头图.png" alt="">
-                    </span>
-                </div>
-                <div   div class="vtuber" foc="东雪莲">
-                    <span class="head">
-                    <!-- <span>头像图片bg</span> -->
-                    </span>
-                    <span class="name" 东雪莲></span>
-                    <span class="chr">
-                        <img src="./files/img/Vtuber/chr/800px-東雪蓮20w粉纪念新衣服.png" alt="">
-                    </span>
-                </div>
-                <div class="vtuber" foc="甘城なつき">
-                    <span class="head">
-                    <!-- <span>头像图片bg</span> -->
-                    </span>
-                    <span class="name" 甘城なつき long></span>
-                    <span class="chr">
-                        <img src="./files/img/Vtuber/chr/800px-NachoNekoDefault1.png" alt="">
-                    </span>
-                </div>
-                <div class="vtuber" foc="神楽七奈">
-                    <span class="head">
-                    <!-- <span>头像图片bg</span> -->
-                    </span>
-                    <span class="name" 神楽七奈 long></span>
-                    <span class="chr">
-                        <img src="./files/img/Vtuber/chr/狗妈全身像.png" alt="">
-                    </span>
-                </div>
-                <div class="vtuber" foc="るるどらいおん">
-                    <span class="head">
-                    <!-- <span>头像图片bg</span> -->
-                    </span>
-                    <span class="name" るるどらいおん verylong></span>
-                    <span class="chr">
-                        <img src="./files/img/Vtuber/chr/Rurudo_Full_Body.png" alt="">
-                    </span>
-                </div>
-            </div>
-            <!-- 收藏夹 -->
-             <div id="ctn-favourite" class="select-ctn"></div>
-            <!-- 个人空间 -->
-            <div id="ctn-personalSpace" class="select-ctn"></div>      
-            <!-- 公告 -->
-             <div id="ctn-notice" class="select-ctn"></div>
-        </div>
+    <bg></bg>
+    <!-- 主窗口 -->
+    <div class="main-container" id="mainContainer">
+        <img src="./assets/img/head.jpg" alt="头像" class="avatar">
+        <div class="motto">人活着，只求享受，享受这物欲横流，感情纷繁的世界。</div>
+        <div id="backup">_旧版网站(部分功能失效)_</div>
     </div>
-    
 
-    <!-- 喜欢的番剧 -->
-     <!-- 番和剧 -->
-     <!-- 喜欢的V -->
-      <!--  -->
-     <!-- 声明:对V的看法仅限于皮套和皮套上的某些设定 对中之人和现实中一切不感兴趣 -->
-      <!-- 不喜欢看直播 只看切片 -->
-       <!-- 日V -->
-        <!-- rurudo_lion -->
-         <!-- 神乐七奈 -->
-          <!-- 甘城 -->
-       <!-- 东雪莲 -->
-        <!-- 中V -->
-        <!-- 恩骨 -->
+
+    <div class="sub-container" id="subContainer">
+            <!-- 大横幅区域 -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-title">欢迎来到>我的世界<</h1><!-- (后续加特殊效果) -->
+            <p class="hero-subtitle">我的各种爱好都在这里</p>
+            <div class="hero-actions">
+                <button class="btn-primary">了解更多</button>
+                <button class="btn-secondary">联系我</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="./assets/img/绯离鄢/1.png" alt="横幅图片">
+        </div>
+    </section>
+
+    <!-- 小分区区域 -->
+    <section class="feature-grid">
+        <div id="article-icon" class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>文章合集</h3>
+            <p>QQ空间一样的记录啦</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>生活感悟</h3>
+            <p>分享生活中的点点滴滴和人生感悟</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>游戏世界</h3>
+            <p>探索游戏世界的精彩故事和体验</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>读书笔记</h3>
+            <p>记录阅读过程中的思考和收获</p>
+        </div>
+    </section>
+
+        <!-- 小分区区域 -->
+    <section class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3>人物画廊</h3>
+            <p>看过的作品中一些特殊印象的人物</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>生活感悟</h3>
+            <p>分享生活中的点点滴滴和人生感悟</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>游戏世界</h3>
+            <p>探索游戏世界的精彩故事和体验</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>读书笔记</h3>
+            <p>记录阅读过程中的思考和收获</p>
+        </div>
+    </section>
+
+    <!-- 文章展示区域 -->
+                                                        <section class="article-section">
+        <h2 class="section-title">最新文章</h2>
+        <div class="article-grid">
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="./assets/img/head.jpg" alt="文章配图">
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">长安的荔枝二刷看哭了</h3>
+                    <p class="article-excerpt"><i>本来半个月之前刷视频看到了长安的荔枝的解说 没细看</i><div><i>后来语文老师给我们放了 但是只放了前半个...</p>
+                    <div class="article-meta">
+                        <span class="article-date">2025-12-26</span>
+                        <span class="article-tag">日常</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="./assets/img/head.jpg" alt="文章配图">
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">圣诞节快乐</h3>
+                    <p class="article-excerpt"><font size="7"><i>M</i><u><b>er</b>r</u>y</font> <font size=...</p>
+                    <div class="article-meta">
+                        <span class="article-date">2025-12-25</span>
+                        <span class="article-tag">日常</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    </div>
+
 </body>
-<script>
-    // let mianUrl = window.location.href.split('index.html')[0];
-    console.log(mianUrl);
-    setTimeout(() => {
-        console.clear();
-    }, 1000);
-</script>
-<script src="./files/main/main.js"></script>
-<script src="./files/main/fun.js"></script>
-</html>
+</html

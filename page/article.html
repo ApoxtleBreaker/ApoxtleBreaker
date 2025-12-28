@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章合集 - 动态加载</title>
+    <link rel="stylesheet" href="./css/article.css">
+    <link rel="stylesheet" href="../assets/css/imgBg.css">
+</head>
+<body>
+    <!-- 背景遮罩 -->
+    <div class="bg-overlay"></div>
+    
+    <!-- 头部导航 -->
+    <header class="header blur2 white">
+        <div class="header-content" id="headerContent">
+            <a href="../index.html" class="back-btn">← 返回主页</a>
+            <h1 class="page-title">文章合集</h1>
+            <div class="header-actions">
+                <button class="filter-btn" id="filterBtn">筛选</button>
+                <button class="search-btn" id="searchBtn">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 筛选面板 -->
+    <div class="filter-panel" id="filterPanel">
+        <div class="filter-content">
+            <span class="filter-label">分类：</span>
+            <button class="filter-tag active" data-category="all">全部</button>
+            <button class="filter-tag" data-category="tech">技术</button>
+            <button class="filter-tag" data-category="life">生活</button>
+            <button class="filter-tag" data-category="thought">思考</button>
+            <button class="filter-tag" data-category="travel">旅行</button>
+            <button class="filter-tag" data-category="reading">读书</button>
+        </div>
+    </div>
+
+    <!-- 搜索面板 -->
+    <div class="search-panel" id="searchPanel">
+        <div class="search-content">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索文章标题或内容...">
+            <button class="search-submit" id="searchSubmit">搜索</button>
+        </div>
+    </div>
+
+    <!-- 文章容器 -->
+    <div class="article-container">
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            <div class="article-list" id="articleList">
+                <!-- 文章将通过JavaScript动态加载 -->
+            </div>
+        </div>
+        
+        <!-- 加载更多 -->
+        <div class="load-more">
+            <button class="load-more-btn" id="loadMoreBtn">加载更多</button>
+        </div>
+    </div>
+
+    <!-- 文章详情弹窗 -->
+    <div class="article-modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-meta" id="modalMeta"></div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-actions">
+                <button class="modal-btn" id="shareBtn">分享</button>
+                <button class="modal-btn" id="likeBtn">点赞</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script src="js/article-data.js"></script>
+    <script src="js/article-static-loader.js"></script>
+</body>
+</html>

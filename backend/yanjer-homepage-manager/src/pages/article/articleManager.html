@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创作者中心 - 文章管理</title>
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-light: #95a5a6;
+            --bg-white: rgba(255, 255, 255, 0.95);
+            --bg-light: rgba(248, 249, 250, 0.8);
+            --border-color: #e9ecef;
+            --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.2);
+            --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* 玻璃拟态效果 */
+        .blur2 {
+            background: var(--bg-white);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .white {
+            color: var(--text-primary);
+        }
+
+        /* 背景遮罩 */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: -1;
+        }
+
+        /* 头部导航 */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: var(--shadow-light);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .back-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(-2px);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 10px rgba(65, 65, 65, 0.3);
+        }
+
+        .new-article-btn {
+            padding: 10px 20px;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .new-article-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* 统计面板 */
+        .stats-panel {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 筛选栏 */
+        .filter-bar {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 8px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            padding: 8px 15px;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* 文章列表容器 */
+        .article-list-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 文章项目 */
+        .article-item {
+            background: var(--bg-white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .article-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .article-category {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .tag-item {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .article-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            width: 50px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+        }
+
+        .stat-input:hover {
+            border-bottom-color: var(--primary-color);
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .stat-input:focus {
+            outline: none;
+            border-bottom-color: var(--primary-color);
+            background: rgba(102, 126, 234, 0.1);
+            cursor: text;
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            border: 2px solid;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .btn-edit {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-edit:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn-delete {
+            border-color: var(--danger-color);
+            color: var(--danger-color);
+        }
+
+        .btn-delete:hover {
+            background: var(--danger-color);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-text {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .empty-subtext {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        /* 模态框 */
+        .edit-modal, .confirm-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .edit-modal.active, .confirm-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-heavy);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .warning-text {
+            color: var(--danger-color);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .modal-actions {
+            padding: 25px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        /* 表单 */
+        .edit-form {
+            padding: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .btn-cancel, .btn-save, .btn-delete {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+        }
+
+        .btn-cancel:hover {
+            background: #e9ecef;
+        }
+
+        .btn-save {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #229954;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn-delete {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* 提示消息 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-medium);
+            z-index: 3000;
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            background: var(--danger-color);
+        }
+
+        .toast.warning {
+            background: var(--warning-color);
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-group {
+                width: 100%;
+            }
+            
+            .search-input {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .article-actions {
+                align-self: flex-end;
+            }
+            
+            .modal-content {
+                margin: 10px;
+                max-height: 95vh;
+            }
+            
+            .modal-header, .modal-body, .modal-actions {
+                padding: 20px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-item {
+                padding: 20px;
+            }
+            
+            .article-title {
+                font-size: 1.2rem;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .article-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .action-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .toast {
+                left: 10px;
+                right: 10px;
+                transform: translateY(-100px);
+            }
+            
+            .toast.show {
+                transform: translateY(0);
+            }
+        }
+    </style>
+<link rel="stylesheet" href="../../../../../assets/css/imgBg.css">
+</head>
+<body>
+    <!-- 背景遮罩 -->
+    <div class="bg-overlay"></div>
+    
+    <!-- 头部导航 -->
+    <header class="header blur2 white">
+        <div class="header-content">
+            <a href="../index.html" class="back-btn">← 返回主页</a>
+            <h1 class="page-title">创作者中心</h1>
+            <div class="header-actions">
+                <a href="../article/articleEditor.html" class="new-article-btn">✍️ 写文章</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 统计面板 -->
+    <section class="stats-panel blur2 white">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-icon">📝</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="totalArticles">0</div>
+                    <div class="stat-label">总文章数</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">👁️</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="totalViews">0</div>
+                    <div class="stat-label">总浏览量</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="totalLikes">0</div>
+                    <div class="stat-label">总点赞数</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">💬</div>
+                <div class="stat-info">
+                    <div class="stat-number" id="totalComments">0</div>
+                    <div class="stat-label">总评论数</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 筛选和搜索栏 -->
+    <section class="filter-bar blur2 white">
+        <div class="filter-container">
+            <div class="filter-group">
+                <label>分类筛选：</label>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">全部分类</option>
+                    <option value="tech">技术</option>
+                    <option value="life">生活</option>
+                    <option value="thought">思考</option>
+                    <option value="travel">旅行</option>
+                    <option value="reading">读书</option>
+                    <option value="日常">日常</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>排序方式：</label>
+                <select id="sortFilter" class="filter-select">
+                    <option value="date-desc">发布时间（最新）</option>
+                    <option value="date-asc">发布时间（最早）</option>
+                    <option value="views-desc">浏览量（最高）</option>
+                    <option value="likes-desc">点赞数（最高）</option>
+                </select>
+            </div>
+            <div class="search-group">
+                <input type="text" id="searchInput" class="search-input" placeholder="搜索文章标题...">
+                <button id="searchBtn" class="search-btn">🔍 搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章列表 -->
+    <main class="article-list-container">
+        <div class="article-list" id="articleList">
+            <!-- 文章项目将通过JavaScript动态加载 -->
+        </div>
+        
+        <!-- 空状态提示 -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">📝</div>
+            <div class="empty-text">暂无文章</div>
+            <div class="empty-subtext">开始创作你的第一篇文章吧！</div>
+        </div>
+    </main>
+
+    <!-- 编辑文章模态框 -->
+    <div class="edit-modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">编辑文章</h2>
+                <button class="modal-close" id="editModalClose">&times;</button>
+            </div>
+            <form class="edit-form" id="editForm">
+                <div class="form-group">
+                    <label for="editTitle">文章标题 *</label>
+                    <input type="text" id="editTitle" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCategory">分类 *</label>
+                    <select id="editCategory" class="form-select" required>
+                        <option value="tech">技术</option>
+                        <option value="life">生活</option>
+                        <option value="thought">思考</option>
+                        <option value="travel">旅行</option>
+                        <option value="reading">读书</option>
+                        <option value="日常">日常</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editTags">标签（用逗号分隔）</label>
+                    <input type="text" id="editTags" class="form-input" placeholder="例如：JavaScript, 前端, 技术">
+                </div>
+                <div class="form-group">
+                    <label for="editSummary">文章摘要</label>
+                    <textarea id="editSummary" class="form-textarea" rows="3" placeholder="简要描述文章内容"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editContent">文章内容 *</label>
+                    <textarea id="editContent" class="form-textarea" rows="10" required placeholder="支持HTML标签"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">取消</button>
+                    <button type="submit" class="btn-save">保存修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 确认删除模态框 -->
+    <div class="confirm-modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">确认删除</h2>
+            </div>
+            <div class="modal-body">
+                <p>你确定要删除文章《<span id="deleteArticleTitle"></span>》吗？</p>
+                <p class="warning-text">⚠️ 此操作不可撤销，文章将被永久删除。</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="cancelDeleteBtn">取消</button>
+                <button class="btn-delete" id="confirmDeleteBtn">确认删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示消息 -->
+    <div class="toast" id="toast"></div>
+
+    <script src="../../../../../page/js/article-data.js"></script>
+    <script>
+        // 文章管理器 - 创作者中心
+        class ArticleManager {
+            constructor() {
+                this.articles = [];
+                this.filteredArticles = [];
+                this.currentEditingArticle = null;
+                this.articleToDelete = null;
+                
+                this.init();
+            }
+
+            init() {
+                this.loadArticles();
+                this.bindEvents();
+                this.updateStats();
+                this.renderArticles();
+            }
+
+            // 加载文章数据
+            loadArticles() {
+                if (typeof articleData !== 'undefined' && articleData.article) {
+                    this.articles = [...articleData.article];
+                    this.filteredArticles = [...this.articles];
+                    console.log(`已加载 ${this.articles.length} 篇文章`);
+                } else {
+                    console.warn('未找到文章数据');
+                    this.articles = [];
+                    this.filteredArticles = [];
+                }
+            }
+
+            // 绑定事件
+            bindEvents() {
+                // 筛选和搜索
+                document.getElementById('categoryFilter')?.addEventListener('change', () => this.filterArticles());
+                document.getElementById('sortFilter')?.addEventListener('change', () => this.sortArticles());
+                document.getElementById('searchBtn')?.addEventListener('click', () => this.searchArticles());
+                document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.searchArticles();
+                });
+
+                // 编辑模态框
+                document.getElementById('editModalClose')?.addEventListener('click', () => this.closeEditModal());
+                document.getElementById('cancelBtn')?.addEventListener('click', () => this.closeEditModal());
+                document.getElementById('editForm')?.addEventListener('submit', (e) => this.saveArticle(e));
+
+                // 删除确认模态框
+                document.getElementById('cancelDeleteBtn')?.addEventListener('click', () => this.closeDeleteModal());
+                document.getElementById('confirmDeleteBtn')?.addEventListener('click', () => this.confirmDelete());
+
+                // 点击模态框外部关闭
+                document.getElementById('editModal')?.addEventListener('click', (e) => {
+                    if (e.target.id === 'editModal') this.closeEditModal();
+                });
+                document.getElementById('confirmModal')?.addEventListener('click', (e) => {
+                    if (e.target.id === 'confirmModal') this.closeDeleteModal();
+                });
+            }
+
+            // 更新统计数据
+            updateStats() {
+                const totalArticles = this.articles.length;
+                const totalViews = this.articles.reduce((sum, article) => sum + (article.views || 0), 0);
+                const totalLikes = this.articles.reduce((sum, article) => sum + (article.likes || 0), 0);
+                const totalComments = this.articles.reduce((sum, article) => sum + (article.comments || 0), 0);
+
+                document.getElementById('totalArticles').textContent = totalArticles;
+                document.getElementById('totalViews').textContent = totalViews.toLocaleString();
+                document.getElementById('totalLikes').textContent = totalLikes.toLocaleString();
+                document.getElementById('totalComments').textContent = totalComments.toLocaleString();
+            }
+
+            // 筛选文章
+            filterArticles() {
+                const category = document.getElementById('categoryFilter').value;
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+
+                this.filteredArticles = this.articles.filter(article => {
+                    const categoryMatch = category === 'all' || article.category === category;
+                    const searchMatch = !searchTerm || 
+                        article.title.toLowerCase().includes(searchTerm) ||
+                        (article.summary && article.summary.toLowerCase().includes(searchTerm)) ||
+                        (article.tags && article.tags.some(tag => tag.toLowerCase().includes(searchTerm)));
+                    
+                    return categoryMatch && searchMatch;
+                });
+
+                this.sortArticles();
+            }
+
+            // 搜索文章
+            searchArticles() {
+                this.filterArticles();
+            }
+
+            // 排序文章
+            sortArticles() {
+                const sortType = document.getElementById('sortFilter').value;
+
+                this.filteredArticles.sort((a, b) => {
+                    switch (sortType) {
+                        case 'date-desc':
+                            return new Date(b.date) - new Date(a.date);
+                        case 'date-asc':
+                            return new Date(a.date) - new Date(b.date);
+                        case 'views-desc':
+                            return (b.views || 0) - (a.views || 0);
+                        case 'likes-desc':
+                            return (b.likes || 0) - (a.likes || 0);
+                        default:
+                            return 0;
+                    }
+                });
+
+                this.renderArticles();
+            }
+
+            // 渲染文章列表
+            renderArticles() {
+                const container = document.getElementById('articleList');
+                const emptyState = document.getElementById('emptyState');
+
+                if (!container) return;
+
+                if (this.filteredArticles.length === 0) {
+                    container.style.display = 'none';
+                    emptyState.style.display = 'block';
+                    return;
+                }
+
+                container.style.display = 'flex';
+                emptyState.style.display = 'none';
+
+                container.innerHTML = this.filteredArticles.map(article => this.createArticleHTML(article)).join('');
+                this.bindStatInputs();
+            }
+
+            // 创建文章HTML
+            createArticleHTML(article) {
+                const tags = article.tags ? article.tags.map(tag => `<span class="tag-item">${tag}</span>`).join('') : '';
+                
+                return `
+                    <div class="article-item" data-id="${article.id}">
+                        <div class="article-header">
+                            <div class="article-title-section">
+                                <h3 class="article-title">${article.title}</h3>
+                                <div class="article-meta">
+                                    <span class="meta-item">📅 ${article.date}</span>
+                                    <span class="article-category">${this.getCategoryName(article.category)}</span>
+                                    ${article.tags && article.tags.length > 0 ? `<span class="meta-item">🏷️ ${article.tags.length}个标签</span>` : ''}
+                                </div>
+                                ${tags ? `<div class="article-tags">${tags}</div>` : ''}
+                            </div>
+                            <div class="article-actions">
+                                <button class="action-btn btn-edit" onclick="articleManager.editArticle('${article.id}')">✏️ 编辑</button>
+                                <button class="action-btn btn-delete" onclick="articleManager.deleteArticle('${article.id}')">🗑️ 删除</button>
+                            </div>
+                        </div>
+                        ${article.summary ? `<div class="article-excerpt">${article.summary}</div>` : ''}
+                        <div class="article-stats">
+                            <span class="stat-item">
+                                👁️ <input type="number" class="stat-input" data-id="${article.id}" data-field="views" value="${article.views || 0}" min="0"> 浏览
+                            </span>
+                            <span class="stat-item">
+                                ❤️ <input type="number" class="stat-input" data-id="${article.id}" data-field="likes" value="${article.likes || 0}" min="0"> 点赞
+                            </span>
+                            <span class="stat-item">
+                                💬 <input type="number" class="stat-input" data-id="${article.id}" data-field="comments" value="${article.comments || 0}" min="0"> 评论
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 绑定统计数据输入事件
+            bindStatInputs() {
+                const statInputs = document.querySelectorAll('.stat-input');
+                statInputs.forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        this.updateArticleStat(e.target);
+                    });
+                    
+                    input.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            e.target.blur();
+                        }
+                    });
+                });
+            }
+
+            // 更新文章统计数据
+            updateArticleStat(input) {
+                const articleId = parseInt(input.dataset.id);
+                const field = input.dataset.field;
+                const value = parseInt(input.value) || 0;
+
+                const article = this.articles.find(a => a.id === articleId);
+                if (article) {
+                    article[field] = value;
+                    
+                    // 更新过滤后的文章数据
+                    const filteredArticle = this.filteredArticles.find(a => a.id === articleId);
+                    if (filteredArticle) {
+                        filteredArticle[field] = value;
+                    }
+
+                    // 更新统计数据
+                    this.updateStats();
+                    
+                    // 显示提示
+                    const fieldNames = {
+                        views: '浏览量',
+                        likes: '点赞数',
+                        comments: '评论数'
+                    };
+                    this.showToast(`${article.title} 的${fieldNames[field]}已更新为 ${value}`, 'success');
+                    
+                    console.log(`文章 ${articleId} 的 ${field} 已更新为 ${value}`);
+                }
+            }
+
+            // 获取分类名称
+            getCategoryName(category) {
+                const categoryNames = {
+                    'tech': '技术',
+                    'life': '生活',
+                    'thought': '思考',
+                    'travel': '旅行',
+                    'reading': '读书',
+                    '日常': '日常',
+                    'default': '其他'
+                };
+                return categoryNames[category] || categoryNames.default;
+            }
+
+            // 编辑文章
+            editArticle(id) {
+                const article = this.articles.find(a => a.id == id);
+                if (article) {
+                    this.currentEditingArticle = { ...article };
+                    this.openEditModal();
+                }
+            }
+
+            // 打开编辑模态框
+            openEditModal() {
+                const modal = document.getElementById('editModal');
+                if (!modal || !this.currentEditingArticle) return;
+
+                document.getElementById('editTitle').value = this.currentEditingArticle.title;
+                document.getElementById('editCategory').value = this.currentEditingArticle.category;
+                document.getElementById('editTags').value = this.currentEditingArticle.tags ? this.currentEditingArticle.tags.join(', ') : '';
+                document.getElementById('editSummary').value = this.currentEditingArticle.summary || '';
+                document.getElementById('editContent').value = this.currentEditingArticle.content;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // 关闭编辑模态框
+            closeEditModal() {
+                const modal = document.getElementById('editModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+                this.currentEditingArticle = null;
+            }
+
+            // 保存文章
+            saveArticle(e) {
+                e.preventDefault();
+                if (!this.currentEditingArticle) return;
+
+                const title = document.getElementById('editTitle').value.trim();
+                const category = document.getElementById('editCategory').value;
+                const tagsText = document.getElementById('editTags').value.trim();
+                const summary = document.getElementById('editSummary').value.trim();
+                const content = document.getElementById('editContent').value.trim();
+
+                if (!title || !content) {
+                    this.showToast('请填写标题和内容', 'error');
+                    return;
+                }
+
+                // 更新文章数据
+                this.currentEditingArticle.title = title;
+                this.currentEditingArticle.category = category;
+                this.currentEditingArticle.tags = tagsText ? tagsText.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
+                this.currentEditingArticle.summary = summary;
+                this.currentEditingArticle.content = content;
+
+                // 检查是否是新文章
+                const existingIndex = this.articles.findIndex(a => a.id === this.currentEditingArticle.id);
+                if (existingIndex >= 0) {
+                    // 更新现有文章（保持原日期）
+                    this.articles[existingIndex] = { ...this.currentEditingArticle };
+                    this.showToast('文章已更新', 'success');
+                } else {
+                    // 添加新文章
+                    this.articles.unshift({ ...this.currentEditingArticle });
+                    this.showToast('文章已创建', 'success');
+                }
+
+                this.closeEditModal();
+                this.filterArticles();
+                this.updateStats();
+            }
+
+            // 删除文章
+            deleteArticle(id) {
+                const article = this.articles.find(a => a.id == id);
+                if (article) {
+                    this.articleToDelete = article;
+                    document.getElementById('deleteArticleTitle').textContent = article.title;
+                    
+                    const modal = document.getElementById('confirmModal');
+                    if (modal) {
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            }
+
+            // 关闭删除确认模态框
+            closeDeleteModal() {
+                const modal = document.getElementById('confirmModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+                this.articleToDelete = null;
+            }
+
+            // 确认删除
+            confirmDelete() {
+                if (this.articleToDelete) {
+                    const index = this.articles.findIndex(a => a.id === this.articleToDelete.id);
+                    if (index >= 0) {
+                        this.articles.splice(index, 1);
+                        this.showToast('文章已删除', 'success');
+                        this.closeDeleteModal();
+                        this.filterArticles();
+                        this.updateStats();
+                    }
+                }
+            }
+
+            // 显示提示消息
+            showToast(message, type = 'success') {
+                const toast = document.getElementById('toast');
+                if (!toast) return;
+
+                toast.textContent = message;
+                toast.className = `toast ${type}`;
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // 初始化文章管理器
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('初始化文章管理器...');
+            window.articleManager = new ArticleManager();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章数据总览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-card .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .stat-card.total .icon {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .stat-card.recent .icon {
+            background: linear-gradient(45deg, #FF9800, #F57C00);
+        }
+
+        .stat-card.update .icon {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            color: #7f8c8d;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-card .date {
+            color: #3498db;
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .categories-section, .tags-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 25px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .category-item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .category-item:hover {
+            transform: scale(1.05);
+        }
+
+        .category-name {
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        .category-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tag-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(45deg, #FF9800, #F57C00);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* 消息提示弹窗样式 */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: white;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-left: 4px solid #2196F3;
+            min-width: 250px;
+            max-width: 350px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left-color: #4CAF50;
+            background: #f1f8e9;
+            color: #2e7d32;
+        }
+
+        .toast.error {
+            border-left-color: #f44336;
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .toast.warning {
+            border-left-color: #FF9800;
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .toast.info {
+            border-left-color: #2196F3;
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+                justify-content: center;
+            }
+
+            .toast-container {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+            }
+
+            .toast {
+                min-width: auto;
+                max-width: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 文章数据总览</h1>
+            <p>全面展示您的文章发布统计信息</p>
+        </div>
+
+        <div id="loading" class="loading">正在加载数据...</div>
+        
+        <div id="content" style="display: none;">
+            <!-- 统计卡片 -->
+            <div class="stats-grid">
+                <div class="stat-card total">
+                    <div class="icon">📝</div>
+                    <div class="number" id="totalArticles">0</div>
+                    <div class="label">发布文章总数</div>
+                </div>
+                
+                <div class="stat-card recent">
+                    <div class="icon">📅</div>
+                    <div class="date" id="latestDate">--</div>
+                    <div class="label">最近更新日期</div>
+                </div>
+                
+                <div class="stat-card update">
+                    <div class="icon">🔄</div>
+                    <div class="number" id="updateCount">0</div>
+                    <div class="label">本月更新次数</div>
+                </div>
+            </div>
+
+            <!-- 分类统计 -->
+            <div class="categories-section">
+                <h2 class="section-title">📂 分类统计</h2>
+                <div class="categories-grid" id="categoriesGrid">
+                    <!-- 动态生成分类数据 -->
+                </div>
+            </div>
+
+            <!-- 标签云 -->
+            <div class="tags-section">
+                <h2 class="section-title">🏷️ 标签云</h2>
+                <div class="tags-cloud" id="tagsCloud">
+                    <!-- 动态生成标签数据 -->
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="window.location.href='./pages/article/articleEditor.html'">
+                    ✏️ 新增文章
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='./pages/article/articleManager.html'">
+                    📋 管理文章
+                </button>
+                <button class="btn btn-warning" id="updateBtn">
+                    🔄 更新页面
+                </button>
+                <button class="btn btn-danger" id="pushBtn">
+                    🚀 推送页面
+                </button>
+            </div>
+        </div>
+
+        <div id="error" class="error-message" style="display: none;">
+            加载数据失败，请检查网络连接或联系管理员。
+        </div>
+    </div>
+
+    <!-- 消息提示容器 -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+        const fs = require('fs');
+        const path = require('path');
+
+        // 消息提示系统
+        class ToastManager {
+            constructor(containerId) {
+                this.container = document.getElementById(containerId);
+            }
+
+            show(message, type = 'info', duration = 3000) {
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.textContent = message;
+                
+                this.container.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                }, duration);
+            }
+
+            success(message, duration) {
+                this.show(message, 'success', duration);
+            }
+
+            error(message, duration) {
+                this.show(message, 'error', duration);
+            }
+
+            info(message, duration) {
+                this.show(message, 'info', duration);
+            }
+
+            warning(message, duration) {
+                this.show(message, 'warning', duration);
+            }
+        }
+
+        const toast = new ToastManager('toastContainer');
+
+        // 数据总览功能
+        class ArticleDashboard {
+            constructor() {
+                this.articles = [];
+                this.categories = {};
+                this.tags = {};
+                this.init();
+            }
+
+            async init() {
+                try {
+                    await this.loadData();
+                    this.renderDashboard();
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                    toast.success('数据加载完成！');
+                } catch (error) {
+                    console.error('初始化失败:', error);
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('error').style.display = 'block';
+                    toast.error('数据加载失败');
+                }
+            }
+
+            async loadData() {
+                try {
+                    // 读取 JSON 文件
+                    const jsonPath = path.join(__dirname, '../../../assets/data/articles.json');
+                    const data = await fs.promises.readFile(jsonPath, 'utf8');
+                    const jsonData = JSON.parse(data);
+                    this.articles = jsonData.article || [];
+                    
+                    // 分析数据
+                    this.analyzeData();
+                } catch (error) {
+                    throw new Error(`读取数据失败: ${error.message}`);
+                }
+            }
+
+            analyzeData() {
+                this.categories = {};
+                this.tags = {};
+                
+                this.articles.forEach(article => {
+                    // 统计分类
+                    const category = article.category || '未分类';
+                    this.categories[category] = (this.categories[category] || 0) + 1;
+                    
+                    // 统计标签
+                    if (article.tags && Array.isArray(article.tags)) {
+                        article.tags.forEach(tag => {
+                            this.tags[tag] = (this.tags[tag] || 0) + 1;
+                        });
+                    }
+                });
+            }
+
+            renderDashboard() {
+                // 渲染总数
+                document.getElementById('totalArticles').textContent = this.articles.length;
+                
+                // 渲染最近更新日期
+                const latestDate = this.getLatestDate();
+                document.getElementById('latestDate').textContent = latestDate;
+                
+                // 渲染本月更新次数
+                const monthlyUpdates = this.getMonthlyUpdates();
+                document.getElementById('updateCount').textContent = monthlyUpdates;
+                
+                // 渲染分类
+                this.renderCategories();
+                
+                // 渲染标签云
+                this.renderTags();
+            }
+
+            getLatestDate() {
+                if (this.articles.length === 0) return '--';
+                
+                const dates = this.articles
+                    .map(article => article.date)
+                    .filter(date => date)
+                    .sort((a, b) => new Date(b) - new Date(a));
+                
+                return dates.length > 0 ? dates[0] : '--';
+            }
+
+            getMonthlyUpdates() {
+                const currentMonth = new Date().getMonth();
+                const currentYear = new Date().getFullYear();
+                
+                return this.articles.filter(article => {
+                    if (!article.date) return false;
+                    const articleDate = new Date(article.date);
+                    return articleDate.getMonth() === currentMonth && 
+                           articleDate.getFullYear() === currentYear;
+                }).length;
+            }
+
+            renderCategories() {
+                const categoriesGrid = document.getElementById('categoriesGrid');
+                categoriesGrid.innerHTML = '';
+                
+                const sortedCategories = Object.entries(this.categories)
+                    .sort(([,a], [,b]) => b - a);
+                
+                sortedCategories.forEach(([category, count]) => {
+                    const categoryItem = document.createElement('div');
+                    categoryItem.className = 'category-item';
+                    categoryItem.innerHTML = `
+                        <span class="category-name">${category}</span>
+                        <span class="category-count">${count}</span>
+                    `;
+                    categoriesGrid.appendChild(categoryItem);
+                });
+            }
+
+            renderTags() {
+                const tagsCloud = document.getElementById('tagsCloud');
+                tagsCloud.innerHTML = '';
+                
+                const sortedTags = Object.entries(this.tags)
+                    .sort(([,a], [,b]) => b - a);
+                
+                sortedTags.forEach(([tag, count]) => {
+                    const tagItem = document.createElement('span');
+                    tagItem.className = 'tag-item';
+                    tagItem.textContent = `${tag} (${count})`;
+                    tagItem.title = `${tag}: ${count} 篇文章`;
+                    tagsCloud.appendChild(tagItem);
+                });
+            }
+        }
+
+        // 转换功能
+        async function convertJsonToJs() {
+            const updateBtn = document.getElementById('updateBtn');
+            
+            try {
+                updateBtn.disabled = true;
+                toast.info('开始转换数据...');
+                
+                const result = await ipcRenderer.invoke('convert-json-to-js');
+                
+                if (result.success) {
+                    toast.success(`转换成功！共处理 ${result.articleCount} 篇文章`);
+                    toast.info(`生成文件大小: ${result.fileSize} KB`);
+                    
+                    // 重新加载数据
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+                } else {
+                    toast.error(`转换失败: ${result.message}`);
+                }
+                
+            } catch (error) {
+                console.error('转换过程出错:', error);
+                toast.error(`转换过程出错: ${error.message}`);
+            } finally {
+                updateBtn.disabled = false;
+            }
+        }
+
+        // 页面加载完成后初始化
+        window.addEventListener('load', () => {
+            toast.info('正在加载文章数据...');
+            new ArticleDashboard();
+        });
+
+        // 绑定按钮事件
+        document.getElementById('updateBtn').addEventListener('click', convertJsonToJs);
+        document.getElementById('pushBtn').addEventListener('click', () => {
+            toast.warning('推送功能开发中...');
+        });
+
+        // 监听主进程发送的进度消息
+        ipcRenderer.on('conversion-progress', (event, data) => {
+            switch (data.type) {
+                case 'success':
+                    toast.success(data.message);
+                    break;
+                case 'error':
+                    toast.error(data.message);
+                    break;
+                case 'warning':
+                    toast.warning(data.message);
+                    break;
+                case 'info':
+                default:
+                    toast.info(data.message);
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

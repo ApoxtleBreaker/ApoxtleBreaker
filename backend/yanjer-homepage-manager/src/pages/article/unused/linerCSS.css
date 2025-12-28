@@ -1,0 +1,96 @@
+/* linercss.css - 主题变量文件 */
+
+/* 基础主题变量 */
+:root {
+    /* 背景渐变 */
+    --linerBackgroundColor: linear-gradient(135deg, #95a3de 0%, #1a1f62 100%);
+    --linerSubColor: linear-gradient(135deg, #4167ff 0%, #ab26a0 100%);
+    
+    /* 按钮渐变 */
+    --liner1: linear-gradient(45deg, #4CAF50, #45a049);
+    --liner2: linear-gradient(45deg, #FF9800, #F57C00);
+    --liner3: linear-gradient(45deg, #2196F3, #1976D2);
+    --liner4: linear-gradient(45deg, #f44336, #d32f2f);
+    
+    /* 文本颜色 */
+    --textPrimary: #2c3e50;
+    --textSecondary: #7f8c8d;
+    --textAccent: #3498db;
+    --textWhite: #ffffff;
+    
+    /* 背景颜色 */
+    --bgPrimary: #ffffff;
+    --bgSecondary: rgba(255, 255, 255, 0.95);
+    --bgTertiary: #f0f0f0;
+    
+    /* 边框颜色 */
+    --borderLight: rgba(102, 126, 234, 0.1);
+    --borderMedium: rgba(0, 0, 0, 0.1);
+    --borderDark: rgba(0, 0, 0, 0.15);
+    
+    /* 阴影效果 */
+    --shadowLight: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadowMedium: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadowHeavy: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --shadowButton: 0 8px 20px rgba(0, 0, 0, 0.2);
+    --shadowTag: 0 5px 15px rgba(102, 126, 234, 0.4);
+    
+    /* 圆角 */
+    --radiusSmall: 4px;
+    --radiusMedium: 10px;
+    --radiusLarge: 15px;
+    --radiusXLarge: 20px;
+    --radiusRound: 25px;
+    --radiusCircle: 50%;
+    
+    /* 间距 */
+    --spaceXS: 5px;
+    --spaceSM: 8px;
+    --spaceMD: 10px;
+    --spaceLG: 15px;
+    --spaceXL: 20px;
+    --spaceXXL: 25px;
+    --spaceXXXL: 30px;
+    --spaceXLG: 40px;
+    
+    /* 字体大小 */
+    --fontXS: 0.9em;
+    --fontSM: 1em;
+    --fontMD: 1.1em;
+    --fontLG: 1.2em;
+    --fontXL: 1.8em;
+    --fontXXL: 2em;
+    --fontXXXL: 2.5em;
+    
+    /* 错误状态 */
+    --errorBg: #ffebee;
+    --errorText: #c62828;
+}
+
+/* 暗色主题 */
+[data-theme="dark"] {
+    --linerBackgroundColor: linear-gradient(135deg, #1a1f62 0%, #0f1320 100%);
+    --linerSubColor: linear-gradient(135deg, #ab26a0 0%, #6a1b9a 100%);
+    
+    --textPrimary: #ffffff;
+    --textSecondary: #b0b0b0;
+    --textAccent: #64b5f6;
+    
+    --bgPrimary: #121212;
+    --bgSecondary: rgba(30, 30, 30, 0.95);
+    --bgTertiary: #1e1e1e;
+    
+    --borderLight: rgba(255, 255, 255, 0.1);
+    --borderMedium: rgba(255, 255, 255, 0.15);
+    --borderDark: rgba(255, 255, 255, 0.2);
+    
+    --errorBg: #2e0b0b;
+    --errorText: #ff6b6b;
+}
+
+/* 其他主题变量保持默认设置 */
+
+/* 主题切换动画 */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

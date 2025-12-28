@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>富文本编辑器 - 文章管理</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .editor-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .toolbar {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .toolbar button {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .toolbar button:hover {
+            background-color: #e9e9e9;
+            border-color: #999;
+        }
+        
+        .toolbar button:active {
+            background-color: #ddd;
+        }
+        
+        .toolbar .separator {
+            width: 1px;
+            height: 25px;
+            background-color: #ccc;
+            margin: 0 5px;
+        }
+        
+        .toolbar select {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background: white;
+            font-size: 14px;
+        }
+        
+        .editor {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 400px;
+            padding: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+            outline: none;
+            background: white;
+        }
+        
+        .editor:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+        
+        .color-picker {
+            width: 40px;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 2px;
+        }
+        
+        .article-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+        
+        .btn-secondary {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #da190b;
+        }
+        
+        /* 图片相关样式 */
+        .image-upload-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .image-upload-btn {
+            background-color: #2196F3;
+            color: #333;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .image-upload-btn:hover {
+            color: rgb(0, 0, 0);
+            border: 1px solid #333;
+            background-color: #1976D2;
+        }
+        
+        .image-upload-input {
+            display: none;
+        }
+        
+        .editor img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        .editor img:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        .image-placeholder {
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        .image-placeholder:hover {
+            border-color: #4CAF50;
+            background-color: #f0f8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <h2>富文本编辑器</h2>
+        
+        <!-- 工具栏 -->
+        <div class="toolbar">
+            <!-- 字体样式 -->
+            <button onclick="formatText('bold')" title="加粗"><b>B</b></button>
+            <button onclick="formatText('italic')" title="斜体"><i>I</i></button>
+            <button onclick="formatText('underline')" title="下划线"><u>U</u></button>
+            <button onclick="formatText('strikeThrough')" title="删除线"><s>S</s></button>
+            
+            <div class="separator"></div>
+            
+            <!-- 字体大小 -->
+            <select onchange="formatFontSize(this.value)">
+                <option value="">字体大小</option>
+                <option value="1">小号</option>
+                <option value="2">正常</option>
+                <option value="3">中大</option>
+                <option value="4">大号</option>
+                <option value="5">特大</option>
+                <option value="6">超大</option>
+                <option value="7">最大</option>
+            </select>
+            
+            <!-- 字体颜色 -->
+            <input type="color" class="color-picker" onchange="formatColor(this.value)" title="字体颜色">
+            
+            <div class="separator"></div>
+            
+            <!-- 对齐方式 -->
+            <button onclick="formatText('justifyLeft')" title="左对齐">⬅</button>
+            <button onclick="formatText('justifyCenter')" title="居中">↔</button>
+            <button onclick="formatText('justifyRight')" title="右对齐">➡</button>
+            
+            <div class="separator"></div>
+            
+            <!-- 列表 -->
+            <button onclick="formatText('insertOrderedList')" title="有序列表">1.</button>
+            <button onclick="formatText('insertUnorderedList')" title="无序列表">•</button>
+            
+            <div class="separator"></div>
+            
+            <!-- 图片上传 -->
+            <div class="image-upload-container">
+                <button class="image-upload-btn" onclick="insertImage()" title="插入图片">插入图片</button>
+                <input type="file" id="imageUpload" class="image-upload-input" accept="image/*" onchange="handleImageUpload(event)">
+            </div>
+            
+            <div class="separator"></div>
+            
+            <!-- 其他功能 -->
+            <button onclick="formatText('removeFormat')" title="清除格式">清除</button>
+            <button onclick="formatText('undo')" title="撤销">↶</button>
+            <button onclick="formatText('redo')" title="重做">↷</button>
+        </div>
+        
+        <!-- 编辑器 -->
+        <div class="editor" contenteditable="true" id="richEditor">在这里输入你的文章内容...</div>
+        
+        <!-- 文章信息表单 -->
+        <div class="article-form">
+            <div class="form-group">
+                <label for="articleTitle">文章标题：</label>
+                <input type="text" id="articleTitle" placeholder="请输入文章标题">
+            </div>
+            
+            <div class="form-group">
+                <label for="articleCategory">文章分类：</label>
+                <input type="text" id="articleCategory" placeholder="请输入文章分类">
+            </div>
+            
+            <div class="form-group">
+                <label for="articleTags">文章标签（用逗号分隔）：</label>
+                <input type="text" id="articleTags" placeholder="例如：技术,前端,JavaScript">
+            </div>
+            
+            <div class="form-group">
+                <label for="articleSummary">文章摘要：</label>
+                <textarea id="articleSummary" rows="3" placeholder="请输入文章摘要"></textarea>
+            </div>
+            
+            <div class="form-buttons">
+                <button class="btn-primary" onclick="saveArticle()">保存文章</button>
+                <button class="btn-secondary" onclick="clearEditor()">清空内容</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 格式化文本
+        function formatText(command) {
+            document.execCommand(command, false, null);
+            document.getElementById('richEditor').focus();
+        }
+        
+        // 格式化字体大小
+        function formatFontSize(size) {
+            if (size) {
+                document.execCommand('fontSize', false, size);
+                document.getElementById('richEditor').focus();
+            }
+        }
+        
+        // 格式化字体颜色
+        function formatColor(color) {
+            document.execCommand('foreColor', false, color);
+            document.getElementById('richEditor').focus();
+        }
+        
+        // 插入图片
+        function insertImage() {
+            document.getElementById('imageUpload').click();
+        }
+        
+        // 处理图片上传
+        async function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // 验证文件类型
+            if (!file.type.startsWith('image/')) {
+                alert('请选择图片文件！');
+                return;
+            }
+            
+            // 验证文件大小 (最大 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('图片文件大小不能超过 5MB！');
+                return;
+            }
+            
+            try {
+                // 获取文章标题用于生成文件名
+                const title = document.getElementById('articleTitle').value || 'untitled';
+                const date = new Date().toISOString().split('T')[0];
+                const fileExtension = file.name.split('.').pop().toLowerCase();
+                
+                // 生成文件名：YYYY-MM-DD-文章标题-index.扩展名
+                const imageIndex = getImageIndex();
+                const fileName = `${date}-${title}-${imageIndex}.${fileExtension}`;
+                
+                if (window.require) {
+                    // Electron 环境 - 保存到指定文件夹
+                    const fs = window.require('fs');
+                    const path = window.require('path');
+                    
+                    // 构建目标文件夹路径
+                    const targetDir = path.join(__dirname, '../../../../../assets/data/articles/img/');
+                    
+                    // 确保文件夹存在
+                    if (!fs.existsSync(targetDir)) {
+                        fs.mkdirSync(targetDir, { recursive: true });
+                    }
+                    
+                    // 读取图片文件
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const buffer = Buffer.from(e.target.result.split(',')[1], 'base64');
+                        const targetPath = path.join(targetDir, fileName);
+                        
+                        // 保存图片文件
+                        fs.writeFileSync(targetPath, buffer);
+                        
+                        // 在编辑器中插入图片
+                        insertImageToEditor(`assets/data/articles/img/${fileName}`);
+                        
+                        alert('图片上传成功！');
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    // 非 Electron 环境 - 使用 base64 显示
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // 在编辑器中插入图片（使用 base64）
+                        insertImageToEditor(e.target.result);
+                        alert('图片已插入（base64 模式）');
+                    };
+                    reader.readAsDataURL(file);
+                }
+                
+            } catch (error) {
+                console.error('图片处理失败:', error);
+                alert('图片处理失败: ' + error.message);
+            }
+            
+            // 清空文件输入
+            event.target.value = '';
+        }
+        
+        // 获取图片索引
+        function getImageIndex() {
+            const editor = document.getElementById('richEditor');
+            const existingImages = editor.querySelectorAll('img');
+            return existingImages.length + 1;
+        }
+        
+        // 在编辑器中插入图片
+        function insertImageToEditor(imageSrc) {
+            const editor = document.getElementById('richEditor');
+            
+            // 如果编辑器中有默认文本，先清空
+            if (editor.innerHTML === '在这里输入你的文章内容...') {
+                editor.innerHTML = '';
+            }
+            
+            // 创建图片 HTML
+            const imgHTML = `<img src="${imageSrc}" alt="文章图片" style="max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;">`;
+            
+            // 获取当前光标位置或选中的文本
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                // 如果有选中的文本或光标位置，在该位置插入图片
+                const range = selection.getRangeAt(0);
+                range.deleteContents();
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = imgHTML;
+                const imgNode = tempDiv.firstChild;
+                
+                range.insertNode(imgNode);
+                range.collapse(false);
+            } else {
+                // 如果没有光标位置，在编辑器末尾插入图片
+                editor.innerHTML += imgHTML;
+            }
+            
+            editor.focus();
+        }
+        
+        // 保存文章
+        async function saveArticle() {
+            const title = document.getElementById('articleTitle').value;
+            const category = document.getElementById('articleCategory').value;
+            const tags = document.getElementById('articleTags').value;
+            const summary = document.getElementById('articleSummary').value;
+            const content = document.getElementById('richEditor').innerHTML;
+            
+            if (!title.trim()) {
+                alert('请输入文章标题！');
+                return;
+            }
+            
+            if (!content.trim() || content === '在这里输入你的文章内容...') {
+                alert('请输入文章内容！');
+                return;
+            }
+            
+            const articleData = {
+                id: Date.now(), // 使用时间戳作为ID
+                title: title,
+                category: category,
+                tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+                summary: summary,
+                content: content,
+                date: new Date().toISOString().split('T')[0] // 格式化为 YYYY-MM-DD
+            };
+            
+            try {
+                // 使用 Electron 的 IPC 通信保存到文件
+                if (window.require) {
+                    // Electron 环境
+                    const fs = window.require('fs');
+                    const path = window.require('path');
+                    
+                    // 构建文件路径
+                    const filePath = path.join(__dirname, '../../../../../assets/data/articles.json');
+                    
+                    // 读取现有数据
+                    let existingData = { article: [] };
+                    try {
+                        const data = fs.readFileSync(filePath, 'utf8');
+                        existingData = JSON.parse(data);
+                    } catch (err) {
+                        console.log('创建新文件或读取失败:', err);
+                    }
+                    
+                    // 添加新文章到数组的第一个位置（而不是最后一个）
+                    existingData.article.unshift(articleData);
+                    
+                    // 写入文件
+                    fs.writeFileSync(filePath, JSON.stringify(existingData, null, 4), 'utf8');
+                    
+                    alert('文章保存成功！已保存到 articles.json 文件');
+                    console.log('文章已保存到第一个位置:', articleData);
+                    
+                } else {
+                    // 非 Electron 环境，使用本地存储
+                    const articles = JSON.parse(localStorage.getItem('articles') || '[]');
+                    articles.unshift(articleData); // 添加到第一个位置
+                    localStorage.setItem('articles', JSON.stringify(articles));
+                    alert('文章保存成功！已保存到本地存储');
+                }
+                
+                // 清空表单
+                clearEditor();
+                
+            } catch (error) {
+                console.error('保存失败:', error);
+                alert('保存失败: ' + error.message);
+            }
+        }
+        
+        // 清空编辑器
+        function clearEditor() {
+            if (confirm('确定要清空所有内容吗？')) {
+                document.getElementById('richEditor').innerHTML = '';
+                document.getElementById('articleTitle').value = '';
+                document.getElementById('articleCategory').value = '';
+                document.getElementById('articleTags').value = '';
+                document.getElementById('articleSummary').value = '';
+            }
+        }
+        
+        // 编辑器获得焦点时清除默认文本
+        document.getElementById('richEditor').addEventListener('focus', function() {
+            if (this.innerHTML === '在这里输入你的文章内容...') {
+                this.innerHTML = '';
+            }
+        });
+        
+        // 编辑器失去焦点时，如果为空则显示默认文本
+        document.getElementById('richEditor').addEventListener('blur', function() {
+            if (this.innerHTML.trim() === '') {
+                this.innerHTML = '在这里输入你的文章内容...';
+            }
+        });
+        
+        // 键盘快捷键支持
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'b':
+                        e.preventDefault();
+                        formatText('bold');
+                        break;
+                    case 'i':
+                        e.preventDefault();
+                        formatText('italic');
+                        break;
+                    case 'u':
+                        e.preventDefault();
+                        formatText('underline');
+                        break;
+                    case 's':
+                        e.preventDefault();
+                        formatText('strikeThrough');
+                        break;
+                    case 'z':
+                        e.preventDefault();
+                        formatText('undo');
+                        break;
+                    case 'y':
+                        e.preventDefault();
+                        formatText('redo');
+                        break;
+                }
+            }
+        });
+        
+        // 拖拽上传图片功能
+        document.getElementById('richEditor').addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        
+        document.getElementById('richEditor').addEventListener('drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type.startsWith('image/')) {
+                const event = { target: { files: files } };
+                handleImageUpload(event);
+            }
+        });
+    </script>
+</body>
+</html>
