@@ -1,4 +1,4 @@
-废物高中生\
+物高中生\
 联系方式一览
 ### 文件共享
 > -[GitHub]- https://github.com/ApoxtleBreaker/ApoxtleBreaker/tree/FilesSharing \

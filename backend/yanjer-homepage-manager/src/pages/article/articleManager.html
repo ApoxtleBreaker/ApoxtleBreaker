@@ -775,7 +775,7 @@
     <!-- 头部导航 -->
     <header class="header blur2 white">
         <div class="header-content">
-            <a href="../index.html" class="back-btn">← 返回主页</a>
+            <a href="../../index.html" class="back-btn">← 返回主页</a>
             <h1 class="page-title">创作者中心</h1>
             <div class="header-actions">
                 <a href="../article/articleEditor.html" class="new-article-btn">✍️ 写文章</a>
@@ -927,7 +927,7 @@
 
     <script src="../../../../../page/js/article-data.js"></script>
     <script>
-        // 文章管理器 - 创作者中心
+// 文章管理器 - 创作者中心
         class ArticleManager {
             constructor() {
                 this.articles = [];
@@ -1231,37 +1231,37 @@
                     this.showToast('文章已创建', 'success');
                 }
 
+                // 保存到文件
+                this.saveArticlesToFile();
+
                 this.closeEditModal();
                 this.filterArticles();
                 this.updateStats();
             }
 
-            // 删除文章
-            deleteArticle(id) {
-                const article = this.articles.find(a => a.id == id);
-                if (article) {
-                    this.articleToDelete = article;
-                    document.getElementById('deleteArticleTitle').textContent = article.title;
-                    
-                    const modal = document.getElementById('confirmModal');
-                    if (modal) {
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
+            // 新增：保存文章到文件
+            saveArticlesToFile() {
+                // 使用Electron IPC保存文章到JSON文件
+                if (window.electronAPI && window.electronAPI.saveArticles) {
+                    window.electronAPI.saveArticles(this.articles)
+                        .then(result => {
+                            if (result.success) {
+                                this.showToast(result.message, 'success');
+                            } else {
+                                this.showToast(result.message, 'error');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('保存文章失败:', error);
+                            this.showToast('保存文章失败: ' + error.message, 'error');
+                        });
+                } else {
+                    console.warn('Electron API 不可用，文章只保存在内存中');
+                    this.showToast('文章已保存（仅内存中）', 'warning');
                 }
             }
 
-            // 关闭删除确认模态框
-            closeDeleteModal() {
-                const modal = document.getElementById('confirmModal');
-                if (modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-                this.articleToDelete = null;
-            }
-
-            // 确认删除
+            // 确认删除（修改后的版本）
             confirmDelete() {
                 if (this.articleToDelete) {
                     const index = this.articles.findIndex(a => a.id === this.articleToDelete.id);
@@ -1271,6 +1271,9 @@
                         this.closeDeleteModal();
                         this.filterArticles();
                         this.updateStats();
+                        
+                        // 保存到文件
+                        this.saveArticlesToFile();
                     }
                 }
             }
@@ -1288,6 +1291,148 @@
                     toast.classList.remove('show');
                 }, 3000);
             }
+        }
+
+        // 初始化文章管理器
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('初始化文章管理器...');
+            window.articleManager = new ArticleManager();
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创作者中心 - 文章管理</title>
+    <script>
+        // Electron API
+        if (typeof require !== 'undefined') {
+            const { ipcRenderer } = require('electron');
+            
+            window.electronAPI = {
+                saveArticles: async (articles) => {
+                    return await ipcRenderer.invoke('save-articles', articles);
+                }
+            };
+        }
+    </script>
+    <style>
+        /* 原有的CSS样式保持不变 */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-light: #95a5a6;
+            --bg-white: rgba(255, 255, 255, 0.95);
+            --bg-light: rgba(248, 249, 250, 0.8);
+            --border-color: #e9ecef;
+            --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.2);
+            --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        /* 其余CSS样式... */
+    </style>
+</head>
+<body>
+    <!-- 原有的HTML结构保持不变 -->
+    
+    <script>
+        class ArticleManager {
+            // 原有的构造函数和其他方法保持不变
+            
+            // 保存文章（修改后的版本）
+            saveArticle(e) {
+                e.preventDefault();
+                if (!this.currentEditingArticle) return;
+
+                const title = document.getElementById('editTitle').value.trim();
+                const category = document.getElementById('editCategory').value;
+                const tagsText = document.getElementById('editTags').value.trim();
+                const summary = document.getElementById('editSummary').value.trim();
+                const content = document.getElementById('editContent').value.trim();
+
+                if (!title || !content) {
+                    this.showToast('请填写标题和内容', 'error');
+                    return;
+                }
+
+                // 更新文章数据
+                this.currentEditingArticle.title = title;
+                this.currentEditingArticle.category = category;
+                this.currentEditingArticle.tags = tagsText ? tagsText.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
+                this.currentEditingArticle.summary = summary;
+                this.currentEditingArticle.content = content;
+
+                // 检查是否是新文章
+                const existingIndex = this.articles.findIndex(a => a.id === this.currentEditingArticle.id);
+                if (existingIndex >= 0) {
+                    // 更新现有文章（保持原日期）
+                    this.articles[existingIndex] = { ...this.currentEditingArticle };
+                    this.showToast('文章已更新', 'success');
+                } else {
+                    // 添加新文章
+                    this.articles.unshift({ ...this.currentEditingArticle });
+                    this.showToast('文章已创建', 'success');
+                }
+
+                // 保存到文件
+                this.saveArticlesToFile();
+
+                this.closeEditModal();
+                this.filterArticles();
+                this.updateStats();
+            }
+
+            // 新增：保存文章到文件
+            saveArticlesToFile() {
+                // 使用Electron IPC保存文章到JSON文件
+                if (window.electronAPI && window.electronAPI.saveArticles) {
+                    window.electronAPI.saveArticles(this.articles)
+                        .then(result => {
+                            if (result.success) {
+                                this.showToast(result.message, 'success');
+                            } else {
+                                this.showToast(result.message, 'error');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('保存文章失败:', error);
+                            this.showToast('保存文章失败: ' + error.message, 'error');
+                        });
+                } else {
+                    console.warn('Electron API 不可用，文章只保存在内存中');
+                    this.showToast('文章已保存（仅内存中）', 'warning');
+                }
+            }
+
+            // 确认删除（修改后的版本）
+            confirmDelete() {
+                if (this.articleToDelete) {
+                    const index = this.articles.findIndex(a => a.id === this.articleToDelete.id);
+                    if (index >= 0) {
+                        this.articles.splice(index, 1);
+                        this.showToast('文章已删除', 'success');
+                        this.closeDeleteModal();
+                        this.filterArticles();
+                        this.updateStats();
+                        
+                        // 保存到文件
+                        this.saveArticlesToFile();
+                    }
+                }
+            }
+
+            // 其余方法保持不变...
         }
 
         // 初始化文章管理器

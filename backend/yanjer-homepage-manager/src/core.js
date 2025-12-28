@@ -165,6 +165,60 @@ ${articlesHtml}
   }
 }
 
+// 保存文章到JSON文件
+async function saveArticlesToJson(articles) {
+  const inputPath = path.join(__dirname, '../../../assets/data/articles.json');
+  
+  console.log('开始保存文章到JSON文件...');
+  
+  try {
+    // 确保数据格式正确
+    const jsonData = {
+      article: articles || []
+    };
+    
+    // 写入JSON文件
+    fs.writeFileSync(inputPath, JSON.stringify(jsonData, null, 2), 'utf8');
+    
+    console.log(`✅ 保存成功！共保存了 ${jsonData.article.length} 篇文章`);
+    
+    return {
+      success: true,
+      message: `保存成功！共保存了 ${jsonData.article.length} 篇文章`,
+      articleCount: jsonData.article.length
+    };
+    
+  } catch (error) {
+    console.error('❌ 保存失败:', error.message);
+    
+    return {
+      success: false,
+      message: `保存失败: ${error.message}`,
+      error: error.message
+    };
+  }
+}
+
+// IPC 通信处理 - 保存文章
+ipcMain.handle('save-articles', async (event, articles) => {
+  console.log('收到保存文章请求，开始处理...');
+  
+  const result = await saveArticlesToJson(articles);
+  
+  // 如果保存成功，自动触发转换
+  if (result.success) {
+    console.log('文章保存成功，开始转换JS文件...');
+    const convertResult = await convertJsonToJs();
+    if (convertResult.success) {
+      result.message += '，' + convertResult.message;
+    } else {
+      result.warning = '文章已保存，但转换JS文件失败：' + convertResult.message;
+    }
+  }
+  
+  return result;
+});
+
 // IPC 通信处理 - 支持进度回调
 ipcMain.handle('convert-json-to-js', async (event) => {
   console.log('收到转换请求，开始处理...');
@@ -181,8 +235,8 @@ ipcMain.handle('convert-json-to-js', async (event) => {
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1100,
+    height: 700,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

@@ -1,5 +1,5 @@
 // 文章数据 - 由Electron主进程自动生成
-// 生成时间: 12/28/2025, 9:31:50 AM
+// 生成时间: 12/29/2025, 12:51:18 AM
 
 const articleData = {
     "article": [
@@ -26,8 +26,8 @@ const articleData = {
                 "节日祝福",
                 "圣诞节"
             ],
-            "summary": "圣诞节快乐",
-            "content": "<font size=\"7\"><i>M</i><u><b>er</b>r</u>y</font> <font size=\"7\"><font color=\"#ff0a0a\">C</font><font color=\"#6b2424\">h</font><font color=\"#b32323\">ristma</font>s</font><div><ul><li><font size=\"2\">陪阿米娅</font></li><li><font size=\"2\">陪小白</font></li><li><span style=\"font-size: small;\">陪bstt</span></li></ul><div style=\"text-align: center;\"><font size=\"2\">竞购表</font></div></div><div style=\"text-align: center;\"><font size=\"2\"><br></font></div>",
+            "summary": "圣诞节快乐~",
+            "content": "<div>圣诞节快乐=v=</div>",
             "date": "2025-12-25"
         }
     ]

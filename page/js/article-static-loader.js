@@ -356,13 +356,14 @@ class StaticArticleLoader {
     }
 
     getCategoryName(category) {
+        // 分类名称映射
         const categoryNames = {
-            'tech': '技术',
-            'life': '生活',
-            'thought': '思考',
-            'travel': '旅行',
-            'reading': '读书',
-            'default': '其他'
+            '日常': '日常',
+            '技术': '技术',
+            '生活': '生活',
+            '脑洞': '脑洞',
+            '游戏': '游戏',
+            '其他': '其他'
         };
         return categoryNames[category] || categoryNames.default;
     }
@@ -501,6 +502,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.getElementById('likeBtn')?.addEventListener('click', () => {
     alert('静态网页就别想有点赞功能了\n数据都是自己写的');
-
     handleLike();   
 });
