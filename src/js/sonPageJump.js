@@ -1,5 +1,5 @@
 // const pzs = develop
-const pzs = github
+const pzs = 'github'
 
 githubLocation = window.location.href
 
