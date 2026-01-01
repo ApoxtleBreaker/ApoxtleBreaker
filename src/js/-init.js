@@ -39,4 +39,5 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.loadJS('scroll.js');
     document.body.loadJS('eyeProtection.js');
     document.body.loadJS('sonPageJump.js');
+    document.body.loadJS('screenNote.js');
 })

@@ -1,4 +1,5 @@
 
+
         * {
             margin: 0;
             padding: 0;
@@ -460,3 +461,164 @@
 
 .article-card:nth-child(2) { animation-delay: 0.1s; }
 .article-card:nth-child(3) { animation-delay: 0.2s; }
+
+
+/* 在文件末尾添加以下窗口动画样式 */
+
+/* 窗口基础样式 */
+.screen-note {
+    position: absolute;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* 标题栏样式 */
+.screen-note .title-bar {
+    background-color: #e0e0e0;
+    padding: 8px;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+}
+
+/* 标题样式 */
+.screen-note .note-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 按钮容器样式 */
+.screen-note .window-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+/* 窗口按钮基础样式 */
+.screen-note .window-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+/* 按钮悬停效果 */
+.screen-note .window-btn:hover {
+    transform: scale(1.1);
+}
+
+/* 不同按钮的颜色 */
+.screen-note .close-btn {
+    background-color: #ff5f57;
+    color: white;
+}
+
+.screen-note .fold-btn {
+    background-color: #ffbd2e;
+    color: white;
+}
+
+.screen-note .fullscreen-btn {
+    background-color: #28ca42;
+    color: white;
+}
+
+/* 内容区域样式 */
+.screen-note .note-content {
+    padding: 16px;
+    overflow: auto;
+    color: #333;
+}
+
+/* 窗口动画效果 */
+@keyframes windowScaleUpFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes windowScaleDownFade {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-30px);
+    }
+}
+
+/* 动画类 */
+.window-animation {
+    will-change: transform, opacity;
+}
+
+/* 打开动画 */
+.window-opening {
+    animation: windowScaleUpFade 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 关闭动画 */
+.window-closing {
+    animation: windowScaleDownFade 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+/* 拖拽时的样式 */
+.screen-note.dragging {
+    opacity: 0.8;
+    transform: rotate(2deg);
+    transition: none;
+}
+
+/* 全屏模式样式 */
+.screen-note.fullscreen-mode {
+    border-radius: 0;
+    border: none;
+}
+
+/* 折叠模式样式 */
+.screen-note.folded-mode {
+    height: 40px !important;
+}
+
+.screen-note.folded-mode .note-content {
+    display: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .screen-note {
+        max-width: 90vw;
+        max-height: 80vh;
+    }
+    
+    .screen-note .note-title {
+        font-size: 14px;
+    }
+    
+    .screen-note .window-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+    }
+}
