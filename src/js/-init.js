@@ -40,4 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.loadJS('eyeProtection.js');
     document.body.loadJS('sonPageJump.js');
     document.body.loadJS('screenNote.js');
+    document.body.loadJS('musicPlayer.js');
+    document.body.loadJS('calendar.js');
 })

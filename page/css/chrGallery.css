@@ -1,0 +1,147 @@
+/* chrGallery组件样式 */
+
+/* 主容器样式 - 长方形容器，相对定位 */
+chr-box {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chr-main-container {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* head容器样式 - 左上部依次排列，自动换行 */
+.chr-head-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 单个head样式 */
+.chr-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    min-width: 80px;
+}
+
+.chr-head:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 角色图片样式 */
+.chr-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    margin-bottom: 8px;
+}
+
+/* 角色名称样式 */
+.chr-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* main容器样式 */
+.chr-main-box {
+    width: 100%;
+}
+
+/* 消息容器样式 - 描述文字 */
+.chr-main-box p {
+    margin: 0;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .chr-head-container {
+        gap: 10px;
+        padding: 8px;
+    }
+    
+    .chr-head {
+        padding: 8px;
+        min-width: 70px;
+    }
+    
+    .chr-img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .chr-name {
+        font-size: 12px;
+    }
+    
+    .chr-main-box p {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+/* 暗色主题支持 */
+@media (prefers-color-scheme: dark) {
+    chr-box {
+        background-color: #2a2a2a;
+    }
+    
+    .chr-main-container {
+        background-color: #2a2a2a;
+    }
+    
+    .chr-head-container {
+        background-color: #333;
+    }
+    
+    .chr-head {
+        background-color: #3a3a3a;
+    }
+    
+    .chr-img {
+        border-color: #555;
+    }
+    
+    .chr-name {
+        color: #e0e0e0;
+    }
+    
+    .chr-main-box p {
+        background-color: #333;
+        color: #e0e0e0;
+    }
+}
