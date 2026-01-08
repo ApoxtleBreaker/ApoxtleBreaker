@@ -4,7 +4,7 @@
     --item-side-color: #880000;
     --item-side-shadow-color: rgba(96, 96, 96, 0.446);
 
-    --font-color: #0e02b9;
+    --font-color: #cc1100;
 }
 * {
     margin: 0;
@@ -14,7 +14,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+    /* background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);*/
     min-height: 100vh;
     color: #333;
     overflow-x: hidden;
@@ -71,7 +71,7 @@ body {
 .page-title {
     font-size: 2rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     text-shadow: 0 0 10px #41414175;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -87,7 +87,7 @@ body {
     padding: 8px 16px;
     border: none;
     border-radius: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
     font-weight: 500;
     cursor: pointer;
@@ -96,7 +96,7 @@ body {
 
 .filter-btn:hover, .search-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 15px rgba(112, 11, 11, 0.4);
 }
 
 /* 筛选面板 */
@@ -124,7 +124,7 @@ body {
 
 .filter-label {
     font-weight: 600;
-    color: #667eea;
+    color: #d32121;
 }
 
 .filter-tag {
@@ -138,7 +138,7 @@ body {
 }
 
 .filter-tag.active, .filter-tag:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
     border-color: transparent;
     transform: translateY(-1px);
@@ -155,13 +155,13 @@ body {
 
 .search-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #be1212;
+    box-shadow: 0 0 0 3px rgba(150, 23, 23, 0.1);
 }
 
 .search-submit {
     padding: 10px 24px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
     border: none;
     border-radius: 25px;
@@ -193,7 +193,7 @@ body {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);;
     transform: translateX(-50%);
 }
 
@@ -254,10 +254,10 @@ body {
 }
 
 .article-date {
-    color: #667eea;
+    color: #d71313;
     font-size: 0.9rem;
     font-weight: 500;
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(209, 217, 253, 0.1);
     padding: 4px 12px;
     border-radius: 12px;
 }
@@ -279,7 +279,7 @@ body {
 }
 
 .article-category {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
     padding: 4px 12px;
     border-radius: 12px;
@@ -308,7 +308,7 @@ body {
 
 .load-more-btn {
     padding: 12px 32px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
     border: none;
     border-radius: 25px;
@@ -320,7 +320,7 @@ body {
 
 .load-more-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 10px 25px rgba(234, 60, 60, 0.4);
 }
 
 .load-more-btn:disabled {
@@ -367,7 +367,7 @@ body {
     align-items: center;
     padding: 30px;
     border-bottom: 1px solid #f0f0f0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
     border-radius: 20px 20px 0 0;
 }
@@ -400,7 +400,7 @@ body {
 
 .modal-meta {
     padding: 20px 30px;
-    background: rgba(102, 126, 234, 0.05);
+    background: rgba(234, 102, 102, 0.05);
     display: flex;
     gap: 20px;
     align-items: center;
@@ -438,7 +438,7 @@ body {
 }
 
 .modal-btn:first-child {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
 }
 
@@ -459,7 +459,7 @@ body {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #300707 0%,#502222 40%, #303030 100%);
     color: white;
     border: none;
     border-radius: 50%;
@@ -468,7 +468,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 20px rgba(234, 102, 102, 0.4);
     z-index: 1000;
 }
 
@@ -479,7 +479,7 @@ body {
 
 .back-to-top:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 8px 25px rgba(234, 102, 102, 0.6);
 }
 
 /* 加载动画 */
@@ -488,7 +488,7 @@ body {
     width: 20px;
     height: 20px;
     border: 3px solid #f3f3f3;
-    border-top: 3px solid #667eea;
+    border-top: 3px solid #ea6666;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-right: 8px;

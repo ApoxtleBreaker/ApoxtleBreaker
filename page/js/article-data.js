@@ -1,8 +1,87 @@
 // 文章数据 - 由Electron主进程自动生成
-// 生成时间: 12/29/2025, 12:51:18 AM
+// 生成时间: 1/9/2026, 1:35:28 AM
 
 const articleData = {
     "article": [
+        {
+            "id": 1767893697439,
+            "title": "我的世界《犹格索托斯的庭院》同人模组的设想",
+            "category": "脑洞",
+            "tags": [
+                "我的世界",
+                "模组",
+                "犹格索托斯的庭院",
+                "开发",
+                "脑洞"
+            ],
+            "summary": "神谕的升级转化 血月事件 特殊升级路径 特殊效果神谕 sna值等等等等",
+            "content": "今天晚自习想到的<div>之前不是录过<u>《犹格索托斯的庭院》</u>吗</div><div>里面有个功能叫神谕&nbsp; 可以消耗san值发动特殊效果</div><div>我寻思在mc里做一个这个的模组</div><div>当然时间是没有的 等我高考之后有空还记得我就试试</div><div>加上之前看到别人做的各种变态极限模组</div><div>比如无视无尽贪婪和一些同类模组的更高级的杀死实体之类的</div><div>以下是设想部分</div><div><br></div><div>通过自然生成的废弃的犹格索托斯雕像获得与常人看不到的东西沟通的权限=&gt;(模组大部分内容使用前的激活门槛)</div><div><br></div><div>神谕部分:</div><div>外观: 一个很酷的边框 中间根据功能画一些神话生物的剪影(美术需求</div><div>每个类对应一个神明（参考原作&nbsp; 效果根据神谕等级变化</div><div>每个类有树状图一样的分支&nbsp;</div><div>例如:</div><div>战士-&gt;狂战士-&gt;1-&gt;2...</div><div>&nbsp; &nbsp; &nbsp; &nbsp;-&gt;圣骑士-&gt;1-&gt;2...</div><div>&nbsp; &nbsp; &nbsp; &nbsp;...</div><div><br></div><div>临时个例</div><div>某斩杀类:</div><div>1-&gt;对周围小范围造成小伤害</div><div>2-&gt;对周围大范围造成大伤害</div><div>3-&gt;尝试杀死周围小范围生物(普通kill</div><div>4-&gt;尝试杀死周围大范围生物(普通kill</div><div>5-&gt;抹杀周围一定范围内实体(后续参考氪金萝莉之类的写法 直接删除实体数据 kick之类的 同时清除背包物品</div><div><br></div><div>某斩杀类:</div><div>n-&gt;消耗n点san值每秒开启一个一定范围的杀戮光环(普通攻击</div><div>升级参考=&gt;范围修改/消耗降低/攻击伤害/攻击附加效果</div><div><br></div><div>某物资类:</div><div>类似原游戏直接给钱&nbsp; 分级给不同物资</div><div>1 铁铜</div><div>2 铁金</div><div>3 金钻</div><div>4 钻下界合金</div><div>5 下界之星 下界合金 其他稀有材料</div><div>分支-&gt;获得食物&nbsp; /获得灵魂 / 获得卡牌(仅至高神谕拥有)</div><div><br></div><div><br></div><div>特殊类:</div><div>特里波卡的守护: 于角色特里波卡(未定)培养好感度到一定值后获得</div><div>使用后时停周围一定范围内所有实体 并对一定范围(除了可能添加别的神明类生物或者同伴)生物进行逐个斩杀(播放游戏里屠杀音效)</div><div>使用后获得灵魂碎片-&gt;拍卖会交易/强化卡牌</div><div>每次使用消耗一定好感度 固定cd</div><div>当好感度不足时使用造成反噬</div><div>小于n时扣除50%血量</div><div>小于n2时直接斩杀自己</div><div><br></div><div><br></div><div>额外设施:</div><div>自然生成的那个一半血一半水的湖（我忘了叫什么&nbsp; 暂时只想到白的一边的液体恢复san值 红色部分扣san值</div><div>犹格索托斯雕像:触发模组/血月招现至高神谕的设施</div><div>=&gt;补充:</div><div>1第一次使用会有一个初始页面 类似像素雕像的平面立绘在你前面 下面是对话框 看不懂的文字 一个确认一个取消 确认后立即死亡但是留</div><div>在原地重生 启动模组基本内容权限</div><div>2在初始化之后每次打开都是显示的一个六芒星图 六个角可以放入材料或者卡片 中间为输出卡片 有金色镶边</div><div><br></div><div>平常可以通过一些特殊材料对一些卡片进行升级/转化</div><div>血月的时候至高神谕按钮由灰色变成高亮&nbsp; 同时界面进行一些变化</div><div>原有功能不变 但是填入卡牌可以充能（每种卡牌每个等级都有对应的献祭值（写在nbt标签里</div><div>（因为一次只能放6个所以采取这个方式</div><div>等确认好之后点击至高神谕触发动画 根据当前献祭值出现三张至高神谕</div><div>==&gt;每个至高神谕都有对应稀有度 用一个算法根据献祭值修改权重</div><div>三张选一张永远获得 每个血月只能使用一次 使用后变成灰色的不可使用状态</div><div>如果献祭了在血月结束之前没有使用会保留献祭值 但是只有到下一个血月才能再次使用</div><div>（献祭值写在方块的nbt标签里 破坏不保留</div><div><br></div><div>降级设施(名字未定</div><div>=&gt;用于降低神谕等级 但是不返回任何东西</div><div><br></div><div>事件:</div><div>血月</div><div>每个游戏日10~60日随机刷新 越往后概率越大</div><div>涉及至高神谕的招现</div><div>血月期间招现神谕消耗san值减半</div><div>后续可能添加--&gt; 拍卖会（血月举行</div><div><br></div><div><br></div><div>其他暂定</div><div><br></div>",
+            "date": "2026-01-08"
+        },
+        {
+            "id": 1767891596723,
+            "title": "定制的通行证到货了！",
+            "category": "作品",
+            "tags": [
+                "通行证",
+                "明日方舟",
+                "Vtuber",
+                "恩骨",
+                "自制"
+            ],
+            "summary": "做的恩骨的通行证的定制到了 效果不错的说",
+            "content": "定做的通行证到了！<div><b>效果还不错</b></div><div>主要是第一次做 已经很满意了</div><div>背面稍微有点丑</div><div>怪我参考没找全</div><div>其实通行证背面有很多版本 我杂糅了两个版本反而不太好看</div><div><img src=\"../../assets/data/articles/img/2026-01-08-untitled-1.jpg\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><img src=\"../../assets/data/articles/img/2026-01-08-untitled-2.jpg\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><img src=\"../../assets/data/articles/img/2026-01-08-untitled-3.jpg\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><br></div><div>淘宝上看到了不错的背面设计 回头参考一下</div><div><img src=\"../../assets/data/articles/img/2026-01-08-untitled-4.png\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><img src=\"../../assets/data/articles/img/2026-01-08-untitled-5.png\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><br></div>",
+            "date": "2026-01-06"
+        },
+        {
+            "id": 1767891257125,
+            "title": "被不会死们关注到了",
+            "category": "日常",
+            "tags": [
+                "通行证",
+                "明日方舟",
+                "Vtuber",
+                "恩骨",
+                "自制",
+                "图片处理",
+                "PS",
+                "BiliBili",
+                "里程碑"
+            ],
+            "summary": "把做的通行证发在b站 被一堆恩骨的粉丝关注到了耶",
+            "content": "把恩骨通行证发b站上了<div>本来一直营生惨淡</div><div>突然评论区涌入一大批<font color=\"#f00000\"><b><i>不会死</i></b></font></div><div>都给于了不错的评价 <b>开森~</b></div><div><img src=\"../../assets/data/articles/img/2026-01-08-untitled-1.jpg\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><br></div>",
+            "date": "2026-01-04"
+        },
+        {
+            "id": 1767889996433,
+            "title": "通宵做了恩骨的通行证",
+            "category": "作品",
+            "tags": [
+                "通行证",
+                "明日方舟",
+                "Vtuber",
+                "恩骨",
+                "自制",
+                "图片处理",
+                "PS"
+            ],
+            "summary": "用ps的通行证魔板做了适配恩骨的版本 立绘用的当然是我最喜欢的那张",
+            "content": "本来是看到群里下午好发了个定制的通行证 问了一下是什么彩虹社的一个V<div>我随便说了句要不是我推没有人做我也买&nbsp; 或许我可以自己做<i>（之前试过 但是中道崩殂&nbsp; 主要是旧电脑用ps太卡了</i></div><div>他说就是他做的 正好当时从老家回来被压榨了一整天元旦的我没心思玩什么游戏了直接通宵肝了一个骨子的通行证</div><div>个人感觉还是不错的</div><div><img src=\"../../assets/data/articles/img/2026-01-08-untitled-1.png\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><img src=\"../../assets/data/articles/img/2026-01-08-untitled-2.png\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><br></div>",
+            "date": "2026-01-02"
+        },
+        {
+            "id": 1767298657147,
+            "title": "第一次用PS处理图片",
+            "category": "技术",
+            "tags": [
+                "PS",
+                "图片处理",
+                "学习记录"
+            ],
+            "summary": "简单学了一下ps基本的操作 变摸索变试呗",
+            "content": "<i>以前老电脑带不动ps&nbsp; 都是用的paint.net 里面很多操作都很原始</i><div><i>比如如果要实现蒙版扣除 需要把蒙版图层用魔板选中然后反选然后回到被蒙版的图层再扣</i></div><div><i>ps我看了半天不知道怎么把图片和文字进行框选 反正就是怎么用怎么奇怪</i></div><div><i>太高级了&nbsp; 太智能了 反而不习惯了</i></div><div><i><br></i></div><div><b style=\"\">记一下一些快捷键以后好再复习</b></div><div>导入的图片或者别的对象 <b><u>Ctrl+T</u></b> 自由变换 就和pt默认选中的处理方式一样</div><div>按住 <b><u>Ctrl</u></b> 点击图层自动框选边框 文字这种多边形都可以</div><div>右键自由变换的对象可以选择变形 扭曲 旋转翻转等变换</div>",
+            "date": "2026-01-01"
+        },
         {
             "id": 1766759470196,
             "title": "长安的荔枝二刷看哭了",

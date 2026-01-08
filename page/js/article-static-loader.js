@@ -359,6 +359,7 @@ class StaticArticleLoader {
         // 分类名称映射
         const categoryNames = {
             '日常': '日常',
+            '作品': '作品',
             '技术': '技术',
             '生活': '生活',
             '脑洞': '脑洞',
