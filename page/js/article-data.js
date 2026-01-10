@@ -1,8 +1,22 @@
 // 文章数据 - 由Electron主进程自动生成
-// 生成时间: 1/9/2026, 1:35:28 AM
+// 生成时间: 1/11/2026, 7:12:50 AM
 
 const articleData = {
     "article": [
+        {
+            "id": 1768086720738,
+            "title": "被恩骨点赞了",
+            "category": "日常",
+            "tags": [
+                "里程碑",
+                "恩骨",
+                "Vtuber",
+                "通行证"
+            ],
+            "summary": "成品视频被本人点赞投币了",
+            "content": "成品视频被<font size=\"5\">恩骨本人</font>点赞投币了！！！<div><img src=\"../../assets/data/articles/img/2026-01-10-untitled-1.jpg\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><img src=\"../../assets/data/articles/img/2026-01-10-untitled-2.jpg\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\">&lt;/br&gt;</div><div>还抓了一个舰长来我这边(嘻嘻</div><div><img src=\"../../assets/data/articles/img/2026-01-10-untitled-3.jpg\" alt=\"文章图片\" style=\"max-width: 100%; height: auto; border-radius: 4px; margin: 10px 0;\"><br></div>",
+            "date": "2026-01-10"
+        },
         {
             "id": 1767893697439,
             "title": "我的世界《犹格索托斯的庭院》同人模组的设想",
