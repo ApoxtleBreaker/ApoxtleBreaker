@@ -87,11 +87,6 @@ class ScreenNote {
         this.buttonContainer.className = "window-buttons"
         
         // 创建三个窗口控制按钮
-        this.closeBtn = document.createElement("button")
-        this.closeBtn.className = "window-btn close-btn"
-        this.closeBtn.innerHTML = "×"
-        this.closeBtn.title = "关闭"
-        
         this.foldBtn = document.createElement("button")
         this.foldBtn.className = "window-btn fold-btn"
         this.foldBtn.innerHTML = "−"
@@ -102,10 +97,14 @@ class ScreenNote {
         this.fullScreenBtn.innerHTML = "□"
         this.fullScreenBtn.title = "全屏"
         
+        this.closeBtn = document.createElement("button")
+        this.closeBtn.className = "window-btn close-btn"
+        this.closeBtn.innerHTML = "×"
+        this.closeBtn.title = "关闭"
         // 添加按钮到容器
-        this.buttonContainer.appendChild(this.closeBtn)
         this.buttonContainer.appendChild(this.foldBtn)
         this.buttonContainer.appendChild(this.fullScreenBtn)
+        this.buttonContainer.appendChild(this.closeBtn)
         
         // 添加标题和按钮到标题栏
         titleBar.appendChild(this.titleElement)
