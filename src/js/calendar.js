@@ -47,7 +47,8 @@ const now = new Date();
 // }
 // }
 
-const GaoKao100Days = new Date("2026-02-27 00:00:00");
+//高考在即
+const GaoKao100Days = new Date("2027-02-27 00:00:00");
 if(now > GaoKao100Days){
     // 获取播放器元素
     const player = document.querySelector('music-player');

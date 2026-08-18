@@ -1,5 +1,5 @@
-// 文章数据 - 由Electron主进程自动生成
-// 生成时间: 1/11/2026, 7:12:50 AM
+// 文章数据 - 由convert-json-to-js.js自动生成
+// 生成时间: 8/18/2026, 12:55:48 PM
 
 const articleData = {
     "article": [
@@ -8,6 +8,7 @@ const articleData = {
             "title": "被恩骨点赞了",
             "category": "日常",
             "tags": [
+                "BiliBili",
                 "里程碑",
                 "恩骨",
                 "Vtuber",
@@ -126,15 +127,16 @@ const articleData = {
     ]
 };
 
-// 立即可用的数据访问函数
-function getArticles() {
-    return articleData.article;
-}
+    // 立即可用的数据访问函数
+    function getArticles() {
+        return articleData.article;
+    }
 
-function getArticleById(id) {
-    return articleData.article.find(article => article.id === id);
-}
+    function getArticleById(id) {
+        return articleData.article.find(article => article.id === id);
+    }
 
-function getArticlesByCategory(category) {
-    return articleData.article.filter(article => article.category === category);
+    function getArticlesByCategory(category) {
+        return articleData.article.filter(article => article.category === category);
+    articleData.article.filter(article => article.category === category);
 }

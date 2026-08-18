@@ -65,7 +65,7 @@ const articleData = ${JSON.stringify(jsonData, null, 4)};
                 }).slice(0, 3);
 
                 const articlesHtml = articles.map(article => {
-                    const img = article.image || './assets/img/head.jpg';
+                    const img = article.image || './assets/img/head.jpg';//暂未处理好图片路径
                     const title = article.title || '未命名文章';
                     const excerpt = article.excerpt || (article.content ? article.content.slice(0, 60) + '...' : '');
                     const date = article.date || '';

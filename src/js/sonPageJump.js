@@ -12,6 +12,16 @@ document.getElementById('article-icon').addEventListener('click', function() {
     }
 
 });
+
+// document.getElementById('poem-icon').addEventListener('click', function() {
+//     if(pzs === 'develop'){
+//         window.location.href = '../../page/poem.html'
+//     }else{
+//         window.location.href = githubLocation + '/page/poem.html'
+//     }
+
+// });
+
 document.getElementById('backup').addEventListener('click', function() {
     if(pzs === 'develop'){
         window.location.href = '../../-ApoxtleBreaker/index.html';
